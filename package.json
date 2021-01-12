@@ -1,0 +1,8 @@
+{
+  "name": "portfolio-2021",
+  "version": "0",
+  "main": "index.js",
+  "repository": "https://github.com/brandonsireland/portfolio-2021.git",
+  "author": "Brandon Ireland <brandonsireland@gmail.com>",
+  "license": "MIT"
+}
