@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/lib/node_modules/node/lib/node_modules/node/lib/node_modules/node/bin/node /usr/local/bin/yarn dev
+  /usr/local/lib/node_modules/node/lib/node_modules/node/lib/node_modules/node/bin/node /usr/local/bin/yarn add contentful
 
 PATH: 
   /Users/workflow/google-cloud-sdk/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin
@@ -36,6 +36,7 @@ npm manifest:
       }
     },
     "dependencies": {
+      "lodash": "^4.17.21",
       "next": "^10.0.5",
       "react": "^17.0.1",
       "react-dom": "^17.0.1",
@@ -50,7 +51,6 @@ npm manifest:
       "@typescript-eslint/eslint-plugin": "^4.13.0",
       "@typescript-eslint/parser": "^4.13.0",
       "@zeit/next-sass": "^1.0.1",
-      "autoprefixer": "^10.2.1",
       "babel-eslint": "^10.1.0",
       "babel-loader": "^8.2.2",
       "babel-preset-react-app": "^10.0.0",
@@ -1410,17 +1410,6 @@ Lockfile:
     dependencies:
       lodash "^4.17.14"
   
-  autoprefixer@^10.2.1:
-    version "10.2.5"
-    resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.2.5.tgz#096a0337dbc96c0873526d7fef5de4428d05382d"
-    dependencies:
-      browserslist "^4.16.3"
-      caniuse-lite "^1.0.30001196"
-      colorette "^1.2.2"
-      fraction.js "^4.0.13"
-      normalize-range "^0.1.2"
-      postcss-value-parser "^4.1.0"
-  
   autoprefixer@^9.8.6:
     version "9.8.6"
     resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.8.6.tgz#3b73594ca1bf9266320c5acf1588d74dea74210f"
@@ -1697,7 +1686,7 @@ Lockfile:
     version "5.3.1"
     resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
   
-  caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001173, caniuse-lite@^1.0.30001179, caniuse-lite@^1.0.30001181, caniuse-lite@^1.0.30001196:
+  caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001173, caniuse-lite@^1.0.30001179, caniuse-lite@^1.0.30001181:
     version "1.0.30001203"
     resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001203.tgz#a7a34df21a387d9deffcd56c000b8cf5ab540580"
   
@@ -1830,7 +1819,7 @@ Lockfile:
     version "1.1.4"
     resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
   
-  colorette@^1.2.1, colorette@^1.2.2:
+  colorette@^1.2.1:
     version "1.2.2"
     resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
   
@@ -2576,10 +2565,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/for-own/-/for-own-1.0.0.tgz#c63332f415cedc4b04dbfe70cf836494c53cb44b"
     dependencies:
       for-in "^1.0.1"
-  
-  fraction.js@^4.0.13:
-    version "4.0.13"
-    resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.0.13.tgz#3c1c315fa16b35c85fffa95725a36fa729c69dfe"
   
   fs.realpath@^1.0.0:
     version "1.0.0"
@@ -5220,16 +5205,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/zwitch/-/zwitch-1.0.5.tgz#d11d7381ffed16b742f6af7b3f223d5cd9fe9920"
 
 Trace: 
-  Error: Command failed.
-  Exit code: 1
-  Command: sh
-  Arguments: -c next
-  Directory: /Users/workflow/sites/portfolio-2021
-  Output:
-  
-      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
-      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
-      at ChildProcess.emit (events.js:198:13)
-      at maybeClose (internal/child_process.js:982:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:259:5)
+  Error: Found incompatible module
+      at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at checkOne (/usr/local/lib/node_modules/yarn/lib/cli.js:62444:11)
+      at Object.check (/usr/local/lib/node_modules/yarn/lib/cli.js:62463:5)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:22803:73
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:109:13
