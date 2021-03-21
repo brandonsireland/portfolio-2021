@@ -1,0 +1,14 @@
+/* ------------------------------------ *\
+    #COLOR UTILITIES
+\* ------------------------------------ */
+
+$color-utilities-config: $color-config;
+
+//
+// Color utilities to apply a specific color.
+//
+@each $color-name, $color-value in $color-utilities-config {
+    .u-color-#{$color-name} {
+        color: $color-value !important;
+    }
+}

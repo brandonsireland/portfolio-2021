@@ -1,0 +1,57 @@
+/*------------------------------------*\
+    #BASE GLOBAL DEFAULTS
+\*------------------------------------*/
+
+$base-background: #111111;
+$base-color: #b39a1e;
+$base-font-family: 'Cormorant', sans-serif;
+$base-font-size: 14px;
+$base-line-height: (24 / 16);
+$max-width: 1440px;
+
+/// Generic spacing unit
+$spacing-unit: 20px;
+
+/*------------------------------------*\
+    #FONTS
+\*------------------------------------*/
+
+$font-family-cormorant: 'Cormorant', sans-serif;
+$font-family-mulish: 'Mulish', sans-serif;
+$font-family-playfair: 'PlayfairDisplay', sans-serif;
+
+/*------------------------------------*\
+    #COLORS
+\*------------------------------------*/
+
+$color-config: (
+    'primary': #111111,
+    'secondary': #252525,
+    'gold': #b39a1e,
+    'black': #000,
+    'white': #fff,
+    'grey': #6a6a6a,
+);
+
+///
+// Timer Map for @function timer();
+///
+$timer-config: (
+    'normal': 0.4s,
+    'slow': 0.75s,
+    'fast': 0.15s,
+);
+
+///
+// Z-index Map for @function z();
+///
+$z-index-config: (
+    'nav': auto,
+    'fancybox-overlay': auto,
+    'fancybox-case-study': 50000,
+    'navigation': 100000,
+    'header': 200000,
+    'dropdown': 300000,
+    'fancybox-trump': 500000,
+    'share': 700000,
+);

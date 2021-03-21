@@ -1,0 +1,15 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-order"
+  ],
+  "rules": {
+    "indentation": 4,
+    "max-empty-lines": 2,
+    "at-rule-no-unknown": null,
+    "selector-pseudo-class-no-unknown": [true, {
+        ignorePseudoClasses: ["global", "local"]
+    }]
+  }
+}

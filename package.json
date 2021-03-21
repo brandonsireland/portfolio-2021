@@ -4,5 +4,58 @@
   "main": "index.js",
   "repository": "https://github.com/brandonsireland/portfolio-2021.git",
   "author": "Brandon Ireland <brandonsireland@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "static": "NODE_ENV=development next build NODE_ENV=development next export",
+    "lint": "eslint .",
+    "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|css|scss)\"",
+    "format": "yarn run prettier --write",
+    "validate": "yarn run lint && yarn run prettier --list-different"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --config ./lint-staged.config.js"
+    }
+  },
+  "dependencies": {
+    "next": "^10.0.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@types/next": "^9.0.0",
+    "@types/node": "^14.14.20",
+    "@types/node-sass": "^4.11.1",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0",
+    "@zeit/next-sass": "^1.0.1",
+    "autoprefixer": "^10.2.1",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-preset-react-app": "^10.0.0",
+    "classcat": "^4.1.0",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
+    "husky": "^4.3.7",
+    "lint-staged": "^10.5.3",
+    "next-images": "^1.6.2",
+    "node-sass": "^5.0.0",
+    "prettier": "^2.2.1",
+    "sass-resources-loader": "^2.1.1",
+    "stylelint": "^13.8.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.18.0",
+    "ts-loader": "^8.0.14",
+    "typescript": "^4.1.3"
+  }
 }
