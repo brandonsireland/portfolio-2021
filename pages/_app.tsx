@@ -8,6 +8,8 @@ import Cursor from '../components/atoms/Cursor';
 // Styles
 import '../resources/scss/global.scss';
 
+// TODO: Meta
+// https://moz.com/blog/meta-data-templates-123
 const App: React.FC<AppProps> = ({
     Component,
     pageProps,
