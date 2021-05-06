@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 $base-background: #111111;
-$base-color: #b39a1e;
+$base-color: #fff;
 $base-font-family: 'Cormorant', sans-serif;
 $base-font-size: 14px;
 $base-line-height: (24 / 16);
@@ -25,12 +25,14 @@ $font-family-playfair: 'PlayfairDisplay', sans-serif;
 \*------------------------------------*/
 
 $color-config: (
-    'primary': #111111,
-    'secondary': #252525,
-    'gold': #b39a1e,
+    'primary': #0b0414,
+    'secondary': #37234e,
+    'accent': #4e2761,
+    'accent2': #40257b,
+    'accent3': #361a99,
     'black': #000,
     'white': #fff,
-    'grey': #6a6a6a,
+    'grey': #e1e1e1,
 );
 
 ///

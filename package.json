@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "contentful": "^8.2.0",
+    "gsap": "^3.6.0",
     "lodash": "^4.17.21",
     "next": "^10.0.5",
     "react": "^17.0.1",
