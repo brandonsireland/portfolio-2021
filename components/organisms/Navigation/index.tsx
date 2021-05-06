@@ -1,26 +1,15 @@
 import React from 'react';
-import Link from 'next/link';
+
+// Components
+import Logo from '../../atoms/Logo';
+
+// Styles
+import css from './navigation.module.scss'
  
 const Navigation: React.FC = () => {
     return ( 
-        <nav>
-            <ul>
-                <li>
-                    <Link href="/">
-                        <a>Home Page</a>
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/">
-                        <a>Portfolio</a>
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/">
-                        <a>Contact</a>
-                    </Link>
-                </li>
-            </ul>
+        <nav className={css.container}>
+            <Logo />
         </nav>
      );
 }
