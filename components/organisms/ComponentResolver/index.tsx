@@ -1,14 +1,10 @@
 import React, { Fragment } from 'react';
 
+// Types
+import { ComponentResolverProps } from './ComponentResolver.types';
+
 const components = {
 
-}
-
-export interface ComponentResolverProps {
-    contentBlocks: ({
-        id: string,
-        contentTypeId: string,
-    })[];
 }
 
 const ComponentResolver: React.FC<ComponentResolverProps> = ({ contentBlocks = [] }) => {
