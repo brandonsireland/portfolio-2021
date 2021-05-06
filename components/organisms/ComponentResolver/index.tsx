@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
 
-import Hero from '../Hero';
-
 const components = {
-    componentHero: Hero,
+
 }
 
 export interface ComponentResolverProps {
@@ -14,6 +12,7 @@ export interface ComponentResolverProps {
 }
 
 const ComponentResolver: React.FC<ComponentResolverProps> = ({ contentBlocks = [] }) => {
+    // console.log(contentBlocks);
     return (
         <Fragment>
             {contentBlocks.map(({ id, contentTypeId, ...props }) => {
