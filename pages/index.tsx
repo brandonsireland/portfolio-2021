@@ -10,8 +10,8 @@ export interface IndexPageProps {
     pageData: any;
 }
 
-const IndexPage: React.FC<IndexPageProps> = ({ pageData: { contentBlocks = [] } = {} }) => {
-    return ( <DefaultPageTemplate contentBlocks={contentBlocks} /> );
+const IndexPage: React.FC<IndexPageProps> = ({ pageData: { contentBlocks = [], meta = {} } = {} }) => {
+    return ( <DefaultPageTemplate contentBlocks={contentBlocks} meta={meta} /> );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
