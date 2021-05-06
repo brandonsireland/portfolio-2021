@@ -6,8 +6,12 @@ import { client, getContentData } from '../contentful';
 // Components
 import DefaultPageTemplate from '../components/templates/DefaultPageTemplate';
 
-const IndexPage: React.FC = () => {
-    return ( <DefaultPageTemplate /> );
+export interface IndexPageProps {
+    pageData: any;
+}
+
+const IndexPage: React.FC<IndexPageProps> = ({ pageData: { contentBlocks = [] } = {} }) => {
+    return ( <DefaultPageTemplate contentBlocks={contentBlocks} /> );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
