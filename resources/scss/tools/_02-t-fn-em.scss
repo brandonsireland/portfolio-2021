@@ -6,9 +6,11 @@
 ///
 /// @require {variable} $base-config
 ///
+@use "sass:math";
+
 @function em($px, $base: $base-font-size) {
     @if type-of($px) == 'number' and not unitless($px) {
-        @return ($px / $base) * 1em;
+        @return math.div($px, $base) * 1em;
     } @else {
         @warn '`em()` requires a number in `px` units.';
 

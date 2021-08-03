@@ -1,9 +1,10 @@
-/*------------------------------------*\
+/* ------------------------------------ *\
     #GLOBAL
-\*------------------------------------*/
+\* ------------------------------------ */
 
-@import './settings/settings';
-@import './tools/tools';
-@import './generic/generic';
-@import './elements/elements';
-@import './vendors/vendors';
+@import 'generics/03-g-generics';
+@import 'elements/04-e-elements';
+@import 'objects/05-o-objects';
+@import 'utilities/07-u-utilities';
+
+@import 'vendors/vendors';

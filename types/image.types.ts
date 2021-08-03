@@ -7,4 +7,5 @@ export interface ImageProps {
     contentType?: string;
     id?: string;
     title?: string;
+    alt?: string;
 }

@@ -1,0 +1,42 @@
+/* ------------------------------------ *\
+    #SPACING UTILITIES
+\* ------------------------------------ */
+
+// Spacing utilities at different breakpoints
+$spacing-config: (
+    '0': 0,
+    '10': 10px,
+    '15': 15px,
+    '20': 20px,
+    '30': 30px,
+    '40': 40px,
+    '50': 50px,
+    '60': 60px,
+    '80': 80px,
+    '100': 100px,
+    '120': 120px,
+);
+
+@each $spacing-name, $spacing-value in $spacing-config {
+    .u-pt-#{$spacing-name} {
+        padding-top: $spacing-value !important;
+    }
+
+    .u-mb-#{$spacing-name} {
+        margin-bottom: $spacing-value !important;
+    }
+}
+
+@each $breakpoint-name, $breakpoint-value in $breakpoints-extended-config {
+    @include media($breakpoint-name) {
+        @each $spacing-name, $spacing-value in $spacing-config {
+            .u-pt-#{$spacing-name}\@#{$breakpoint-name} {
+                padding-top: $spacing-value !important;
+            }
+
+            .u-mb-#{$spacing-name}\@#{$breakpoint-name} {
+                margin-bottom: $spacing-value !important;
+            }
+        }
+    }
+}
