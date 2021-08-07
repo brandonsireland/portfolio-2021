@@ -28,37 +28,6 @@ $color-config: (
 );
 
 ///
-// Base global defaults
-///
-$base-background: #fff;
-$base-color: #000;
-$base-font-size: 16px;
-$base-line-height: 1.5;
-
-/// Generic spacing unit
-$spacing-unit: 20px;
-
-$font-family-raleway: 'Raleway';
-$font-family-opensans: 'OpenSans';
-
-$max-container-width: 1440px;
-
-///
-// Colors
-///
-$color-config: (
-    'red': #c00000,
-    'lightred': #e60000,
-    'light-grey': #d9d9d9,
-    'dark-grey': #2c2d2e,
-    'grey': #6e6e6e,
-    'black': #000,
-    'off-black': #212121,
-    'white': #fff,
-    'off-white': #f5f5f5,
-);
-
-///
 // Timer Map for @function timer();
 ///
 $timer-config: (
