@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import cc from 'classcat';
 
 // Types
@@ -7,25 +7,35 @@ import { BasePictureProps } from './BasePicture.types';
 // Styles
 import css from './base-picture.module.scss';
  
-const BaseImage: React.FC<BasePictureProps> = ({
-    imgClass = '',
-    src = ''
+const BasePicture: React.FC<BasePictureProps> = ({
+    imgClass,
+    pictureClass,
+    src = '',
+    alt = ''
 }) => {
+    const [isChained, setIsChained] = useState(false);
+
     const classes = cc([
         css.image,
         imgClass
     ])
 
-    const chained = () => {
+    const pictureClasses = cc([
+        css.picture,
+        pictureClass
+    ])
+
+    useEffect(() => {
         const r = new RegExp('[?]', 'g');
-        return r.test(src);
-    }
+        setIsChained(r.test(src))
+    }, []);
+
     return (
-        <picture>
-            <source src={`${src}${chained} ? '&' : '?'fm=webp`} type="image/webp"></source>
-            <img className={classes} src={src} />
+        <picture className={pictureClasses}>
+            <source src={`${src}${isChained ? '&' : 'fm=webp'}`} type="image/webp"></source>
+            <img className={classes} src={src} alt={alt}/>
         </picture>
     );
 }
  
-export default BaseImage;
+export default BasePicture;

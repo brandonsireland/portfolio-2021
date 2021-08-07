@@ -1,4 +1,6 @@
 export interface BasePictureProps {
-    imgClass?: string[];
+    imgClass?: string;
+    pictureClass?: string;
     src?: string;
+    alt?: string;
 }
