@@ -2,10 +2,6 @@ import React, { Fragment } from 'react';
 import { NextPageContext } from 'next';
 import { AppProps } from 'next/app';
 
-// Components
-import Cursor from '../components/atoms/Cursor';
-
-// Styles
 import '../resources/scss/global.scss';
 
 const App: React.FC<AppProps> = ({
