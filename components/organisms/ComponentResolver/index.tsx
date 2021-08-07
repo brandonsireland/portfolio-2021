@@ -1,16 +1,20 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+
+// Components
+import HomePageCarousel from '../HomePageCarousel'
 
 // Types
 import { ComponentResolverProps } from './ComponentResolver.types';
 
 const components = {
-
+    contentBlockSlider: HomePageCarousel
 }
 
+import css from './ComponentResolver.module.scss';
+
 const ComponentResolver: React.FC<ComponentResolverProps> = ({ contentBlocks = [] }) => {
-    // console.log(contentBlocks);
     return (
-        <Fragment>
+        <div className={css.container}>
             {contentBlocks.map(({ id, contentTypeId, ...props }) => {
                 const Component = components[contentTypeId];
 
@@ -21,7 +25,7 @@ const ComponentResolver: React.FC<ComponentResolverProps> = ({ contentBlocks = [
 
                 return <Component key={id} {...props} />;
             })}
-        </Fragment>
+        </div>
     );
 }
  
