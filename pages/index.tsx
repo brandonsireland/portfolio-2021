@@ -47,7 +47,6 @@ export const getStaticProps: GetStaticProps = async () => {
         .then(({ items = [] }: { items: Array<any> }) => items[0])
         .catch((err: string) => console.error(err));
 
-    console.log(indexPageData);
     return {
         props: {
             pageData: getContentData(indexPageData),
