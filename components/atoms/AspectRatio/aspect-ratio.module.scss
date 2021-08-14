@@ -1,0 +1,96 @@
+/* ------------------------------------ *\
+    #ASPECT
+\* ------------------------------------ */
+// Config to easily generate modifiers for different image aspect ratios
+$aspect-config: (
+    '16x9': percentage(9 / 16),
+);
+
+//
+// Enforce an aspect ratio on a responsive image before the page loads. Uses
+// the same trick as responsive videos.
+//
+// [1] Hide any access overflow of the image in case it doesn't quite fit.
+// [2] Padding 100% creates a square by default.
+// [3] Support video content
+//
+.base {
+    overflow: hidden; // [1]
+    // margin-bottom: spacer(1);
+    width: 100%;
+    position: relative;
+
+    // &.youtube span,
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        padding-top: 100%; // [2]
+    }
+
+    // &.youtube span > *,
+    & > * {
+        margin: 0;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    // [3]
+    // &.youtube span>iframe,
+    & > iframe,
+    & > embed,
+    & > video {
+        height: 100%;
+    }
+}
+
+.visibleOverflow {
+    overflow: visible;
+}
+
+:global {
+    :local(.base).youtube span {
+        display: block;
+        width: 100%;
+        padding-top: 100%; // [2]
+    }
+
+    :local(.base).youtube span > * {
+        margin: 0;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    :local(.base).youtube span > iframe {
+        margin: 0;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+//
+// Loop through the config and build out additional sizes.
+//
+@each $prop, $value in $aspect-config {
+    .ratio#{$prop} {
+        // &.youtube span,
+        &::before {
+            padding-top: $value;
+        }
+    }
+
+    :global {
+        :local(.ratio#{$prop}).youtube span {
+            padding-top: $value;
+        }
+    }
+}

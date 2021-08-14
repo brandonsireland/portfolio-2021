@@ -1,0 +1,11 @@
+.button {
+    border-radius: 5px;
+    border: 2px solid color('white');
+    padding: 15px 20px;
+    background-color: transparent;
+    transform: all 0.4s ease;
+
+    &:hover {
+        border: 2px solid color('secondary');
+    }
+}

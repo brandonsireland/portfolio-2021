@@ -1,8 +1,8 @@
 import React from 'react';
 import { NextPageContext } from 'next';
 import { AppProps } from 'next/app';
+import { AnimatePresence } from "framer-motion";
 
-// Styles
 import '../resources/scss/global.scss';
 
 const App: React.FC<AppProps> = ({
@@ -14,7 +14,11 @@ const App: React.FC<AppProps> = ({
         router: any;
     }) => {
     
-    return <Component {...pageProps} />
+    return (
+        <AnimatePresence exitBeforeEnter>
+            <Component {...pageProps} />
+        </AnimatePresence>
+    )
 };
 
 export const getInitialProps = async ({

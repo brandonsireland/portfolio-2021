@@ -1,9 +1,6 @@
-//
-// Settings
-//
-@import 'settings/settings';
+/* ------------------------------------ *\
+    #IMPORTS
+\* ------------------------------------ */
 
-//
-// Tools
-//
-@import 'tools/tools';
+@import 'settings/01-s-settings';
+@import 'tools/02-t-tools';

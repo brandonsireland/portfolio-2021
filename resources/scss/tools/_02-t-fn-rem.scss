@@ -1,0 +1,20 @@
+///
+/// Return REM value
+///
+/// Support: http://caniuse.com/#search=rem
+///
+/// @param {pixel} $px - Target equivalent pixel value to output as rems.
+///
+/// @require {variable} $base-font-size
+///
+@use "sass:math";
+
+@function rem($px) {
+    @if type-of($px) == 'number' and not unitless($px) {
+        @return math.div($px, $base-font-size) * 1rem;
+    } @else {
+        @warn '`rem()` requires a number in `px` units.';
+
+        @return null;
+    }
+}

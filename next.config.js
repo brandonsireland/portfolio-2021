@@ -1,8 +1,12 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-const withSass = require('@zeit/next-sass');
 const withImages = require('next-images');
+const path = require('path');
 
 module.exports = withImages({
+    sassOptions: {
+        includePaths: [path.join(__dirname, 'resources/scss')],
+        prependData: `@import "imports.scss";`
+    },
     webpack(config) {
         return config;
     },

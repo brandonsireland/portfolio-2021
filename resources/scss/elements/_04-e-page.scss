@@ -1,0 +1,34 @@
+/* ------------------------------------ *\
+    #PAGE
+\* ------------------------------------ */
+
+html {
+    background: #111111;
+    color: #fff;
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-size: 14px;
+    line-height: (24 / 16);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #000;
+    background-image: url('../../../public/images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    &:before {
+        content: '';
+        display: block;
+        background: rgb(11, 4, 20);
+        background: radial-gradient(
+            circle 15vmax at var(--cursorX) var(--cursorY),
+            rgba(11, 4, 20, 0.7) 0%,
+            rgba(0, 0, 0, 0.96) 100%
+        );
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 0;
+    }
+}
