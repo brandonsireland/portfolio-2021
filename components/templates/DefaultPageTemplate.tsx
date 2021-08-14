@@ -9,7 +9,7 @@ import ComponentResolver from '../atoms/ComponentResolver';
 
 // Types
 import { MetaProps } from '../atoms/Meta/meta.types';
-import { ComponentResolverProps } from '../atoms/ComponentResolver/Component-resolver.types';
+import { ComponentResolverProps } from '../atoms/ComponentResolver/component-resolver.types';
 
 export interface DefaultPageTemplateProps {
     meta: MetaProps;

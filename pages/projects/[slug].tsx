@@ -5,7 +5,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import PortfolioPageTemplate from '../../components/templates/PortfolioPageTemplate';
 
 // Types
-import { ComponentResolverProps } from '../../components/atoms/ComponentResolver/Component-resolver.types';
+import { ComponentResolverProps } from '../../components/atoms/ComponentResolver/component-resolver.types';
 import { MetaProps } from '../../components/atoms/Meta/meta.types';
 
 // Utils

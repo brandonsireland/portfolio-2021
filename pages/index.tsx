@@ -5,7 +5,7 @@ import { GetStaticProps } from 'next';
 import DefaultPageTemplate from '../components/templates/DefaultPageTemplate';
 
 // Types
-import { ComponentResolverProps } from '../components/atoms/ComponentResolver/Component-resolver.types';
+import { ComponentResolverProps } from '../components/atoms/ComponentResolver/component-resolver.types';
 import { MetaProps } from '../components/atoms/Meta/meta.types';
 
 // Utils

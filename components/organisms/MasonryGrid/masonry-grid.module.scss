@@ -1,0 +1,25 @@
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 80px auto 0;
+    position: relative;
+}
+
+.inner {
+    column-count: 2;
+    column-gap: 20px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+
+    @include media('sm') {
+        column-count: 3;
+    }
+}
+
+.item {
+    width: 100%;
+    height: auto;
+    margin: 0 0 20px;
+    position: relative;
+}
