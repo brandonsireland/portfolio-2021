@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { NextPageContext } from 'next';
 import { AppProps } from 'next/app';
+import { AnimatePresence } from "framer-motion";
 
 import '../resources/scss/global.scss';
 
@@ -14,9 +15,9 @@ const App: React.FC<AppProps> = ({
     }) => {
     
     return (
-        <Fragment>
+        <AnimatePresence exitBeforeEnter>
             <Component {...pageProps} />
-        </Fragment>
+        </AnimatePresence>
     )
 };
 

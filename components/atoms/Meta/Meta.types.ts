@@ -1,9 +1,8 @@
-import { ImageProps } from '../../../types/image.types';
+import { BasePictureProps } from "../BasePicture/base-picture.types";
 
 export interface MetaProps {
-    title: string;
-    description: string;
-    keywords: Array<string>;
-    twitterImage: ImageProps;
-    openGraphImage: ImageProps;
+    title: string
+    description: string
+    metaImage: BasePictureProps,
+    keywords: string,
 }

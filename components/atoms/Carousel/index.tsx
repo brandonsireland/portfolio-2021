@@ -58,8 +58,6 @@ class Carousel extends React.Component<CarouselProps> {
                     );
                 }
             }
-
-            console.log(this.flktyCarousel);
         } catch (e) {
             console.log(e);
         }

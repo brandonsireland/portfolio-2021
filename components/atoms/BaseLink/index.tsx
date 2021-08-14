@@ -2,10 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 import cc from 'classcat';
 
-import { BaseLinkProps } from './BaseLink.types';
+import { BaseLinkProps } from './base-link.types'
 
 // Styles
-import css from './Link.module.scss';
+import css from './link.module.scss';
 
 const BaseLink: React.FC<BaseLinkProps> = ({ href, className, children }) => {
     const linkPattern = /^((http|https|ftp):\/\/)/;

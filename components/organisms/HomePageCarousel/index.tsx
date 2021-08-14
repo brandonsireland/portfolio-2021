@@ -5,7 +5,7 @@ import Carousel from '../../atoms/Carousel';
 import HomePageSlide from '../../molecules/HomePageSlide';
 
 // Types
-import { HomePageCarouselProps } from './HomePageCarousel.types';
+import { HomePageCarouselProps } from './home-page-carousel.types';
 
 // Styles
 import css from './home-page-carousel.module.scss';

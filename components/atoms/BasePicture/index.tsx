@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import cc from 'classcat';
 
 // Types
-import { BasePictureProps } from './BasePicture.types';
+import { BasePictureProps } from './base-picture.types';
 
 // Styles
 import css from './base-picture.module.scss';
- 
+
+// TODO: refactor? https://nextjs.org/docs/api-reference/next/image
 const BasePicture: React.FC<BasePictureProps> = ({
     imgClass,
     pictureClass,

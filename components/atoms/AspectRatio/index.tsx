@@ -1,7 +1,7 @@
 import React from 'react';
 import cc from 'classcat';
 
-import { AspectProps } from './AspectRatio.types';
+import { AspectProps } from './aspect-ratio.types';
 
 import css from './aspect-ratio.module.scss';
 

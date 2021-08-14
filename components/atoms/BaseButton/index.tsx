@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Styles
-import css from './BaseButton.module.scss';
+import css from './base-button.module.scss';
  
 const BaseButton: React.FC = ({children}) => {
     return (

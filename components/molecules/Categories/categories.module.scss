@@ -1,0 +1,14 @@
+.container {
+    width: 100%;
+    display: flex;
+    color: color('white');
+}
+
+.list {
+    list-style: none;
+    display: flex;
+}
+
+.item {
+    padding: 0 5px;
+}
