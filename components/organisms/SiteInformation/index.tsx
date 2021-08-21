@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import cc from 'classcat';
 import { motion } from 'framer-motion';
 
@@ -7,13 +7,16 @@ import ParallaxChildren from '../../atoms/ParallaxChildren';
 import Markdown from '../../atoms/Markdown';
 import Aspect from '../../atoms/AspectRatio';
 import BaseLink from '../../atoms/BaseLink';
-import Icon from '../../atoms/Icon';
+import Category from '../../molecules/Category';
 
 // Types
 import { SiteInformationProps } from './site-information.types';
 
 // Styles
 import css from './site-information.module.scss';
+
+// Utils
+import { useOnScreen } from '../../../utils';
 
 const SiteInformation: React.FC<SiteInformationProps> = ({
     id = '',
@@ -37,6 +40,9 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
     image = {},
     imageLeft = true,
 }) => {
+    const categoryRef = useRef<HTMLDivElement>(null);
+    const onScreen = useOnScreen(categoryRef, "-60px");
+    
     const newYear = new Date(yearCreated).getFullYear();
 
     const ulVariants = {
@@ -95,12 +101,12 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                                 {agencyAssociatedWithValue}
                             </BaseLink>
                         </div>
-                        <div className={css.content}>
+                        <div className={css.content} ref={categoryRef}>
                             {categories.length > 0 && (
                                 <motion.ul
                                     variants={ulVariants}
                                     initial='initial'
-                                    animate='animate'
+                                    animate={ onScreen && 'animate'}
                                     className={css.list}
                                 >
                                     {categories.map(({ id, value, href }) => (
@@ -114,13 +120,7 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                                             }}
                                             className={css.item}
                                         >
-                                            <BaseLink href={href}>
-                                                <Icon
-                                                    icon={value}
-                                                    alt={value}
-                                                    className={css.icon}
-                                                />
-                                            </BaseLink>
+                                            <Category href={href} value={value} />
                                         </motion.li>
                                     ))}
                                 </motion.ul>
