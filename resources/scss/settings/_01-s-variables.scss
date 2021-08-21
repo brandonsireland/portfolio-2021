@@ -1,13 +1,14 @@
 /*------------------------------------*\
     #BASE GLOBAL DEFAULTS
 \*------------------------------------*/
+@use "sass:math";
 
 $base-background: #111111;
 $base-color: #fff;
 $base-font-family: 'Proxima Nova', sans-serif;
 $secondary-font-family: 'Neuzit Black', sans-serif;
 $base-font-size: 14px;
-$base-line-height: (24 / 16);
+$base-line-height: math.div(24, 16);
 $max-width: 1440px;
 
 /// Generic spacing unit
