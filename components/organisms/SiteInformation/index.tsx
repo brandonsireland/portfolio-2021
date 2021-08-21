@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import cc from 'classcat';
 import { motion } from 'framer-motion';
 
@@ -14,9 +14,6 @@ import { SiteInformationProps } from './site-information.types';
 
 // Styles
 import css from './site-information.module.scss';
-
-// Utils
-import { useOnScreen } from '../../../utils';
 
 const SiteInformation: React.FC<SiteInformationProps> = ({
     id = '',
@@ -40,9 +37,6 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
     image = {},
     imageLeft = true,
 }) => {
-    const categoryRef = useRef<HTMLDivElement>(null);
-    const onScreen = useOnScreen(categoryRef, '-60px');
-
     const newYear = new Date(yearCreated).getFullYear();
 
     const ulVariants = {
@@ -101,12 +95,12 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                             {agencyAssociatedWithValue}
                         </BaseLink>
                     </div>
-                    <div className={css.content} ref={categoryRef}>
+                    <div className={css.content}>
                         {categories.length > 0 && (
                             <motion.ul
                                 variants={ulVariants}
                                 initial='initial'
-                                animate={onScreen && 'animate'}
+                                animate='animate'
                                 className={css.list}
                             >
                                 {categories.map(({ id, value, href }) => (
