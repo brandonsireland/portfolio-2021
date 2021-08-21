@@ -7,6 +7,7 @@ import PortfolioPageTemplate from '../../components/templates/PortfolioPageTempl
 // Types
 import { ComponentResolverProps } from '../../components/atoms/ComponentResolver/component-resolver.types';
 import { MetaProps } from '../../components/atoms/Meta/meta.types';
+import { BasePictureProps } from '../../components/atoms/BasePicture/base-picture.types';
 
 // Utils
 import { client, getContentData } from '../../contentful';
@@ -14,18 +15,32 @@ import { client, getContentData } from '../../contentful';
 export interface ProjectPageProps {
     pageData: {
         meta: MetaProps;
-        navigation: any;
+        backgroundImage: BasePictureProps;
         contentBlocks: ComponentResolverProps[];
-        footer: any;
     };
+    globalData: {
+        navigation: any;
+        footer: any;
+    }
+    articleData: {
+        nextPortfolioData: any;
+        previousPortfolioData: any;
+    }
 }
 
 const ProjectPage: React.FC<ProjectPageProps> = ({
     pageData: {
         meta = {},
-        navigation = {},
+        backgroundImage = {},
         contentBlocks = [],
+    } = {},
+    globalData: {
+        navigation = {},
         footer = {},
+    } = {},
+    articleData: {
+        nextPortfolioData = {},
+        previousPortfolioData = {},
     } = {},
 }) => (
     <PortfolioPageTemplate
@@ -33,20 +48,21 @@ const ProjectPage: React.FC<ProjectPageProps> = ({
         navigation={navigation}
         contentBlocks={contentBlocks}
         footer={footer}
+        nextArticleData={nextPortfolioData}
+        currentArticleData={backgroundImage}
+        previousArticleData={previousPortfolioData}
     />
 );
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const projectPages: any = await client
         .getEntries({
-            content_type: 'page',
+            content_type: 'portfolioItem',
             include: 10,
         })
         .then(({ items = [] }: { items: Array<any> }) => items)
         .catch((err: string) => console.error(err));
 
-    // return page paths with slugs that are defined
-    // homepage slug is undefined as that is the index page.
     const paths = projectPages
         .map((page: { fields: { slug: any } }) => {
             return {
@@ -67,18 +83,87 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const pageData = await client
+    
+    const globalSettings = await client
         .getEntries({
-            content_type: 'page',
-            'fields.slug[in]': params?.slug,
+            content_type: 'globalSettings',
             include: 10,
         })
-        .then(({ items = [] }: { items: Array<any> }) => items[0])
+        .then(({ items = [], ...rest }: { items: Array<any> }) => items[0])
         .catch((err: string) => console.error(err));
+    
+    const pageData = await client
+        .getEntries({
+            content_type: 'portfolioItem',
+            limit: 1,
+            include: 10,
+            'fields.slug[in]': params?.slug,
+        })
+        .then(({ items: [data = {}] = [] }) => {
+            const {
+                slug = '',
+                backgroundImage = {},
+                publishDate = '',
+                contentBlocks = [],
+            } = getContentData(data)
+        
+            return {
+                slug,
+                backgroundImage,
+                publishDate,
+                contentBlocks
+            }
+        })
+        .catch((err) => console.error(err));
+    
+    const nextPortfolioData = await client
+            .getEntries({
+                content_type: 'portfolioItem',
+                limit: 1,
+                include: 10,
+                'fields.publishDate[gt]': pageData?.publishDate,
+            })
+            .then(({ items: [data = {}] = [] }) => {
+                const {
+                    slug: nextArticleSlug = '',
+                    backgroundImage: nextArticleBackgroundImage = {},
+                } = getContentData(data)
+
+                return {
+                    nextArticleSlug,
+                    nextArticleBackgroundImage,
+                }
+            })
+      .catch((err) => console.error(err))
+
+    const previousPortfolioData = await client
+            .getEntries({
+                content_type: 'portfolioItem',
+                limit: 1,
+                include: 10,
+                'fields.publishDate[lt]': pageData?.publishDate,
+            })
+            .then(({ items: [data = {}] = [] }) => {
+                const {
+                    slug: previousArticleSlug = '',
+                    backgroundImage: previousArticleBackgroundImage = {},
+                } = getContentData(data)
+
+                return {
+                    previousArticleSlug,
+                    previousArticleBackgroundImage,
+                }
+            })
+            .catch((err) => console.error(err))
 
     return {
         props: {
-            pageData: getContentData(pageData),
+            globalData: getContentData(globalSettings),
+            pageData: pageData,
+            articleData: {
+                previousPortfolioData,
+                nextPortfolioData,
+            }
         },
     };
 };

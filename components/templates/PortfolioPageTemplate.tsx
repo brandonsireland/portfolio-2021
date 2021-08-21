@@ -7,6 +7,7 @@ import Modal from '../atoms/Modal';
 import ComponentResolver from '../atoms/ComponentResolver';
 import Cursor from '../atoms/Cursor';
 import Navigation from '../organisms/Navigation';
+import PreviousAndNextArticle from '../organisms/PreviousAndNextArticle';
 import Footer from '../organisms/Footer';
 
 // Types
@@ -18,6 +19,9 @@ export interface PortfolioPageTemplateProps {
     navigation: any;
     contentBlocks: ComponentResolverProps[] | [];
     footer: any;
+    nextArticleData: any;
+    currentArticleData: any;
+    previousArticleData: any;
 }
 
 const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
@@ -25,6 +29,9 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
     navigation = {},
     contentBlocks = [],
     footer = {},
+    nextArticleData = {},
+    currentArticleData = {},
+    previousArticleData = {},
 }) => {
     const variants = {
         animate: {
@@ -40,7 +47,7 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
             },
         },
     };
-
+    
     return (
         <Fragment>
             <Meta {...meta} />
@@ -56,6 +63,11 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
                         data={data}
                     />
                 ))}
+            <PreviousAndNextArticle
+                nextArticleData={nextArticleData}
+                currentArticleData={currentArticleData}
+                previousArticleData={previousArticleData}
+            />
             <Footer {...footer} />
             <motion.div
                 variants={variants}
