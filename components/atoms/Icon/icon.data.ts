@@ -18,6 +18,8 @@ import Vue from '../../../public/svgs/icons/vue.svg'
 import Webpack from '../../../public/svgs/icons/webpack.svg'
 import WordPress from '../../../public/svgs/icons/wordpress.svg'
 import Close from '../../../public/svgs/icons/close.svg';
+import Github from '../../../public/svgs/icons/github.svg';
+import LinkedIn from '../../../public/svgs/icons/linkedin.svg';
 
 export default {
     [IconType.Contentful]: Contentful,
@@ -38,4 +40,6 @@ export default {
     [IconType.Webpack]: Webpack,
     [IconType.WordPress]: WordPress,
     [IconType.Close]: Close,
+    [IconType.Github]: Github,
+    [IconType.LinkedIn]: LinkedIn,
 }

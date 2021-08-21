@@ -17,4 +17,6 @@ export enum IconType {
     Webpack = 'Webpack',
     WordPress = 'WordPress',
     Close = 'Close',
+    Github = 'Github',
+    LinkedIn = 'LinkedIn',
 }
