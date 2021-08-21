@@ -19,4 +19,7 @@ export enum IconType {
     Close = 'Close',
     Github = 'Github',
     LinkedIn = 'LinkedIn',
+    Carot = 'Carot',
+    MenuButton = 'MenuButton',
+    DoubleCarot = 'DoubleCarot',
 }
