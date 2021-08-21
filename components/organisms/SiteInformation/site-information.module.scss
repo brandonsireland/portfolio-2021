@@ -1,0 +1,47 @@
+.container {
+    width: 100%;
+    position: relative;
+}
+
+.inner {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    padding: 20px 30px;
+    color: color('white');
+}
+
+.half {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
+}
+
+.right {
+    margin-left: auto;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+}
+
+.item {
+    width: 50px;
+    padding: 0 5px;
+    margin: auto;
+}
+
+.icon {
+    margin-bottom: 0;
+}
