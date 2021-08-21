@@ -31,7 +31,7 @@ h6 {
     margin: 0 0 spacer(1);
     font-size: 1.2rem;
     line-height: $base-line-height;
-    font-family: $base-font-family;
+    font-family: $secondary-font-family;
     font-weight: 600;
 }
 
@@ -39,6 +39,66 @@ h4,
 h5,
 h6 {
     font-weight: 500;
+}
+
+h1 {
+    font-size: rem(32px);
+    line-height: math.div(43, 32);
+
+    @include media('sm') {
+        font-size: rem(56px);
+        line-height: math.div(67, 56);
+    }
+}
+
+h2 {
+    font-size: rem(28px);
+    line-height: math.div(37, 28);
+
+    @include media('sm') {
+        font-size: rem(42px);
+        line-height: math.div(51, 42);
+    }
+}
+
+h3 {
+    font-size: rem(26px);
+    line-height: math.div(34, 26);
+
+    @include media('sm') {
+        font-size: rem(34px);
+        line-height: math.div(44, 34);
+    }
+}
+
+h4 {
+    font-size: rem(24px);
+    line-height: math.div(32, 24);
+
+    @include media('sm') {
+        font-size: rem(30px);
+        line-height: math.div(38, 30);
+    }
+}
+
+h5 {
+    font-size: rem(22px);
+    line-height: math.div(22, 28);
+
+    @include media('sm') {
+        font-size: rem(24px);
+        line-height: math.div(32, 24);
+    }
+}
+
+h6 {
+    font-size: rem(20px);
+    line-height: math.div(26, 20);
+
+    @include media('sm') {
+        font-size: rem(22px);
+        line-height: math.div(28, 22);
+    }
 }
 
 /**

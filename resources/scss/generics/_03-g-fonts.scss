@@ -1,13 +1,23 @@
 // /************************/
-// // Hiragino Kaku Gothic //
+// // Neuzit Black //
 // /***********************/
 
 @font-face {
-    font-family: 'Hiragino Kaku Gothic ProN';
+    font-family: 'Neuzit Black';
+    src: url('/fonts/neuzit-black.woff2') format('woff2'),
+        url('/fonts/neuzit-black.woff') format('woff');
     font-style: normal;
-    font-weight: 300;
-    src: local('hiragino-kaku-gothic-pron-w3'),
-        local('hiragino-kaku-gothic-pron-w3'),
-        url('/fonts/hiragino-kaku-gothic-pron-w3.woff2') format('woff2'),
-        url('/fonts/hiragino-kaku-gothic-pron-w3.woff') format('woff');
+    font-weight: 900;
+}
+
+// /************************/
+// // Proxima Nova //
+// /***********************/
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('/fonts/ProximaNova-Regular.woff2') format('woff2'),
+        url('/fonts/ProximaNova-Regular.woff') format('woff');
+    font-style: normal;
+    font-weight: 500;
 }
