@@ -1,0 +1,13 @@
+.container {
+    width: 100%;
+    display: flex;
+    height: calc(100vh - 100px);
+}
+
+.inner {
+    width: 100%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-content: center;
+}
