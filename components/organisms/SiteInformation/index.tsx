@@ -3,6 +3,9 @@ import cc from 'classcat';
 import { motion } from 'framer-motion';
 
 // Components
+import ParallaxChildren from '../../atoms/ParallaxChildren';
+import Markdown from '../../atoms/Markdown';
+import Aspect from '../../atoms/AspectRatio';
 import BaseLink from '../../atoms/BaseLink';
 import Icon from '../../atoms/Icon';
 
@@ -23,11 +26,16 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
     yearCreated,
     yearCreatedLabel = '',
     agencyAssociatedWithLabel = '',
+    role = '',
+    roleLabel = '',
     agencyAssociatedWith: {
         value: agencyAssociatedWithValue = '',
         href: agencyAssociatedWithHref = '',
     } = {},
     categories,
+    description,
+    image = {},
+    imageLeft = true,
 }) => {
     const newYear = new Date(yearCreated).getFullYear();
 
@@ -59,57 +67,65 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
 
     return (
         <section id={id} className={css.container}>
-            <div className={css.inner}>
-                <div className={css.half}>
-                    <div className={css.content}>
-                        <p>
-                            {siteLabel}
-                            {'  '}
-                        </p>
-                        <BaseLink href={siteUrlHref} target={siteUrlTarget}>
-                            {siteUrlLabel}
-                        </BaseLink>
-                    </div>
-                    <div className={css.content}>
-                        <p>{yearCreatedLabel}</p>
-                        <p>{newYear}</p>
-                    </div>
-                </div>
-                <div className={cc([css.half, css.right])}>
-                    <div className={css.content}>
-                        <p>{agencyAssociatedWithLabel} </p>
-                        <BaseLink href={agencyAssociatedWithHref}>
-                            {agencyAssociatedWithValue}
-                        </BaseLink>
-                    </div>
-                    <div className={css.content}>
-                        {categories.length > 0 && (
-                            <motion.ul
-                                variants={ulVariants}
-                                initial='initial'
-                                animate='animate'
-                                className={css.list}
-                            >
-                                {categories.map(({ id, value, href }) => (
-                                    <motion.li
-                                        key={id}
-                                        variants={liVariants}
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.95, rotate: 360 }}
-                                        className={css.item}
-                                    >
-                                        <BaseLink href={href}>
-                                            <Icon
-                                                icon={value}
-                                                alt={value}
-                                                className={css.icon}
-                                            />
-                                        </BaseLink>
-                                    </motion.li>
-                                ))}
-                            </motion.ul>
-                        )}
-                    </div>
+            <div className={cc([css.inner, { [css.reverse]: !imageLeft }])}>
+                <ParallaxChildren className={css.imageContainer} topOffset={0}>
+                    <Aspect ratio='1x1' visibleOverflow={false}>
+                        <img src={image.url} />
+                    </Aspect>
+                </ParallaxChildren>
+                <div className={css.contentContainer}>
+                    <Markdown content={description} />
+                        <div className={css.content}>
+                            <p>{siteLabel}</p>
+                            <BaseLink href={siteUrlHref} target={siteUrlTarget}>
+                                {siteUrlLabel}
+                            </BaseLink>
+                        </div>
+                        <div className={css.content}>
+                            <p>{yearCreatedLabel}</p>
+                            <p>{newYear}</p>
+                        </div>
+                        <div className={css.content}>
+                            <p>{roleLabel}:</p>
+                            <p>{role}</p>
+                        </div>
+                        <div className={css.content}>
+                            <p>{agencyAssociatedWithLabel} </p>
+                            <BaseLink href={agencyAssociatedWithHref}>
+                                {agencyAssociatedWithValue}
+                            </BaseLink>
+                        </div>
+                        <div className={css.content}>
+                            {categories.length > 0 && (
+                                <motion.ul
+                                    variants={ulVariants}
+                                    initial='initial'
+                                    animate='animate'
+                                    className={css.list}
+                                >
+                                    {categories.map(({ id, value, href }) => (
+                                        <motion.li
+                                            key={id}
+                                            variants={liVariants}
+                                            whileHover={{ scale: 1.1 }}
+                                            whileTap={{
+                                                scale: 0.95,
+                                                rotate: 360,
+                                            }}
+                                            className={css.item}
+                                        >
+                                            <BaseLink href={href}>
+                                                <Icon
+                                                    icon={value}
+                                                    alt={value}
+                                                    className={css.icon}
+                                                />
+                                            </BaseLink>
+                                        </motion.li>
+                                    ))}
+                                </motion.ul>
+                            )}
+                        </div>
                 </div>
             </div>
         </section>

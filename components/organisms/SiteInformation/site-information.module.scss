@@ -1,32 +1,27 @@
 .container {
     width: 100%;
     position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 160px 40px 0;
 }
 
 .inner {
+    margin: auto;
+    max-width: $max-width;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
     width: 100%;
     align-items: center;
-    padding: 20px 30px;
     color: color('white');
-}
-
-.half {
-    width: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    margin: auto;
 }
 
 .content {
     display: flex;
-}
-
-.right {
-    margin-left: auto;
-    align-items: flex-end;
-    justify-content: center;
 }
 
 .list {
@@ -44,4 +39,21 @@
 
 .icon {
     margin-bottom: 0;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+.imageContainer {
+    width: 100%;
+    max-width: 40%;
+    position: relative;
+    margin-top: -40px;
+}
+
+.contentContainer {
+    width: 100%;
+    max-width: 50%;
+    padding: 30px;
 }
