@@ -3,9 +3,9 @@ import React from 'react';
 // Components
 import BeautifyJSON from '../BeautifyJSON';
 import HomePageCarousel from '../../organisms/HomePageCarousel';
-import Header from '../../molecules/Header';
-import Categories from '../../molecules/Categories';
+import Header from '../../organisms/Header';
 import MasonryGrid from '../../organisms/MasonryGrid';
+import SiteInformation from '../../organisms/SiteInformation';
 
 // Types
 import { ComponentResolverProps } from './component-resolver.types';
@@ -13,7 +13,7 @@ import { ComponentResolverProps } from './component-resolver.types';
 export const components = {
     contentBlockSlider: HomePageCarousel,
     contentBlockHeader: Header,
-    contentBlockCategories: Categories,
+    contentBlockSiteInformation: SiteInformation,
     contentBlockMasonryImages: MasonryGrid,
 };
 
