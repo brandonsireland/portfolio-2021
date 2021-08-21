@@ -1,8 +1,12 @@
 import React from 'react';
 import { NextPageContext } from 'next';
 import { AppProps } from 'next/app';
-import { AnimatePresence } from "framer-motion";
+import { AnimateSharedLayout } from "framer-motion";
 
+// Context
+import ModalContextProvider from '../context/ModalContext';
+
+// Styles
 import '../resources/scss/global.scss';
 
 const App: React.FC<AppProps> = ({
@@ -15,9 +19,11 @@ const App: React.FC<AppProps> = ({
     }) => {
     
     return (
-        <AnimatePresence exitBeforeEnter>
-            <Component {...pageProps} />
-        </AnimatePresence>
+        <AnimateSharedLayout>
+            <ModalContextProvider>
+                <Component {...pageProps} />
+            </ModalContextProvider>
+        </AnimateSharedLayout>
     )
 };
 

@@ -1,0 +1,43 @@
+.gridModalOverlay {
+    :global(.ReactModal__Overlay) {
+        background-color: rgba(color('black'), 0.75) !important;
+        z-index: 9999;
+    }
+    :global(.ReactModal__Content) {
+        color: color('black') !important;
+        border: none !important;
+        background: transparent !important;
+        padding: 40px !important;
+        display: flex;
+        align-items: center;
+        margin: auto;
+        // height: auto;
+        width: 100%;
+        // overflow: hidden;
+    }
+}
+
+.inner {
+    position: relative;
+    margin: auto;
+    max-width: 500px;
+    width: 100%;
+}
+
+.image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+}
+
+.close {
+    width: 30px;
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
