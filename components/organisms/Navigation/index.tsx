@@ -11,22 +11,24 @@ import { NavigationProps } from './navigation.types';
 // Styles
 import css from './navigation.module.scss';
 
-const Navigation: React.FC<NavigationProps> = ({ isFixed = false, navigationItems = [], }) => {
-    const classes = cc([
-        css.container,
-        { [css.fixed]: isFixed, }
-    ]);
+const Navigation: React.FC<NavigationProps> = ({
+    isFixed = false,
+    navigationItems = [],
+}) => {
+    const classes = cc([css.container, { [css.fixed]: isFixed }]);
 
     return (
         <nav className={classes}>
             <Logo />
             {navigationItems.length > 0 && (
                 <ul className={css.list}>
-                    {navigationItems.map(({ id = '', href = '', label = '' }) => (
-                        <li key={id} className={css.item}>
-                            <BaseLink href={href}>{label}</BaseLink>
-                        </li>
-                    ))}
+                    {navigationItems.map(
+                        ({ id = '', href = '', label = '' }) => (
+                            <li key={id} className={css.item}>
+                                <BaseLink href={href}>{label}</BaseLink>
+                            </li>
+                        ),
+                    )}
                 </ul>
             )}
         </nav>

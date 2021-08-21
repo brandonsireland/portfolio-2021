@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 import css from './cursor.module.scss';
 
@@ -28,10 +28,10 @@ const Cursor = () => {
             );
         };
 
-        window.addEventListener("mousemove", moveCursor);
+        window.addEventListener('mousemove', moveCursor);
 
         return () => {
-            window.removeEventListener("mousemove", moveCursor);
+            window.removeEventListener('mousemove', moveCursor);
         };
     }, []);
 
@@ -39,11 +39,11 @@ const Cursor = () => {
         <motion.div
             className={css.cursor}
             style={{
-            translateX: cursorXSpring,
-            translateY: cursorYSpring,
+                translateX: cursorXSpring,
+                translateY: cursorYSpring,
             }}
         />
-    )
+    );
 };
 
 export default Cursor;

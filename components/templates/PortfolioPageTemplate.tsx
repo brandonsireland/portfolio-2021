@@ -47,7 +47,7 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
             },
         },
     };
-    
+
     return (
         <Fragment>
             <Meta {...meta} />

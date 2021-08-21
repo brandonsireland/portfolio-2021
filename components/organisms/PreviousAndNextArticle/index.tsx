@@ -58,8 +58,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                         </a>
                     </Link>
                 </div>
-                )
-            }
+            )}
             <div
                 className={cc([css.returnContainer, css.background])}
                 style={{
@@ -84,31 +83,31 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
             </div>
             {nextArticleSlug !== '' && (
                 <div
-                className={cc([css.articleContainer, css.background])}
-                style={{
-                    backgroundImage: `url(${nextArticleBackgroundImageUrl})`,
-                }}
-            >
-                <Link href={nextArticleSlug}>
-                    <a className={cc([css.link, css.right])}>
-                        <div className={css.label}>
-                            <span className={css.text}>
-                                Next Portfolio Item
-                            </span>
-                            <motion.div
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
-                            >
-                                <Icon
-                                    className={css.carot}
-                                    icon={IconType['DoubleCarot']}
-                                    alt='Previous Item Button'
-                                />
-                            </motion.div>
-                        </div>
-                    </a>
-                </Link>
-            </div>
+                    className={cc([css.articleContainer, css.background])}
+                    style={{
+                        backgroundImage: `url(${nextArticleBackgroundImageUrl})`,
+                    }}
+                >
+                    <Link href={nextArticleSlug}>
+                        <a className={cc([css.link, css.right])}>
+                            <div className={css.label}>
+                                <span className={css.text}>
+                                    Next Portfolio Item
+                                </span>
+                                <motion.div
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.9 }}
+                                >
+                                    <Icon
+                                        className={css.carot}
+                                        icon={IconType['DoubleCarot']}
+                                        alt='Previous Item Button'
+                                    />
+                                </motion.div>
+                            </div>
+                        </a>
+                    </Link>
+                </div>
             )}
         </section>
     );

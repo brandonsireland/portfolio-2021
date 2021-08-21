@@ -22,17 +22,17 @@ const BaseHeader: React.FC<BaseHeaderProps> = ({
             }}
         >
             <div className={css.inner}>
-                <h1 className={css.title}>{ title }</h1>
+                <h1 className={css.title}>{title}</h1>
             </div>
             <motion.div
                 className={css.imageContainer}
-                animate={{scale: 1}}
+                animate={{ scale: 1 }}
                 transition={{
-                    type: "spring",
+                    type: 'spring',
                     stiffness: 500,
                     damping: 30,
                     duration: 6,
-                 }}
+                }}
             >
                 <img src={thumbnailImage.url} />
             </motion.div>

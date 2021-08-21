@@ -41,8 +41,8 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
     imageLeft = true,
 }) => {
     const categoryRef = useRef<HTMLDivElement>(null);
-    const onScreen = useOnScreen(categoryRef, "-60px");
-    
+    const onScreen = useOnScreen(categoryRef, '-60px');
+
     const newYear = new Date(yearCreated).getFullYear();
 
     const ulVariants = {
@@ -81,51 +81,51 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                 </ParallaxChildren>
                 <div className={css.contentContainer}>
                     <Markdown content={description} />
-                        <div className={css.content}>
-                            <p>{siteLabel}</p>
-                            <BaseLink href={siteUrlHref} target={siteUrlTarget}>
-                                {siteUrlLabel}
-                            </BaseLink>
-                        </div>
-                        <div className={css.content}>
-                            <p>{yearCreatedLabel}</p>
-                            <p>{newYear}</p>
-                        </div>
-                        <div className={css.content}>
-                            <p>{roleLabel}:</p>
-                            <p>{role}</p>
-                        </div>
-                        <div className={css.content}>
-                            <p>{agencyAssociatedWithLabel} </p>
-                            <BaseLink href={agencyAssociatedWithHref}>
-                                {agencyAssociatedWithValue}
-                            </BaseLink>
-                        </div>
-                        <div className={css.content} ref={categoryRef}>
-                            {categories.length > 0 && (
-                                <motion.ul
-                                    variants={ulVariants}
-                                    initial='initial'
-                                    animate={ onScreen && 'animate'}
-                                    className={css.list}
-                                >
-                                    {categories.map(({ id, value, href }) => (
-                                        <motion.li
-                                            key={id}
-                                            variants={liVariants}
-                                            whileHover={{ scale: 1.1 }}
-                                            whileTap={{
-                                                scale: 0.95,
-                                                rotate: 360,
-                                            }}
-                                            className={css.item}
-                                        >
-                                            <Category href={href} value={value} />
-                                        </motion.li>
-                                    ))}
-                                </motion.ul>
-                            )}
-                        </div>
+                    <div className={css.content}>
+                        <p>{siteLabel}</p>
+                        <BaseLink href={siteUrlHref} target={siteUrlTarget}>
+                            {siteUrlLabel}
+                        </BaseLink>
+                    </div>
+                    <div className={css.content}>
+                        <p>{yearCreatedLabel}</p>
+                        <p>{newYear}</p>
+                    </div>
+                    <div className={css.content}>
+                        <p>{roleLabel}:</p>
+                        <p>{role}</p>
+                    </div>
+                    <div className={css.content}>
+                        <p>{agencyAssociatedWithLabel} </p>
+                        <BaseLink href={agencyAssociatedWithHref}>
+                            {agencyAssociatedWithValue}
+                        </BaseLink>
+                    </div>
+                    <div className={css.content} ref={categoryRef}>
+                        {categories.length > 0 && (
+                            <motion.ul
+                                variants={ulVariants}
+                                initial='initial'
+                                animate={onScreen && 'animate'}
+                                className={css.list}
+                            >
+                                {categories.map(({ id, value, href }) => (
+                                    <motion.li
+                                        key={id}
+                                        variants={liVariants}
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{
+                                            scale: 0.95,
+                                            rotate: 360,
+                                        }}
+                                        className={css.item}
+                                    >
+                                        <Category href={href} value={value} />
+                                    </motion.li>
+                                ))}
+                            </motion.ul>
+                        )}
+                    </div>
                 </div>
             </div>
         </section>

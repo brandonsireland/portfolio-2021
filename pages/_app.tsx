@@ -1,7 +1,7 @@
 import React from 'react';
 import { NextPageContext } from 'next';
 import { AppProps } from 'next/app';
-import { AnimateSharedLayout } from "framer-motion";
+import { AnimateSharedLayout } from 'framer-motion';
 
 // Context
 import ModalContextProvider from '../context/ModalContext';
@@ -14,17 +14,16 @@ const App: React.FC<AppProps> = ({
     pageProps,
 }: {
     Component: any;
-        pageProps: any;
-        router: any;
-    }) => {
-    
+    pageProps: any;
+    router: any;
+}) => {
     return (
         <AnimateSharedLayout>
             <ModalContextProvider>
                 <Component {...pageProps} />
             </ModalContextProvider>
         </AnimateSharedLayout>
-    )
+    );
 };
 
 export const getInitialProps = async ({
@@ -39,7 +38,7 @@ export const getInitialProps = async ({
     if (Component.getInitialProps) {
         pageProps = await Component.getInitialProps(ctx);
     }
-    
+
     return { pageProps };
 };
 

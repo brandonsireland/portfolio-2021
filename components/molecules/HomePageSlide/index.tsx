@@ -32,21 +32,21 @@ const HomePageSlide: React.FC<HomePageSlideProps> = ({
                 }}
             >
                 <div className={css.inner}>
-                <div>
-                    <BasePicture
-                        imgClass={css.foregroundImage}
-                        src={foregroundImageUrl}
-                        alt={foregroundLogoAlt}
+                    <div>
+                        <BasePicture
+                            imgClass={css.foregroundImage}
+                            src={foregroundImageUrl}
+                            alt={foregroundLogoAlt}
+                        />
+                    </div>
+                    <img
+                        className={css.foregroundLogo}
+                        src={foregroundLogoUrl}
+                        alt={foregroundImageAlt}
                     />
-                </div>
-                <img
-                    className={css.foregroundLogo}
-                    src={foregroundLogoUrl}
-                    alt={foregroundImageAlt}
-                />
-                <BaseLink href={`/projects/${slug}`} className={css.link}>
-                    READ MORE
-                </BaseLink>
+                    <BaseLink href={`/projects/${slug}`} className={css.link}>
+                        READ MORE
+                    </BaseLink>
                 </div>
             </div>
         </div>

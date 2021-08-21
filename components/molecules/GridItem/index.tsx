@@ -9,9 +9,11 @@ import { GridItemProps } from './grid-item.types';
 
 // Styles
 import css from './grid-item.module.scss';
- 
-const GridItem: React.FC<GridItemProps> = ({ onClick , photo: { id = '', url = '' } }) => {
 
+const GridItem: React.FC<GridItemProps> = ({
+    onClick,
+    photo: { id = '', url = '' },
+}) => {
     const variants = {
         animate: {
             y: 0,
@@ -40,7 +42,7 @@ const GridItem: React.FC<GridItemProps> = ({ onClick , photo: { id = '', url = '
         >
             <BasePicture src={url} />
         </motion.div>
-     );
-}
- 
+    );
+};
+
 export default GridItem;

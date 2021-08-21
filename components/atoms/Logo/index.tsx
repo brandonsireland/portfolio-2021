@@ -12,7 +12,7 @@ import Initials from '../../../public/svgs/initials.svg';
 import css from './logo.module.scss';
 
 const Logo: React.FC = () => (
-    <Link href="/">
+    <Link href='/'>
         <a className={css.container}>
             <img
                 className={cc([css.svg, css.outer])}

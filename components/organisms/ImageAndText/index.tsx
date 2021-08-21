@@ -20,7 +20,6 @@ const ImageAndText: React.FC<ImageAndTextProps> = ({
     backgroundImage = {},
     content = '',
 }) => {
-
     return (
         <section
             id={id}

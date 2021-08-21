@@ -24,7 +24,10 @@ const getImageFields = image => {
     const {
         file: {
             url,
-            details: { size = '', image: { width = '', height = '' } = {} } = {},
+            details: {
+                size = '',
+                image: { width = '', height = '' } = {},
+            } = {},
             fileName = '',
             contentType = '',
         } = {},

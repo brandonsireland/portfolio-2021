@@ -1,6 +1,6 @@
-import { BaseLinkProps } from "../../atoms/BaseLink/base-link.types";
-import { BasePictureProps } from "../../atoms/BasePicture/base-picture.types";
-import { CategoryProps } from "../../molecules/Category/category.types";
+import { BaseLinkProps } from '../../atoms/BaseLink/base-link.types';
+import { BasePictureProps } from '../../atoms/BasePicture/base-picture.types';
+import { CategoryProps } from '../../molecules/Category/category.types';
 
 export interface SiteInformationProps {
     id: string;

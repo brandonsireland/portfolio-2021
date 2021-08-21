@@ -6,12 +6,12 @@ import { useRouter } from 'next/router';
 import { MetaProps } from './meta.types';
 
 const Meta: React.FC<MetaProps> = ({
-    title, description, metaImage, keywords
+    title,
+    description,
+    metaImage,
+    keywords,
 }) => {
-    const {
-        route,
-        query,
-    } = useRouter();
+    const { route, query } = useRouter();
 
     const path = Object.keys(query).reduce((acc, cur) => {
         return acc.replace(`[${cur}]`, `${query[cur]}`);

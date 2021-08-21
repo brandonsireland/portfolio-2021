@@ -22,39 +22,39 @@ const ParallaxChildren: React.FC<ParallaxChildrenProps> = ({
     children,
     topOffset = -500,
     bottomOffset = 500,
-    range = 0.2
+    range = 0.2,
 }) => {
     const { scrollY } = useViewportScroll();
     const ref = useRef<HTMLDivElement>(null);
-    const [minHeight, setMinHeight] = useState("auto");
+    const [minHeight, setMinHeight] = useState('auto');
     const [elementTop, setElementTop] = useState(0);
 
     const springConfig = {
-      damping: 100,
-      stiffness: 100,
-      mass: rand(1, 3)
+        damping: 100,
+        stiffness: 100,
+        mass: rand(1, 3),
     };
-  
+
     useLayoutEffect(() => {
         if (ref.current === null) return;
-        
+
         const onResize = () => {
             setElementTop(ref.current.offsetTop);
             setMinHeight(calculateMinHeight(ref.current.offsetHeight, range));
         };
-    
+
         onResize();
-        window.addEventListener("resize", onResize);
-        return () => window.removeEventListener("resize", onResize);
+        window.addEventListener('resize', onResize);
+        return () => window.removeEventListener('resize', onResize);
     }, [ref, range]);
-  
+
     const y = useSpring(
-      useTransform(
-        scrollY,
-        [elementTop + topOffset, elementTop + bottomOffset],
-        ["0%", `${range * 100}%`]
-      ),
-      springConfig
+        useTransform(
+            scrollY,
+            [elementTop + topOffset, elementTop + bottomOffset],
+            ['0%', `${range * 100}%`],
+        ),
+        springConfig,
     );
 
     return (

@@ -39,12 +39,18 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({
                         animate='animate'
                         className={css.inner}
                     >
-                        {masonryPhotos.map((photo) => (
-                            <GridItem key={photo.id} photo={photo} onClick={() => setModal({
-                                component: GridModal,
-                                displayModal: true,
-                                props: { image: photo },
-                            })} />
+                        {masonryPhotos.map(photo => (
+                            <GridItem
+                                key={photo.id}
+                                photo={photo}
+                                onClick={() =>
+                                    setModal({
+                                        component: GridModal,
+                                        displayModal: true,
+                                        props: { image: photo },
+                                    })
+                                }
+                            />
                         ))}
                     </motion.div>
                 )}

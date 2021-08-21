@@ -1,4 +1,4 @@
-import { CategoryProps } from "../../molecules/Category/category.types";
+import { CategoryProps } from '../../molecules/Category/category.types';
 
 export interface FooterProps {
     id: string;

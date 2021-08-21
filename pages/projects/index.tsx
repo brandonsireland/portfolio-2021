@@ -9,12 +9,10 @@ import BeautifyJSON from '../../components/atoms/BeautifyJSON';
 export interface ProjectPageProps {
     pageData: any;
 }
- 
+
 const ProjectPage: React.FC<ProjectPageProps> = ({ pageData }) => {
-    return (
-        <BeautifyJSON>{ pageData }</BeautifyJSON>
-     );
-}
+    return <BeautifyJSON>{pageData}</BeautifyJSON>;
+};
 
 export const getStaticProps: GetStaticProps = async () => {
     const ProjectPageData = await client
@@ -31,6 +29,5 @@ export const getStaticProps: GetStaticProps = async () => {
         },
     };
 };
- 
- 
+
 export default ProjectPage;

@@ -1,4 +1,4 @@
-import { BasePictureProps } from "../../atoms/BasePicture/base-picture.types";
+import { BasePictureProps } from '../../atoms/BasePicture/base-picture.types';
 
 export interface GridModalProps {
     id?: string;

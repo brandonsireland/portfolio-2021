@@ -16,9 +16,8 @@ export const components = {
     contentBlockHeader: Header,
     contentBlockSiteInformation: SiteInformation,
     contentBlockMasonryImages: MasonryGrid,
-    contentBlockImageText: ImageAndText
+    contentBlockImageText: ImageAndText,
 };
-
 
 const ComponentResolver: React.FC<ComponentResolverProps> = ({
     contentTypeId,
@@ -26,7 +25,7 @@ const ComponentResolver: React.FC<ComponentResolverProps> = ({
     data,
 }) => {
     const Component = components[contentTypeId];
-    
+
     if (!Component) {
         return <BeautifyJSON>{data}</BeautifyJSON>;
     }

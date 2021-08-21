@@ -91,7 +91,7 @@ class Carousel extends React.Component<CarouselProps> {
         const aspect = width && height;
 
         const classes = cc(['carousel', className, css.container]);
-    
+
         return (
             <div className={classes}>
                 {aspect && (
@@ -109,13 +109,13 @@ class Carousel extends React.Component<CarouselProps> {
                         ref={this.carouselMainRef}
                     >
                         {React.Children.map(children, child => (
-                                <div
-                                    className={itemClassName}
-                                    style={{ width: itemWidth }}
-                                >
-                                    {child}
-                                </div>
-                            ))}
+                            <div
+                                className={itemClassName}
+                                style={{ width: itemWidth }}
+                            >
+                                {child}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

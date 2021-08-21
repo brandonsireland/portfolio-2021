@@ -1,4 +1,4 @@
-import { BaseLinkTypes } from "./base-link.enum";
+import { BaseLinkTypes } from './base-link.enum';
 
 export interface BaseLinkProps {
     id?: string;
@@ -6,4 +6,4 @@ export interface BaseLinkProps {
     target?: BaseLinkTypes;
     label?: string;
     className?: string;
-};
+}

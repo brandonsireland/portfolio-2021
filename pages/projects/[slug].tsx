@@ -21,27 +21,17 @@ export interface ProjectPageProps {
     globalData: {
         navigation: any;
         footer: any;
-    }
+    };
     articleData: {
         nextPortfolioData: any;
         previousPortfolioData: any;
-    }
+    };
 }
 
 const ProjectPage: React.FC<ProjectPageProps> = ({
-    pageData: {
-        meta = {},
-        backgroundImage = {},
-        contentBlocks = [],
-    } = {},
-    globalData: {
-        navigation = {},
-        footer = {},
-    } = {},
-    articleData: {
-        nextPortfolioData = {},
-        previousPortfolioData = {},
-    } = {},
+    pageData: { meta = {}, backgroundImage = {}, contentBlocks = [] } = {},
+    globalData: { navigation = {}, footer = {} } = {},
+    articleData: { nextPortfolioData = {}, previousPortfolioData = {} } = {},
 }) => (
     <PortfolioPageTemplate
         meta={meta}
@@ -83,7 +73,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    
     const globalSettings = await client
         .getEntries({
             content_type: 'globalSettings',
@@ -91,7 +80,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         })
         .then(({ items = [], ...rest }: { items: Array<any> }) => items[0])
         .catch((err: string) => console.error(err));
-    
+
     const pageData = await client
         .getEntries({
             content_type: 'portfolioItem',
@@ -105,56 +94,56 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                 backgroundImage = {},
                 publishDate = '',
                 contentBlocks = [],
-            } = getContentData(data)
-        
+            } = getContentData(data);
+
             return {
                 slug,
                 backgroundImage,
                 publishDate,
-                contentBlocks
-            }
+                contentBlocks,
+            };
         })
-        .catch((err) => console.error(err));
-    
-    const nextPortfolioData = await client
-            .getEntries({
-                content_type: 'portfolioItem',
-                limit: 1,
-                include: 10,
-                'fields.publishDate[gt]': pageData?.publishDate,
-            })
-            .then(({ items: [data = {}] = [] }) => {
-                const {
-                    slug: nextArticleSlug = '',
-                    backgroundImage: nextArticleBackgroundImage = {},
-                } = getContentData(data)
+        .catch(err => console.error(err));
 
-                return {
-                    nextArticleSlug,
-                    nextArticleBackgroundImage,
-                }
-            })
-      .catch((err) => console.error(err))
+    const nextPortfolioData = await client
+        .getEntries({
+            content_type: 'portfolioItem',
+            limit: 1,
+            include: 10,
+            'fields.publishDate[gt]': pageData?.publishDate,
+        })
+        .then(({ items: [data = {}] = [] }) => {
+            const {
+                slug: nextArticleSlug = '',
+                backgroundImage: nextArticleBackgroundImage = {},
+            } = getContentData(data);
+
+            return {
+                nextArticleSlug,
+                nextArticleBackgroundImage,
+            };
+        })
+        .catch(err => console.error(err));
 
     const previousPortfolioData = await client
-            .getEntries({
-                content_type: 'portfolioItem',
-                limit: 1,
-                include: 10,
-                'fields.publishDate[lt]': pageData?.publishDate,
-            })
-            .then(({ items: [data = {}] = [] }) => {
-                const {
-                    slug: previousArticleSlug = '',
-                    backgroundImage: previousArticleBackgroundImage = {},
-                } = getContentData(data)
+        .getEntries({
+            content_type: 'portfolioItem',
+            limit: 1,
+            include: 10,
+            'fields.publishDate[lt]': pageData?.publishDate,
+        })
+        .then(({ items: [data = {}] = [] }) => {
+            const {
+                slug: previousArticleSlug = '',
+                backgroundImage: previousArticleBackgroundImage = {},
+            } = getContentData(data);
 
-                return {
-                    previousArticleSlug,
-                    previousArticleBackgroundImage,
-                }
-            })
-            .catch((err) => console.error(err))
+            return {
+                previousArticleSlug,
+                previousArticleBackgroundImage,
+            };
+        })
+        .catch(err => console.error(err));
 
     return {
         props: {
@@ -163,7 +152,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             articleData: {
                 previousPortfolioData,
                 nextPortfolioData,
-            }
+            },
         },
     };
 };

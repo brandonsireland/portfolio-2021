@@ -3,4 +3,4 @@ export interface ParallaxChildrenProps {
     topOffset?: number;
     bottomOffset?: number;
     range?: number;
-};
+}
