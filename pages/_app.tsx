@@ -16,15 +16,13 @@ const App: React.FC<AppProps> = ({
     Component: any;
     pageProps: any;
     router: any;
-}) => {
-    return (
+}) => (
+    <ModalContextProvider>
         <AnimateSharedLayout>
-            <ModalContextProvider>
                 <Component {...pageProps} />
-            </ModalContextProvider>
         </AnimateSharedLayout>
-    );
-};
+    </ModalContextProvider>
+);
 
 export const getInitialProps = async ({
     Component,

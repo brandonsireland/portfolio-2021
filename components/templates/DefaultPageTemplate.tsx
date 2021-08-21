@@ -6,16 +6,19 @@ import Cursor from '../atoms/Cursor';
 import Navigation from '../organisms/Navigation';
 import Footer from '../organisms/Footer';
 import ComponentResolver from '../atoms/ComponentResolver';
+import Modal from '../atoms/Modal';
 
 // Types
 import { MetaProps } from '../atoms/Meta/meta.types';
 import { ComponentResolverProps } from '../atoms/ComponentResolver/component-resolver.types';
+import { NavigationProps } from '../organisms/Navigation/navigation.types';
+import { FooterProps } from '../organisms/Footer/footer.types';
 
 export interface DefaultPageTemplateProps {
     meta: MetaProps;
-    navigation: any;
+    navigation: NavigationProps;
     contentBlocks: ComponentResolverProps[] | [];
-    footer: any;
+    footer: FooterProps;
 }
 
 const DefaultPageTemplate: React.FC<DefaultPageTemplateProps> = ({
@@ -23,24 +26,23 @@ const DefaultPageTemplate: React.FC<DefaultPageTemplateProps> = ({
     navigation = {},
     contentBlocks = [],
     footer = {},
-}) => {
-    return (
-        <Fragment>
-            <Meta {...meta} />
-            <Cursor />
-            <Navigation {...navigation} />
-            {contentBlocks &&
-                contentBlocks.map(({ id, contentTypeId, ...data }) => (
-                    <ComponentResolver
-                        key={id}
-                        id={id}
-                        contentTypeId={contentTypeId}
-                        data={data}
-                    />
-                ))}
-            <Footer {...footer} />
-        </Fragment>
-    );
-};
+}) => (
+    <Fragment>
+        <Meta {...meta} />
+        <Modal />
+        <Cursor />
+        <Navigation {...navigation} isFixed={false}/>
+        {contentBlocks &&
+            contentBlocks.map(({ id, contentTypeId, ...data }) => (
+                <ComponentResolver
+                    key={id}
+                    id={id}
+                    contentTypeId={contentTypeId}
+                    data={data}
+                />
+            ))}
+        <Footer {...footer} />
+    </Fragment>
+);
 
 export default DefaultPageTemplate;

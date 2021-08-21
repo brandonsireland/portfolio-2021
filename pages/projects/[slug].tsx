@@ -11,9 +11,6 @@ import { BasePictureProps } from '../../components/atoms/BasePicture/base-pictur
 import { NavigationProps } from '../../components/organisms/Navigation/navigation.types';
 import { FooterProps } from '../../components/organisms/Footer/footer.types';
 
-// Utils
-import { client, getContentData } from '../../contentful';
-
 export interface ProjectPageProps {
     pageData: {
         meta: MetaProps;
@@ -30,6 +27,9 @@ export interface ProjectPageProps {
     };
 }
 
+// Utils
+import { client, getContentData } from '../../contentful';
+
 const ProjectPage: React.FC<ProjectPageProps> = ({
     pageData: { meta = {}, backgroundImage = {}, contentBlocks = [] } = {},
     globalData: { navigation = {}, footer = {} } = {},
@@ -44,7 +44,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({
         currentArticleData={backgroundImage}
         previousArticleData={previousPortfolioData}
     />
-);
+)
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const projectPages: any = await client

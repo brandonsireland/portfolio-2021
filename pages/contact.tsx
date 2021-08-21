@@ -10,7 +10,7 @@ import { MetaProps } from '../components/atoms/Meta/meta.types';
 import { NavigationProps } from '../components/organisms/Navigation/navigation.types';
 import { FooterProps } from '../components/organisms/Footer/footer.types';
 
-export interface IndexPageProps {
+export interface ContactPageProps {
     globalData: {
         navigation: NavigationProps;
         footer: FooterProps;
@@ -19,12 +19,12 @@ export interface IndexPageProps {
         meta: MetaProps;
         contentBlocks: ComponentResolverProps[];
     };
-};
+}
 
 // Utils
 import { client, getContentData } from '../contentful';
-
-const IndexPage: React.FC<IndexPageProps> = ({
+ 
+const ContactPage: React.FC<ContactPageProps> = ({
     pageData: { meta = {}, contentBlocks = [] } = {},
     globalData: { navigation = {}, footer = {} } = {},
 }) => (
@@ -43,12 +43,12 @@ export const getStaticProps: GetStaticProps = async () => {
             include: 10,
         })
         .then(({ items = [] }: { items: Array<any> }) => items[0])
-        .catch((err: string) => console.error(err));
+            .catch((err: string) => console.error(err));
     
-    const indexPageData = await client
+    const contactPageData = await client
         .getEntries({
             content_type: 'page',
-            'sys.id': '7HCUxk1hirnnXBs7ksEakU',
+            'sys.id': '4hTylz0JNpC6piGQk5DdNP',
             limit: 1,
             include: 10,
         })
@@ -58,9 +58,10 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
         props: {
             globalData: getContentData(globalSettings),
-            pageData: getContentData(indexPageData),
+            pageData: getContentData(contactPageData),
         },
     };
 };
 
-export default IndexPage;
+ 
+export default ContactPage;
