@@ -8,6 +8,8 @@ import PortfolioPageTemplate from '../../components/templates/PortfolioPageTempl
 import { ComponentResolverProps } from '../../components/atoms/ComponentResolver/component-resolver.types';
 import { MetaProps } from '../../components/atoms/Meta/meta.types';
 import { BasePictureProps } from '../../components/atoms/BasePicture/base-picture.types';
+import { NavigationProps } from '../../components/organisms/Navigation/navigation.types';
+import { FooterProps } from '../../components/organisms/Footer/footer.types';
 
 // Utils
 import { client, getContentData } from '../../contentful';
@@ -19,8 +21,8 @@ export interface ProjectPageProps {
         contentBlocks: ComponentResolverProps[];
     };
     globalData: {
-        navigation: any;
-        footer: any;
+        navigation: NavigationProps;
+        footer: FooterProps;
     };
     articleData: {
         nextPortfolioData: any;
@@ -78,7 +80,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             content_type: 'globalSettings',
             include: 10,
         })
-        .then(({ items = [], ...rest }: { items: Array<any> }) => items[0])
+        .then(({ items = [] }: { items: Array<any> }) => items[0])
         .catch((err: string) => console.error(err));
 
     const pageData = await client

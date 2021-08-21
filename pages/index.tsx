@@ -7,26 +7,26 @@ import DefaultPageTemplate from '../components/templates/DefaultPageTemplate';
 // Types
 import { ComponentResolverProps } from '../components/atoms/ComponentResolver/component-resolver.types';
 import { MetaProps } from '../components/atoms/Meta/meta.types';
+import { NavigationProps } from '../components/organisms/Navigation/navigation.types';
+import { FooterProps } from '../components/organisms/Footer/footer.types';
 
 // Utils
 import { client, getContentData } from '../contentful';
 
 export interface IndexPageProps {
+    globalData: {
+        navigation: NavigationProps;
+        footer: FooterProps;
+    };
     pageData: {
         meta: MetaProps;
         contentBlocks: ComponentResolverProps[];
-        navigation: any;
-        footer: any;
     };
 }
 
 const IndexPage: React.FC<IndexPageProps> = ({
-    pageData: {
-        meta = {},
-        navigation = {},
-        contentBlocks = [],
-        footer = {},
-    } = {},
+    pageData: { meta = {}, contentBlocks = [] } = {},
+    globalData: { navigation = {}, footer = {} } = {},
 }) => (
     <DefaultPageTemplate
         meta={meta}
@@ -37,6 +37,14 @@ const IndexPage: React.FC<IndexPageProps> = ({
 );
 
 export const getStaticProps: GetStaticProps = async () => {
+    const globalSettings = await client
+        .getEntries({
+            content_type: 'globalSettings',
+            include: 10,
+        })
+        .then(({ items = [] }: { items: Array<any> }) => items[0])
+        .catch((err: string) => console.error(err));
+    
     const indexPageData = await client
         .getEntries({
             content_type: 'page',
@@ -49,6 +57,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
     return {
         props: {
+            globalData: getContentData(globalSettings),
             pageData: getContentData(indexPageData),
         },
     };
