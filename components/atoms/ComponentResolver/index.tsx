@@ -6,6 +6,7 @@ import HomePageCarousel from '../../organisms/HomePageCarousel';
 import Header from '../../organisms/Header';
 import MasonryGrid from '../../organisms/MasonryGrid';
 import SiteInformation from '../../organisms/SiteInformation';
+import ImageAndText from '../../organisms/ImageAndText';
 
 // Types
 import { ComponentResolverProps } from './component-resolver.types';
@@ -15,6 +16,7 @@ export const components = {
     contentBlockHeader: Header,
     contentBlockSiteInformation: SiteInformation,
     contentBlockMasonryImages: MasonryGrid,
+    contentBlockImageText: ImageAndText
 };
 
 
@@ -24,7 +26,7 @@ const ComponentResolver: React.FC<ComponentResolverProps> = ({
     data,
 }) => {
     const Component = components[contentTypeId];
-
+    
     if (!Component) {
         return <BeautifyJSON>{data}</BeautifyJSON>;
     }
