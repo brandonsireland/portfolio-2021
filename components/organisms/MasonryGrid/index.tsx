@@ -1,37 +1,52 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { motion } from 'framer-motion';
 
 // Components
-import BasePicture from '../../atoms/BasePicture';
+import GridItem from '../../molecules/GridItem';
+import GridModal from '../../molecules/GridModal';
 
 // Types
-import { BasePictureProps } from '../../atoms/BasePicture/base-picture.types';
-
-export interface MasonryGridProps {
-    id: string;
-    masonryPhotos: BasePictureProps[];
-}
+import { MasonryGridProps } from './masonry-grid.types';
 
 // Styles
 import css from './masonry-grid.module.scss';
+
+// Context
+import { ModalContext } from '../../../context/ModalContext';
 
 const MasonryGrid: React.FC<MasonryGridProps> = ({
     id = '',
     masonryPhotos = [],
 }) => {
+    const { setModal } = useContext(ModalContext);
+
+    const variants = {
+        animate: {
+            transition: { staggerChildren: 0.1, delayChildren: 0.6 },
+        },
+        initial: {
+            transition: { staggerChildren: 0.05, staggerDirection: -1 },
+        },
+    };
+
     return (
         <section id={id}>
             <div className={css.container}>
                 {masonryPhotos.length > 0 && (
-                    <div className={css.inner}>
+                    <motion.div
+                        variants={variants}
+                        initial='initial'
+                        animate='animate'
+                        className={css.inner}
+                    >
                         {masonryPhotos.map((photo) => (
-                            <div
-                                key={photo.id}
-                                className={css.item}
-                            >
-                                <BasePicture src={photo.url} />
-                            </div>
+                            <GridItem key={photo.id} photo={photo} onClick={() => setModal({
+                                component: GridModal,
+                                displayModal: true,
+                                props: { image: photo },
+                            })} />
                         ))}
-                    </div>
+                    </motion.div>
                 )}
             </div>
         </section>
