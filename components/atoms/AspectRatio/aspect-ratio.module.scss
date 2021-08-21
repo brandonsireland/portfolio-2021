@@ -51,7 +51,7 @@ $aspect-config: (
     overflow: visible;
 }
 
-:global {
+:global(.base) {
     :local(.base).youtube span {
         display: block;
         width: 100%;
@@ -88,7 +88,7 @@ $aspect-config: (
         }
     }
 
-    :global {
+    :global(.base) {
         :local(.ratio#{$prop}).youtube span {
             padding-top: $value;
         }
