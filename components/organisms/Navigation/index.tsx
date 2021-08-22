@@ -25,7 +25,7 @@ const Navigation: React.FC<NavigationProps> = ({
                     {navigationItems.map(
                         ({ id = '', href = '', label = '' }) => (
                             <li key={id} className={css.item}>
-                                <BaseLink href={href}>{label}</BaseLink>
+                                <BaseLink href={`/${href}`}>{label}</BaseLink>
                             </li>
                         ),
                     )}
