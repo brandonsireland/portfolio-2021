@@ -25,7 +25,7 @@ const Grid: React.FC<GridProps> = ({ pages = [] }) => {
                                     `url(${backgroundImage.url})`,
                             }}
                         >
-                            <BaseLink href={slug} className={css.link}>{title}</BaseLink>
+                            <BaseLink href={`/projects/${slug}`} className={css.link}>{title}</BaseLink>
                         </div>
                     ))}
                 </div>
