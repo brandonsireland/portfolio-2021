@@ -16,6 +16,7 @@ import { ModalContext } from '../../../context/ModalContext';
 
 const MasonryGrid: React.FC<MasonryGridProps> = ({
     id = '',
+    title = '',
     masonryPhotos = [],
 }) => {
     const { setModal } = useContext(ModalContext);
@@ -32,6 +33,9 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({
     return (
         <section id={id}>
             <div className={css.container}>
+                <div className={css.textContainer}>
+                    <h2>{ title }</h2>
+                </div>
                 {masonryPhotos.length > 0 && (
                     <motion.div
                         variants={variants}
