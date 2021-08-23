@@ -5,6 +5,7 @@ import { AnimateSharedLayout } from 'framer-motion';
 
 // Context
 import ModalContextProvider from '../context/ModalContext';
+import LocalizedStringsContextProvider from '../context/LocalizedStringContext';
 
 // Styles
 import '../resources/scss/global.scss';
@@ -17,11 +18,13 @@ const App: React.FC<AppProps> = ({
     pageProps: any;
     router: any;
 }) => (
-    <ModalContextProvider>
-        <AnimateSharedLayout>
+    <LocalizedStringsContextProvider>
+        <ModalContextProvider>
+            <AnimateSharedLayout>
                 <Component {...pageProps} />
-        </AnimateSharedLayout>
-    </ModalContextProvider>
+            </AnimateSharedLayout>
+        </ModalContextProvider>
+    </LocalizedStringsContextProvider>
 );
 
 export const getInitialProps = async ({

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import cc from 'classcat';
 import { motion } from 'framer-motion';
 
@@ -12,6 +12,9 @@ import Category from '../../molecules/Category';
 // Types
 import { SiteInformationProps } from './site-information.types';
 
+// Context
+import { LocalizedStringsContext } from '../../../context/LocalizedStringContext';
+
 // Styles
 import css from './site-information.module.scss';
 
@@ -22,12 +25,8 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
         href: siteUrlHref = '',
         label: siteUrlLabel = '',
     } = {},
-    siteLabel = '',
     yearCreated,
-    yearCreatedLabel = '',
-    agencyAssociatedWithLabel = '',
     role = '',
-    roleLabel = '',
     agencyAssociatedWith: {
         value: agencyAssociatedWithValue = '',
         href: agencyAssociatedWithHref = '',
@@ -37,6 +36,10 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
     image = {},
     imageLeft = true,
 }) => {
+    const {
+        localizedStrings = [],
+    } = useContext(LocalizedStringsContext);
+
     const newYear = new Date(yearCreated).getFullYear();
 
     const ulVariants = {
@@ -76,21 +79,21 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                 <div className={css.contentContainer}>
                     <Markdown content={description} />
                     <div className={css.content}>
-                        <p>{siteLabel}</p>
+                        <p className={css.space}>{localizedStrings['site']}: </p>
                         <BaseLink href={siteUrlHref} target={siteUrlTarget}>
                             {siteUrlLabel}
                         </BaseLink>
                     </div>
                     <div className={css.content}>
-                        <p>{yearCreatedLabel}</p>
+                        <p className={css.space}>{localizedStrings['year-created']}:</p>
                         <p>{newYear}</p>
                     </div>
                     <div className={css.content}>
-                        <p>{roleLabel}:</p>
+                        <p className={css.space}>{localizedStrings['role']}:</p>
                         <p>{role}</p>
                     </div>
                     <div className={css.content}>
-                        <p>{agencyAssociatedWithLabel} </p>
+                        <p className={css.space}>{localizedStrings['agency-associated-with']}: </p>
                         <BaseLink href={agencyAssociatedWithHref}>
                             {agencyAssociatedWithValue}
                         </BaseLink>
