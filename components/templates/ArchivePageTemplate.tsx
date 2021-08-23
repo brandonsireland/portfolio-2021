@@ -5,7 +5,7 @@ import Meta from '../atoms/Meta';
 import Cursor from '../atoms/Cursor';
 import Navigation from '../organisms/Navigation';
 import Footer from '../organisms/Footer';
-import Grid from '../organisms/Grid';
+import Grid from '../organisms/ArchiveGrid';
 
 // Types
 import { MetaProps } from '../atoms/Meta/meta.types';

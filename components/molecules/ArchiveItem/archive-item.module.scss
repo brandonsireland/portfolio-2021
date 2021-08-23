@@ -1,35 +1,23 @@
-.container {
-    width: 100%;
+.item {
+    height: 350px;
+    overflow: hidden;
+
+    @include media('lg') {
+        height: 300px;
+    }
+
+    @include media('xl') {
+        height: 400px;
+    }
 }
 
 .inner {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-
-    @include media('sm') {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include media('md') {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    @include media('lg') {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    @include media('xl') {
-        grid-template-columns: repeat(5, 1fr);
-    }
-}
-
-.item {
-    position: relative;
-    height: 350px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -49,14 +37,6 @@
             rgba(0, 0, 0, 0) 0%,
             rgba(0, 0, 0, 1) 100%
         );
-    }
-
-    @include media('lg') {
-        height: 300px;
-    }
-
-    @include media('xl') {
-        height: 400px;
     }
 }
 
