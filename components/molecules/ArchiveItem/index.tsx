@@ -16,19 +16,21 @@ const ArchiveItem: React.FC<ArchiveItemProps> = ({
     title = '',
 }) => {
     return (
-        <div
-            className={css.item}
-        >
-            <motion.div className={css.inner} whileHover={{ scale: 1.1 }} whileTap={{ scale: 1.1 }} style={{
-                backgroundImage:
-                    backgroundImage && `url(${backgroundImage.url})`,
-            }}>
-
-            <BaseLink href={`/projects/${slug}`} className={css.link}>
-                {title}
-            </BaseLink>
+        <BaseLink href={`/projects/${slug}`} className={css.item}>
+            <motion.div
+                className={css.inner}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 1.1 }}
+                style={{
+                    backgroundImage:
+                        backgroundImage && `url(${backgroundImage.url})`,
+                }}
+            >
+                <div className={css.content}>
+                <h4>{title}</h4>
+                </div>
             </motion.div>
-        </div>
+        </BaseLink>
     );
 };
 
