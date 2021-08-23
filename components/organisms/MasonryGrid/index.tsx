@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 
 // Components
-import GridItem from '../../molecules/GridItem';
+import MasonryItem from '../../molecules/MasonryItem';
 import GridModal from '../../molecules/GridModal';
 
 // Types
@@ -44,7 +44,7 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({
                         className={css.inner}
                     >
                         {masonryPhotos.map(photo => (
-                            <GridItem
+                            <MasonryItem
                                 key={photo.id}
                                 photo={photo}
                                 onClick={() =>

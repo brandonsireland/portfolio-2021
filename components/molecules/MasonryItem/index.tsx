@@ -5,12 +5,12 @@ import { motion } from 'framer-motion';
 import BasePicture from '../../atoms/BasePicture';
 
 // Types
-import { GridItemProps } from './grid-item.types';
+import { MasonryItemProps } from './masonry-item.types';
 
 // Styles
-import css from './grid-item.module.scss';
+import css from './masonry-item.module.scss';
 
-const GridItem: React.FC<GridItemProps> = ({
+const MasonryItem: React.FC<MasonryItemProps> = ({
     onClick,
     photo: { id = '', url = '' },
 }) => {
@@ -36,7 +36,7 @@ const GridItem: React.FC<GridItemProps> = ({
             layoutId={id}
             onClick={onClick}
             variants={variants}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, zIndex: 2 }}
             whileTap={{ scale: 0.95 }}
             className={css.item}
         >
@@ -45,4 +45,4 @@ const GridItem: React.FC<GridItemProps> = ({
     );
 };
 
-export default GridItem;
+export default MasonryItem;
