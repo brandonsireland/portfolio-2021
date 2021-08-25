@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 // Components
 import BasePicture from '../../atoms/BasePicture';
@@ -6,9 +6,6 @@ import BaseLink from '../../atoms/BaseLink';
 
 // Types
 import { HomePageSlideProps } from './home-page-slide.types';
-
-// Context
-import { LocalizedStringsContext } from '../../../context/LocalizedStringContext';
 
 // Styles
 import css from './home-page-slide.module.scss';
@@ -24,13 +21,11 @@ const HomePageSlide: React.FC<HomePageSlideProps> = ({
         url: foregroundLogoUrl = '',
         alt: foregroundLogoAlt = '',
     } = {},
-}) => {
-    const {
-        localizedStrings = [],
-    } = useContext(LocalizedStringsContext);
-    
-    return (
-        <div className={css.slideContainer}>
+}) => (
+    <div
+        className={css.slideContainer}
+    >
+        <BaseLink href={`/projects/${slug}`} className={css.link}>
             <div
                 className={css.slide}
                 style={{
@@ -51,13 +46,10 @@ const HomePageSlide: React.FC<HomePageSlideProps> = ({
                         src={foregroundLogoUrl}
                         alt={foregroundImageAlt}
                     />
-                    <BaseLink href={`/projects/${slug}`} className={css.link}>
-                        {localizedStrings['read-more']}
-                    </BaseLink>
                 </div>
             </div>
-        </div>
-    );
-};
+        </BaseLink>
+    </div>
+);
 
 export default HomePageSlide;
