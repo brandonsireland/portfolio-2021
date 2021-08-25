@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/workflow/.nvm/versions/node/v12.22.1/bin/node /usr/local/bin/yarn lint
+  /Users/workflow/.nvm/versions/node/v12.22.1/bin/node /usr/local/bin/yarn dev
 
 PATH: 
   /Users/workflow/.nvm/versions/node/v12.22.1/bin:/Users/workflow/google-cloud-sdk/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin
@@ -4857,7 +4857,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c eslint .
+  Arguments: -c next
   Directory: /Users/workflow/sites/portfolio-2021
   Output:
   
