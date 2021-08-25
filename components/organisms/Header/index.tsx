@@ -1,8 +1,5 @@
 import React from 'react';
-import { motion, useAnimation } from 'framer-motion';
-
-// Components
-import ParallaxChildren from '../../atoms/ParallaxChildren';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
 
 // Types
 import { HeaderProps } from './header.types';
@@ -13,35 +10,11 @@ import css from './header.module.scss';
 const Header: React.FC<HeaderProps> = ({
     id = '',
     title = '',
-    backgroundImage = {},
+    backgroundImage: { url: backgroundImageUrl = '' } = {},
     thumbnailImage = {},
 }) => {
-    const animation = useAnimation();
-
-    const sequence = async () => {
-        await animation.start({
-            scale: 1.5,
-            x: `-50%`,
-            y: `50%`,
-        });
-
-        await animation.start({
-            opacity: 1,
-        });
-
-        await animation.start({
-            rotate: 360,
-            x: `-50%`,
-            y: `50%`,
-            transition: {
-                delay: 1,
-            },
-        });
-
-        animation.start({
-            scale: 1,
-        });
-    };
+    const { scrollY } = useViewportScroll();
+    const y = useTransform(scrollY, [0, 400], [0, 200]);
 
     const titleVariants = {
         initial: {
@@ -51,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({
         animate: {
             y: 0,
             opacity: 1,
-            transition: { delay: 1.2, duration: 0.3 },
+            transition: { delay: 0.4, duration: 0.6 },
         },
     };
 
@@ -59,28 +32,33 @@ const Header: React.FC<HeaderProps> = ({
         <header id={id}>
             <div className={css.container}>
                 <div className={css.inner}>
-                    <ParallaxChildren topOffset={0} className={css.parallax}>
-                        <div className={css.background}>
-                            <img
-                                src={backgroundImage.url}
-                                className={css.image}
-                            />
-                        </div>
-                    </ParallaxChildren>
+                    <motion.div
+                        style={{
+                            y: y,
+                            backgroundImage:
+                                backgroundImageUrl &&
+                                `url(${backgroundImageUrl})`,
+                        }}
+                        className={css.background}
+                    />
                     <motion.div
                         variants={titleVariants}
                         initial='initial'
                         animate='animate'
-                        transition={{ duration: 1.7 }}
                         className={css.content}
                     >
                         <h1 className={css.title}>{title}</h1>
                     </motion.div>
                 </div>
                 <motion.div
-                    initial={sequence}
-                    animate={animation}
-                    whileHover={{ scale: 0.85 }}
+                    animate={{
+                        scale: [1.5, 1.5, 1],
+                        x: [`-50%`, `-50%`, `-50%`],
+                        y: [`50%`, `50%`, `50%`],
+                        rotate: [0, 360, 360],
+                        opacity: [0, 1, 1],
+                        transition: { delay: 1 },
+                    }}
                     className={css.imageContainer}
                 >
                     <img src={thumbnailImage.url} />
