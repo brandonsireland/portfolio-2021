@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import cc from 'classcat';
@@ -9,6 +9,9 @@ import Icon from '../../atoms/Icon';
 // Types
 import { PreviousAndNextArticleProps } from './previous-and-next-article.types';
 import { IconType } from '../../atoms/Icon/icon.enums';
+
+// Context
+import { LocalizedStringsContext } from '../../../context/LocalizedStringContext';
 
 // Styles
 import css from './previous-and-next-article.module.scss';
@@ -29,6 +32,10 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
         previousArticleSlug = '',
     } = {},
 }) => {
+    const {
+        localizedStrings = [],
+    } = useContext(LocalizedStringsContext);
+    
     return (
         <section id={id} className={css.container}>
             {previousArticleSlug !== '' && (
@@ -52,7 +59,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                                     />
                                 </motion.div>
                                 <span className={css.text}>
-                                    Previous Portfolio Item
+                                    {localizedStrings['previous-item']}
                                 </span>
                             </div>
                         </a>
@@ -77,7 +84,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                                 alt='Menu Item Button'
                             />
                         </motion.div>
-                        <span className={css.text}>Return to Archive</span>
+                        <span className={css.text}>{localizedStrings['return-to-archive']}</span>
                     </a>
                 </Link>
             </div>
@@ -92,7 +99,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                         <a className={cc([css.link, css.right])}>
                             <div className={css.label}>
                                 <span className={css.text}>
-                                    Next Portfolio Item
+                                {localizedStrings['next-item']}
                                 </span>
                                 <motion.div
                                     whileHover={{ scale: 1.1 }}
