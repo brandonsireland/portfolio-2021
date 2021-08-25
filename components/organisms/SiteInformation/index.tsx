@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import cc from 'classcat';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 // Components
 import ParallaxChildren from '../../atoms/ParallaxChildren';
@@ -39,6 +40,10 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
     const {
         localizedStrings = [],
     } = useContext(LocalizedStringsContext);
+    
+    const { ref, inView } = useInView({
+        threshold: 0.4,
+    });
 
     const newYear = new Date(yearCreated).getFullYear();
 
@@ -68,15 +73,47 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
         },
     };
 
+    const imageVariants = {
+        initial: {
+            y: 100,
+            opacity: 0,
+        },
+        animate: {
+            y: 0,
+            opacity: 1,
+            transition: { delay: 0.3, duration: 0.6 },
+        },
+    };
+
+    const contentVariants = {
+        initial: {
+            y: 100,
+            opacity: 0,
+        },
+        animate: {
+            y: 0,
+            opacity: 1,
+            transition: { delay: 0.4, duration: 0.6 },
+        },
+    };
+    
     return (
-        <section id={id} className={css.container}>
+        <section id={id} className={css.container} ref={ref}>
             <div className={cc([css.inner, { [css.reverse]: !imageLeft }])}>
-                <ParallaxChildren className={css.imageContainer} topOffset={0}>
+                <ParallaxChildren className={css.imageContainer} topOffset={500}>
                     <Aspect ratio='1x1' visibleOverflow={false}>
-                        <img src={image.url} />
+                        <motion.img
+                            variants={imageVariants}
+                            initial='initial'
+                            animate={inView && 'animate'}
+                            src={image.url} />
                     </Aspect>
                 </ParallaxChildren>
-                <div className={css.contentContainer}>
+                <motion.div
+                    variants={contentVariants}
+                    initial='initial'
+                    animate={inView && 'animate'}
+                    className={css.contentContainer}>
                     <Markdown content={description} />
                     <div className={css.content}>
                         <p className={css.space}>{localizedStrings['site']}: </p>
@@ -103,7 +140,7 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                             <motion.ul
                                 variants={ulVariants}
                                 initial='initial'
-                                animate='animate'
+                                animate={inView && 'animate'}
                                 className={css.list}
                             >
                                 {categories.map(({ id, value, href }) => (
@@ -123,7 +160,7 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                             </motion.ul>
                         )}
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
