@@ -9,16 +9,16 @@ import Icon from '../../atoms/Icon';
 import { ModalContext } from '../../../context/ModalContext';
 
 // Types
-import { GridModalProps } from './grid-modal.types';
+import { MasonryModalProps } from './masonry-modal.types';
 import { IconType } from '../../atoms/Icon/icon.enums';
 
 // Styles
-import css from './grid-modal.module.scss';
+import css from './masonry-modal.module.scss';
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 ReactModal.setAppElement('#__next');
 
-const GridModal: React.FC<GridModalProps> = ({
+const MasonryModal: React.FC<MasonryModalProps> = ({
     image: { id = '', url = '' },
 }) => {
     const {
@@ -29,7 +29,7 @@ const GridModal: React.FC<GridModalProps> = ({
     return (
         <ReactModal
             isOpen={displayModal}
-            portalClassName={css.gridModalOverlay}
+            portalClassName={css.masonryModalOverlay}
             closeTimeoutMS={500}
             onRequestClose={() => setModal({ displayModal: false })}
         >
@@ -46,4 +46,4 @@ const GridModal: React.FC<GridModalProps> = ({
     );
 };
 
-export default GridModal;
+export default MasonryModal;

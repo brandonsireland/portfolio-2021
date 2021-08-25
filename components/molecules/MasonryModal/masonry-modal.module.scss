@@ -1,4 +1,4 @@
-.gridModalOverlay {
+.masonryModalOverlay {
     :global(.ReactModal__Overlay) {
         background-color: rgba(color('black'), 0.75) !important;
         z-index: 9999;
@@ -11,9 +11,8 @@
         display: flex;
         align-items: center;
         margin: auto;
-        // height: auto;
+        inset: 0 !important;
         width: 100%;
-        // overflow: hidden;
     }
 }
 
