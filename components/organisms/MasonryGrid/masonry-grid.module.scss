@@ -4,6 +4,10 @@
     margin: 0 auto;
     padding-bottom: 40px;
     position: relative;
+
+    @include media('sm') {
+        padding: 0 100px 40px;
+    }
 }
 
 .inner {
@@ -22,4 +26,15 @@
     width: 100%;
     display: flex;
     justify-content: center;
+
+    @include media('sm') {
+        position: absolute;
+    }
+}
+
+.text {
+    @include media('sm') {
+        font-size: rem(140px);
+        color: rgba(color('accent'), 0.5);
+    }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import cc from 'classcat';
+import { motion } from 'framer-motion';
 
 // Components
 import ParallaxChildren from '../../atoms/ParallaxChildren';
@@ -20,6 +21,31 @@ const ImageAndText: React.FC<ImageAndTextProps> = ({
     backgroundImage = {},
     content = '',
 }) => {
+
+    const imageVariants = {
+        initial: {
+            y: 100,
+            opacity: 0,
+        },
+        animate: {
+            y: 0,
+            opacity: 1,
+            transition: { delay: 0.3, duration: 0.6 },
+        },
+    };
+
+    const contentVariants = {
+        initial: {
+            y: 100,
+            opacity: 0,
+        },
+        animate: {
+            y: 0,
+            opacity: 1,
+            transition: { delay: 0.4, duration: 0.6 },
+        },
+    };
+
     return (
         <section
             id={id}
@@ -32,12 +58,22 @@ const ImageAndText: React.FC<ImageAndTextProps> = ({
             <div className={cc([css.inner, { [css.reverse]: !imageLeft }])}>
                 <ParallaxChildren className={css.imageContainer} topOffset={0}>
                     <Aspect ratio='1x1' visibleOverflow={false}>
-                        <BasePicture src={image.url} />
+                        <motion.div
+                            variants={imageVariants}
+                            initial='initial'
+                            animate='animate'
+                        >
+                            <BasePicture src={image.url} />
+                        </motion.div>
                     </Aspect>
                 </ParallaxChildren>
-                <div className={css.contentContainer}>
+                <motion.div
+                    variants={contentVariants}
+                    initial='initial'
+                    animate='animate'
+                    className={css.contentContainer}>
                     <Markdown content={content} />
-                </div>
+                </motion.div>
             </div>
         </section>
     );
