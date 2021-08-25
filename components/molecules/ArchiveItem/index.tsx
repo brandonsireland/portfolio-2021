@@ -15,9 +15,27 @@ const ArchiveItem: React.FC<ArchiveItemProps> = ({
     slug = '',
     title = '',
 }) => {
+
+    const childVariants = {
+        initial: {
+            opacity: 0,
+            transition: {
+                y: { stiffness: 1000 },
+            },
+        },
+        animate: {
+            opacity: 1,
+            transition: {
+                y: { stiffness: 1000, velocity: -100 },
+            },
+        },
+    };
+
+
     return (
         <BaseLink href={`/projects/${slug}`} className={css.item}>
             <motion.div
+                variants={childVariants}
                 className={css.inner}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 1.1 }}

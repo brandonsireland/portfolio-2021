@@ -36,6 +36,7 @@ const MasonryItem: React.FC<MasonryItemProps> = ({
             layoutId={id}
             onClick={onClick}
             variants={variants}
+            animate='animate'
             whileHover={{ scale: 1.05, zIndex: 2 }}
             whileTap={{ scale: 0.95 }}
             className={css.item}
