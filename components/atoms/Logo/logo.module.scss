@@ -2,48 +2,35 @@
     position: relative;
     width: 80px;
     height: 80px;
-
-    &:hover {
-        .outer,
-        .inner {
-            animation-direction: reverse;
-        }
-
-        .middle {
-            animation-direction: normal;
-        }
-    }
 }
 
 .svg {
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate3d(-50%, -50%, 0);
 }
 
 .outer {
     width: 100%;
-    animation: rotation 4s infinite linear;
 }
 
 .middle {
     width: 85%;
-    transform: translate(-50%, -50%);
-    animation: rotation 6s infinite linear;
     animation-direction: reverse;
 }
 
 .inner {
     width: 70%;
-    transform: translate(-50%, -50%);
-    animation: rotation 5s infinite linear;
 }
 
 .initials {
     width: 40%;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.animation {
+    animation: rotation 5s infinite linear;
 }
 
 @keyframes rotation {
