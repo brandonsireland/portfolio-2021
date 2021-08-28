@@ -117,7 +117,6 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                         ) : (
                             <BaseVideo
                                     url={mediaUrl}
-                                    pause={!inView}
                                     playsInline={true}
                                     autoPlay={true}
                                     muted={true}

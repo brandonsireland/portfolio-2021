@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import cc from 'classcat';
+import { useInView } from 'react-intersection-observer';
 
 // Types
 import { BaseVideoProps } from './base-video.types';
@@ -15,12 +16,18 @@ const BaseVideo: React.FC<BaseVideoProps> = ({
     muted = false,
     loop = false,
     controls = false,
-    pause = false,
     className = '',
     poster = '',
 }) => {
-    const ref = useRef<HTMLVideoElement>(null);
+    const { ref, inView, entry } = useInView({
+        threshold: 0.1,
+        rootMargin: '200px 0px',
+    });
     
+    useEffect(() => {
+        inView ? entry?.target?.play() : entry?.target?.pause();
+    },[inView])
+
     return (
         <video
             ref={ref}

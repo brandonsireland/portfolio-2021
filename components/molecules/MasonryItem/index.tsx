@@ -35,7 +35,6 @@ const MasonryItem: React.FC<MasonryItemProps> = ({
             {contentType === 'video/mp4' ? (
                 <BaseVideo
                     playsInline={true}
-                    pause={!inView}
                     autoPlay={true}
                     muted={true}
                     loop={true}

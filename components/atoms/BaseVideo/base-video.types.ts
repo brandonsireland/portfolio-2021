@@ -6,8 +6,6 @@ export interface BaseVideoProps {
     loop?: boolean;
     controls?: boolean;
     playsInline?: boolean;
-    play?: boolean;
-    pause?: boolean;
     className?: string;
     poster?: string;
 }
