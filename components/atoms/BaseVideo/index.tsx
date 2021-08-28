@@ -20,17 +20,7 @@ const BaseVideo: React.FC<BaseVideoProps> = ({
     poster = '',
 }) => {
     const ref = useRef<HTMLVideoElement>(null);
-
-    useEffect(() => {
-        if (!ref.current) return null;
-
-            if (pause) {   
-                ref.current.pause();
-            }
-
-            ref.current.play();
-
-    }, [ref])
+    
     return (
         <video
             ref={ref}
