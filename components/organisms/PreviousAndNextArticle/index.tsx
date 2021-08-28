@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { motion } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 import Link from 'next/link';
 import cc from 'classcat';
 
@@ -38,86 +38,98 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
     return (
         <section id={id} className={css.container}>
             {previousArticleSlug !== '' && (
-                <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className={css.articleContainer}
-                >
-                    <Backdrop
-                        fill
-                        backdrop={previousArticleBackgroundImageUrl}
-                        backdropClass={css.background}
-                        query='?w=707&h=300&q=70&fit=fill'
+                <LazyMotion features={domAnimation}>
+                    <m.div
+                        whileHover={{ scale: 1.1 }}
+                        className={css.articleContainer}
                     >
-                        <Link href={previousArticleSlug}>
-                            <a className={css.link}>
-                                <div className={css.label}>
-                                    <Icon
-                                        className={cc([css.carot, css.reverse])}
-                                        icon={IconType['DoubleCarot']}
-                                        alt='Previous Item Button'
-                                    />
-                                    <span className={css.text}>
-                                        {localizedStrings['previous-item']}
-                                    </span>
-                                </div>
-                            </a>
-                        </Link>
-                    </Backdrop>
-                </motion.div>
-            )}
-            <motion.div whileHover={{ scale: 1.1 }} className={css.returnContainer}>
-                <Backdrop
-                    fill
-                    backdrop={currentArticleBackgroundImageUrl}
-                    backdropClass={css.background}
-                    query='?w=490&h=300&q=70&fit=fill'
-                >
-                    <Link href='/archive'>
-                        <a className={cc([css.returnLink, css.link])}>
-                            <Icon
-                                className={css.menu}
-                                icon={IconType['MenuButton']}
-                                alt='Menu Item Button'
-                            />
-                            <span className={css.text}>
-                                {localizedStrings['return-to-archive']}
-                            </span>
-                        </a>
-                    </Link>
-                </Backdrop>
-            </motion.div>
-            {nextArticleSlug !== '' && (
-                <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    className={css.articleContainer}
-                >
-                    <Backdrop
-                        fill
-                        backdrop={nextArticleBackgroundImageUrl}
-                        backdropClass={css.background}
-                        query='?w=707&h=300&q=70&fit=fill'
-                    >
-                        <Link href={nextArticleSlug}>
-                            <a className={css.link}>
-                                <div className={css.label}>
-                                    <span className={css.text}>
-                                        {localizedStrings['next-item']}
-                                    </span>
-                                    <motion.div
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.9 }}
-                                    >
+                        <Backdrop
+                            fill
+                            backdrop={previousArticleBackgroundImageUrl}
+                            backdropClass={css.background}
+                            query='?w=707&h=300&q=70&fit=fill'
+                        >
+                            <Link href={previousArticleSlug}>
+                                <a className={css.link}>
+                                    <div className={css.label}>
                                         <Icon
-                                            className={css.carot}
+                                            className={cc([
+                                                css.carot,
+                                                css.reverse,
+                                            ])}
                                             icon={IconType['DoubleCarot']}
                                             alt='Previous Item Button'
                                         />
-                                    </motion.div>
-                                </div>
+                                        <span className={css.text}>
+                                            {localizedStrings['previous-item']}
+                                        </span>
+                                    </div>
+                                </a>
+                            </Link>
+                        </Backdrop>
+                    </m.div>
+                </LazyMotion>
+            )}
+            <LazyMotion features={domAnimation}>
+                <m.div
+                    whileHover={{ scale: 1.1 }}
+                    className={css.returnContainer}
+                >
+                    <Backdrop
+                        fill
+                        backdrop={currentArticleBackgroundImageUrl}
+                        backdropClass={css.background}
+                        query='?w=490&h=300&q=70&fit=fill'
+                    >
+                        <Link href='/archive'>
+                            <a className={cc([css.returnLink, css.link])}>
+                                <Icon
+                                    className={css.menu}
+                                    icon={IconType['MenuButton']}
+                                    alt='Menu Item Button'
+                                />
+                                <span className={css.text}>
+                                    {localizedStrings['return-to-archive']}
+                                </span>
                             </a>
                         </Link>
                     </Backdrop>
-                </motion.div>
+                </m.div>
+            </LazyMotion>
+            {nextArticleSlug !== '' && (
+                <LazyMotion features={domAnimation}>
+                    <m.div
+                        whileHover={{ scale: 1.1 }}
+                        className={css.articleContainer}
+                    >
+                        <Backdrop
+                            fill
+                            backdrop={nextArticleBackgroundImageUrl}
+                            backdropClass={css.background}
+                            query='?w=707&h=300&q=70&fit=fill'
+                        >
+                            <Link href={nextArticleSlug}>
+                                <a className={css.link}>
+                                    <div className={css.label}>
+                                        <span className={css.text}>
+                                            {localizedStrings['next-item']}
+                                        </span>
+                                        <m.div
+                                            whileHover={{ scale: 1.1 }}
+                                            whileTap={{ scale: 0.9 }}
+                                        >
+                                            <Icon
+                                                className={css.carot}
+                                                icon={IconType['DoubleCarot']}
+                                                alt='Previous Item Button'
+                                            />
+                                        </m.div>
+                                    </div>
+                                </a>
+                            </Link>
+                        </Backdrop>
+                    </m.div>
+                </LazyMotion>
             )}
         </section>
     );
