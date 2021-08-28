@@ -1,9 +1,11 @@
 import React, { useContext, useRef } from 'react';
 import {
-    motion,
     useTransform,
     useViewportScroll,
     useSpring,
+    LazyMotion,
+    domAnimation,
+    m,
 } from 'framer-motion';
 
 // Components
@@ -47,22 +49,24 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({
     return (
         <section id={id}>
             <div className={css.container} ref={ref}>
-                {width > 1024 ? (
-                    <motion.div
-                        style={{
-                            y,
-                            rotate: titleLeft ? -90 : 90,
-                            translateX: titleLeft ? '-52%' : '37%',
-                        }}
-                        className={css.textContainer}
-                    >
-                        <h2 className={css.text}>{title}</h2>
-                    </motion.div>
-                ) : (
-                    <div className={css.textContainer}>
-                        <h2 className={css.text}>{title}</h2>
-                    </div>
-                )}
+                <LazyMotion features={domAnimation}>
+                    {width > 1024 ? (
+                        <m.div
+                            style={{
+                                y,
+                                rotate: titleLeft ? -90 : 90,
+                                translateX: titleLeft ? '-52%' : '37%',
+                            }}
+                            className={css.textContainer}
+                        >
+                            <h2 className={css.text}>{title}</h2>
+                        </m.div>
+                    ) : (
+                        <div className={css.textContainer}>
+                            <h2 className={css.text}>{title}</h2>
+                        </div>
+                    )}
+                </LazyMotion>
                 {masonryPhotos.length > 0 && (
                     <div className={css.inner}>
                         {masonryPhotos.map(asset => (
