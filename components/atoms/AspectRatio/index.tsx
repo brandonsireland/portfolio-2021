@@ -11,16 +11,24 @@ const Aspect: React.FC<AspectProps> = ({
     visibleOverflow,
     children,
 }) => {
+    const getRatio = () => {
+        if (typeof ratio === 'string') {
+            const [width, height] = ratio.split('x');
+            return `${Number(height) / Number(width) * 100}%`
+        }
+
+        return '100%';
+    }
+    
     const classes = cc([
         css.base,
         {
             [css.visibleOverflow]: visibleOverflow,
-            [css.ratio16x9]: ratio === '16x9',
         },
         className,
     ]);
 
-    return <div className={classes}>{children}</div>;
+    return <div className={classes} style={{paddingTop: getRatio()}}>{children}</div>;
 };
 
 export default Aspect;
