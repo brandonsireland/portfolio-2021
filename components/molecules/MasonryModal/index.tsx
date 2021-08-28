@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { motion } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 import ReactModal from 'react-modal';
 
 // Components
@@ -36,27 +36,32 @@ const MasonryModal: React.FC<MasonryModalProps> = ({
             closeTimeoutMS={500}
             onRequestClose={() => setModal({ displayModal: false })}
         >
-            <motion.div className={css.inner} layoutId={id}>
-                <button
-                    className={css.close}
-                    onClick={() => setModal({ displayModal: false })}
-                >
-                    <Icon icon={IconType['Close']} alt='Close Icon' />
-                </button>
-                <div>
-                {contentType === 'video/mp4' ? (
-                    <BaseVideo
-                        playsInline={true}
-                        autoPlay={true}
-                        muted={true}
-                        loop={true}
-                        url={asset.url}
-                    />
-                ): (                    
-                    <BasePicture image={asset} query="?w=569&q=70&fit=thumb" />
-                )}
-                </div>
-            </motion.div>
+            <LazyMotion features={domAnimation}>
+                <m.div className={css.inner} layoutId={id}>
+                    <button
+                        className={css.close}
+                        onClick={() => setModal({ displayModal: false })}
+                    >
+                        <Icon icon={IconType['Close']} alt='Close Icon' />
+                    </button>
+                    <div>
+                        {contentType === 'video/mp4' ? (
+                            <BaseVideo
+                                playsInline={true}
+                                autoPlay={true}
+                                muted={true}
+                                loop={true}
+                                url={asset.url}
+                            />
+                        ) : (
+                            <BasePicture
+                                image={asset}
+                                query='?w=569&q=70&fit=thumb'
+                            />
+                        )}
+                    </div>
+                </m.div>
+            </LazyMotion>
         </ReactModal>
     );
 };
