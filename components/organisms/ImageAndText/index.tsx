@@ -1,6 +1,6 @@
 import React from 'react';
 import cc from 'classcat';
-import { motion } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 // Components
 import ParallaxChildren from '../../atoms/ParallaxChildren';
@@ -58,22 +58,26 @@ const ImageAndText: React.FC<ImageAndTextProps> = ({
             <div className={cc([css.inner, { [css.reverse]: !imageLeft }])}>
                 <ParallaxChildren className={css.imageContainer} topOffset={0}>
                     <Aspect ratio='1x1' visibleOverflow={false}>
-                        <motion.div
+                        <LazyMotion features={domAnimation}>
+                        <m.div
                             variants={imageVariants}
                             initial='initial'
                             animate='animate'
                         >
                             <BasePicture image={image} query="?w=576&h=589&q=70&fit=thumb" />
-                        </motion.div>
+                        </m.div>
+                        </LazyMotion>
                     </Aspect>
                 </ParallaxChildren>
-                <motion.div
-                    variants={contentVariants}
-                    initial='initial'
-                    animate='animate'
-                    className={css.contentContainer}>
-                    <Markdown content={content} />
-                </motion.div>
+                <LazyMotion features={domAnimation}>
+                    <m.div
+                        variants={contentVariants}
+                        initial='initial'
+                        animate='animate'
+                        className={css.contentContainer}>
+                        <Markdown content={content} />
+                    </m.div>
+                </LazyMotion>
             </div>
         </section>
     );
