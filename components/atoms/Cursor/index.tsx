@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useMotionValue, useSpring, LazyMotion, domAnimation, m } from 'framer-motion';
 
 import css from './cursor.module.scss';
 
@@ -37,13 +37,15 @@ const Cursor = () => {
     }, []);
 
     return (
-        <motion.div
-            className={css.cursor}
-            style={{
-                translateX: cursorXSpring,
-                translateY: cursorYSpring,
-            }}
-        />
+        <LazyMotion features={domAnimation}>
+            <m.div
+                className={css.cursor}
+                style={{
+                    translateX: cursorXSpring,
+                    translateY: cursorYSpring,
+                }}
+            />
+        </LazyMotion>
     );
 };
 
