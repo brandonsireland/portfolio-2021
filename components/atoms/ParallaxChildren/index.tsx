@@ -3,7 +3,9 @@ import {
     useViewportScroll,
     useTransform,
     useSpring,
-    motion,
+    LazyMotion,
+    domAnimation,
+    m,
 } from 'framer-motion';
 
 // Types
@@ -59,9 +61,11 @@ const ParallaxChildren: React.FC<ParallaxChildrenProps> = ({
 
     return (
         <div style={{ minHeight }} className={className}>
-            <motion.div ref={ref} initial={{ y: 0 }} style={{ y }}>
-                {children}
-            </motion.div>
+            <LazyMotion features={domAnimation}>
+                <m.div ref={ref} initial={{ y: 0 }} style={{ y }}>
+                    {children}
+                </m.div>
+            </LazyMotion>
         </div>
     );
 };
