@@ -1,8 +1,12 @@
 .item {
-    height: 350px;
+    height: 400px;
     overflow: hidden;
     position: relative;
     z-index: 1;
+
+    @include media('sm') {
+        min-height: 350px;
+    }
 
     @include media('lg') {
         height: 300px;
@@ -20,11 +24,21 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+}
 
-    &:after {
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+
+    &:before {
         content: '';
         position: absolute;
         top: 0;
@@ -42,9 +56,7 @@
     }
 }
 
-.content {
+.title {
     position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 0 30px;
+    z-index: 1;
 }

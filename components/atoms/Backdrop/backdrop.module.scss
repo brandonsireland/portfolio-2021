@@ -1,0 +1,96 @@
+.wrap {
+    --static-width: 100%;
+    overflow: hidden;
+    z-index: 0;
+
+    @include media('xs') {
+        --static-width: 767px;
+    }
+
+    @include media('sm') {
+        --static-width: 1023px;
+    }
+
+    @include media('md') {
+        --static-width: 1920px;
+    }
+
+    position: relative;
+
+    &.fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+.target {
+    pointer-events: none;
+    position: absolute;
+    top: var(--intersection-offset);
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    &.withOverlay {
+        pointer-events: auto; // make clickable
+        border: 1px solid #ffeeba;
+        background-color: rgba(red, 0.15);
+        z-index: 10;
+    }
+}
+
+.backdropContainer {
+    pointer-events: none;
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    overflow: hidden;
+}
+
+.backdrop {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    bottom: 0;
+
+    z-index: -1;
+    overflow: hidden;
+
+    &.isStatic {
+        bottom: unset;
+        height: auto;
+        width: var(--static-width);
+        max-height: 100%;
+    }
+}
+
+.baseColor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video,
+.img {
+    object-fit: cover;
+    min-height: 100%;
+    width: 100%;
+}
+
+.video {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
