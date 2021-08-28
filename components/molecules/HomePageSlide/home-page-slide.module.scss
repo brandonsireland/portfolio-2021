@@ -8,6 +8,7 @@
         }
 
         .foregroundLogo {
+            opacity: 1;
             transform: translate3d(-50%, -100%, 0);
         }
 
@@ -29,6 +30,7 @@
     margin-right: 50px;
     transition: transform 0.4s ease;
     will-change: transform;
+    padding: 20px 0;
 }
 
 .slide {
@@ -96,4 +98,5 @@
     perspective: 9999;
     will-change: transform;
     transition: transform 0.5s ease;
+    opacity: 0;
 }

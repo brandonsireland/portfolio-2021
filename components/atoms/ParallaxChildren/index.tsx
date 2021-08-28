@@ -16,7 +16,7 @@ const calculateMinHeight = (height: number, range: number) => {
 const rand = (min = 0, max = 100) => {
     return Math.floor(Math.random() * (+max - +min)) + +min;
 };
-
+// TODO: maybe refactor to this https://codesandbox.io/s/framer-motion-parallax-box-ekqoe?from-embed=&file=/ui/atoms/parallax-box/index.jsx:263-281
 const ParallaxChildren: React.FC<ParallaxChildrenProps> = ({
     className,
     children,
