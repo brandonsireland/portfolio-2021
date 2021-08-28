@@ -16,5 +16,4 @@ export type BasePictureTypes = {
     image?: BasePictureProps;
     query?: string;
     imgClass?: string;
-    pictureClass?: string;
 }
