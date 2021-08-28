@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import cc from 'classcat';
-import { motion } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 // Components
@@ -104,8 +104,9 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
     return (
         <section id={id} className={css.container} ref={ref}>
             <div className={cc([css.inner, { [css.reverse]: !imageLeft }])}>
+            <LazyMotion features={domAnimation}>
                 <ParallaxChildren className={css.imageContainer}>
-                    <motion.div
+                    <m.div
                         variants={imageVariants}
                         initial='initial'
                         animate={inView && 'animate'}
@@ -124,9 +125,9 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                                     controls={false}
                             />
                         )}
-                    </motion.div>
+                    </m.div>
                 </ParallaxChildren>
-                <motion.div
+                <m.div
                     variants={contentVariants}
                     initial='initial'
                     animate={inView && 'animate'}
@@ -164,30 +165,31 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                     </div>
                     <div className={css.content}>
                         {categories.length > 0 && (
-                            <motion.ul
+                            <m.ul
                                 variants={ulVariants}
                                 initial='initial'
                                 animate={inView && 'animate'}
                                 className={css.list}
-                            >
+                                >
                                 {categories.map(({ id, value, href }) => (
-                                    <motion.li
-                                        key={id}
-                                        variants={liVariants}
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{
-                                            scale: 0.95,
-                                            rotate: 360,
-                                        }}
-                                        className={css.item}
+                                    <m.li
+                                    key={id}
+                                    variants={liVariants}
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{
+                                        scale: 0.95,
+                                        rotate: 360,
+                                    }}
+                                    className={css.item}
                                     >
                                         <Category href={href} value={value} />
-                                    </motion.li>
+                                    </m.li>
                                 ))}
-                            </motion.ul>
+                            </m.ul>
                         )}
                     </div>
-                </motion.div>
+                </m.div>
+                </LazyMotion>
             </div>
         </section>
     );
