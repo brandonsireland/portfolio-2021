@@ -23,4 +23,5 @@ export enum IconType {
     MenuButton = 'MenuButton',
     DoubleCarot = 'DoubleCarot',
     Shopify = 'Shopify',
+    Netlify = 'Netlify',
 }

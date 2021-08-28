@@ -24,6 +24,7 @@ import Carot from '../../../public/svgs/carot.svg';
 import DoubleCarot from '../../../public/svgs/double-carot.svg';
 import MenuButton from '../../../public/svgs/menu-button.svg';
 import Shopify from '../../../public/svgs/icons/shopify.svg';
+import Netlify from '../../../public/svgs/icons/netlify.svg';
 
 export default {
     [IconType.Contentful]: Contentful,
@@ -50,4 +51,5 @@ export default {
     [IconType.DoubleCarot]: DoubleCarot,
     [IconType.MenuButton]: MenuButton,
     [IconType.Shopify]: Shopify,
+    [IconType.Netlify]: Netlify,
 };
