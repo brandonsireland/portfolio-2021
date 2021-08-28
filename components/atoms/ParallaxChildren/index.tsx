@@ -1,4 +1,4 @@
-import React, { useRef, useState, useLayoutEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
     useViewportScroll,
     useTransform,
@@ -35,7 +35,7 @@ const ParallaxChildren: React.FC<ParallaxChildrenProps> = ({
         mass: rand(1, 3),
     };
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (ref.current === null) return;
 
         const onResize = () => {
