@@ -9,6 +9,8 @@ import Markdown from '../../atoms/Markdown';
 import Aspect from '../../atoms/AspectRatio';
 import BaseLink from '../../atoms/BaseLink';
 import Category from '../../molecules/Category';
+import BasePicture from '../../atoms/BasePicture';
+import BaseVideo from '../../atoms/BaseVideo';
 
 // Types
 import { SiteInformationProps } from './site-information.types';
@@ -34,13 +36,15 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
     } = {},
     categories,
     description,
-    image = {},
+    image: {
+        url: mediaUrl = '',
+        contentType: mediaContentType = ''
+    } = {},
+    image,
     imageLeft = true,
 }) => {
-    const {
-        localizedStrings = [],
-    } = useContext(LocalizedStringsContext);
-    
+    const { localizedStrings = [] } = useContext(LocalizedStringsContext);
+
     const { ref, inView } = useInView({
         threshold: 0.4,
     });
@@ -96,33 +100,55 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
             transition: { delay: 0.4, duration: 0.6 },
         },
     };
-    
+
     return (
         <section id={id} className={css.container} ref={ref}>
             <div className={cc([css.inner, { [css.reverse]: !imageLeft }])}>
-                <ParallaxChildren className={css.imageContainer} topOffset={500}>
-                    <Aspect ratio='1x1' visibleOverflow={false}>
-                        <motion.img
-                            variants={imageVariants}
-                            initial='initial'
-                            animate={inView && 'animate'}
-                            src={image.url} />
-                    </Aspect>
+                <ParallaxChildren className={css.imageContainer}>
+                    <motion.div
+                        variants={imageVariants}
+                        initial='initial'
+                        animate={inView && 'animate'}
+                    >
+                        {mediaContentType === 'image/jpeg' ? (
+                            <Aspect ratio={'720x570'} visibleOverflow={false}>
+                                <BasePicture image={image} query="?w=720&h=570&q=100&fit=thumb" />
+                            </Aspect>
+                        ) : (
+                            <BaseVideo
+                                    url={mediaUrl}
+                                    pause={!inView}
+                                    playsInline={true}
+                                    autoPlay={true}
+                                    muted={true}
+                                    loop={true}
+                                    controls={false}
+                            />
+                        )}
+                    </motion.div>
                 </ParallaxChildren>
                 <motion.div
                     variants={contentVariants}
                     initial='initial'
                     animate={inView && 'animate'}
-                    className={css.contentContainer}>
+                    className={cc([
+                        css.contentContainer,
+                        { [css.contentReverse]: !imageLeft },
+                    ])}
+                >
                     <Markdown content={description} />
                     <div className={css.content}>
-                        <p className={css.space}>{localizedStrings['site']}: </p>
+                        <p className={css.space}>
+                            {localizedStrings['site']}:{' '}
+                        </p>
                         <BaseLink href={siteUrlHref} target={siteUrlTarget}>
                             {siteUrlLabel}
                         </BaseLink>
                     </div>
                     <div className={css.content}>
-                        <p className={css.space}>{localizedStrings['year-created']}:</p>
+                        <p className={css.space}>
+                            {localizedStrings['year-created']}:
+                        </p>
                         <p>{newYear}</p>
                     </div>
                     <div className={css.content}>
@@ -130,7 +156,9 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                         <p>{role}</p>
                     </div>
                     <div className={css.content}>
-                        <p className={css.space}>{localizedStrings['agency-associated-with']}: </p>
+                        <p className={css.space}>
+                            {localizedStrings['agency-associated-with']}:{' '}
+                        </p>
                         <BaseLink href={agencyAssociatedWithHref}>
                             {agencyAssociatedWithValue}
                         </BaseLink>

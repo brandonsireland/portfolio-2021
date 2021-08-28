@@ -39,24 +39,32 @@
 
 .reverse {
     flex-direction: row-reverse;
+    text-align: right;
 }
 
 .imageContainer {
     width: 100%;
     position: relative;
 
-    @include media('sm') {
-        max-width: 40%;
+    @include media('md') {
+        max-width: 50%;
     }
 }
 
 .contentContainer {
     width: 100%;
-    padding: 30px;
+    padding: 0 30px 30px;
+    display: flex;
+    flex-direction: column;
 
-    @include media('sm') {
+    @include media('md') {
         max-width: 50%;
+        padding: 30px;
     }
+}
+
+.contentReverse {
+    align-items: flex-end;
 }
 
 .space {

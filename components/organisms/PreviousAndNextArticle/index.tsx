@@ -5,6 +5,7 @@ import cc from 'classcat';
 
 // Components
 import Icon from '../../atoms/Icon';
+import Backdrop from '../../atoms/Backdrop';
 
 // Types
 import { PreviousAndNextArticleProps } from './previous-and-next-article.types';
@@ -32,89 +33,91 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
         previousArticleSlug = '',
     } = {},
 }) => {
-    const {
-        localizedStrings = [],
-    } = useContext(LocalizedStringsContext);
-    
+    const { localizedStrings = [] } = useContext(LocalizedStringsContext);
+
     return (
         <section id={id} className={css.container}>
             {previousArticleSlug !== '' && (
-                <div
-                    className={cc([css.articleContainer, css.background])}
-                    style={{
-                        backgroundImage: `url(${previousArticleBackgroundImageUrl})`,
-                    }}
+                <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    className={css.articleContainer}
                 >
-                    <Link href={previousArticleSlug}>
-                        <a className={cc([css.link, css.left])}>
-                            <div className={css.label}>
-                                <motion.div
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.9 }}
-                                >
+                    <Backdrop
+                        fill
+                        backdrop={previousArticleBackgroundImageUrl}
+                        backdropClass={css.background}
+                        query='?w=707&h=300&q=70&fit=fill'
+                    >
+                        <Link href={previousArticleSlug}>
+                            <a className={css.link}>
+                                <div className={css.label}>
                                     <Icon
                                         className={cc([css.carot, css.reverse])}
                                         icon={IconType['DoubleCarot']}
                                         alt='Previous Item Button'
                                     />
-                                </motion.div>
-                                <span className={css.text}>
-                                    {localizedStrings['previous-item']}
-                                </span>
-                            </div>
-                        </a>
-                    </Link>
-                </div>
+                                    <span className={css.text}>
+                                        {localizedStrings['previous-item']}
+                                    </span>
+                                </div>
+                            </a>
+                        </Link>
+                    </Backdrop>
+                </motion.div>
             )}
-            <div
-                className={cc([css.returnContainer, css.background])}
-                style={{
-                    backgroundImage: `url(${currentArticleBackgroundImageUrl})`,
-                }}
-            >
-                <Link href='/archive'>
-                    <a className={cc([css.returnLink, css.link])}>
-                        <motion.div
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                        >
+            <motion.div whileHover={{ scale: 1.1 }} className={css.returnContainer}>
+                <Backdrop
+                    fill
+                    backdrop={currentArticleBackgroundImageUrl}
+                    backdropClass={css.background}
+                    query='?w=490&h=300&q=70&fit=fill'
+                >
+                    <Link href='/archive'>
+                        <a className={cc([css.returnLink, css.link])}>
                             <Icon
                                 className={css.menu}
                                 icon={IconType['MenuButton']}
                                 alt='Menu Item Button'
                             />
-                        </motion.div>
-                        <span className={css.text}>{localizedStrings['return-to-archive']}</span>
-                    </a>
-                </Link>
-            </div>
-            {nextArticleSlug !== '' && (
-                <div
-                    className={cc([css.articleContainer, css.background])}
-                    style={{
-                        backgroundImage: `url(${nextArticleBackgroundImageUrl})`,
-                    }}
-                >
-                    <Link href={nextArticleSlug}>
-                        <a className={cc([css.link, css.right])}>
-                            <div className={css.label}>
-                                <span className={css.text}>
-                                {localizedStrings['next-item']}
-                                </span>
-                                <motion.div
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.9 }}
-                                >
-                                    <Icon
-                                        className={css.carot}
-                                        icon={IconType['DoubleCarot']}
-                                        alt='Previous Item Button'
-                                    />
-                                </motion.div>
-                            </div>
+                            <span className={css.text}>
+                                {localizedStrings['return-to-archive']}
+                            </span>
                         </a>
                     </Link>
-                </div>
+                </Backdrop>
+            </motion.div>
+            {nextArticleSlug !== '' && (
+                <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    className={css.articleContainer}
+                >
+                    <Backdrop
+                        fill
+                        backdrop={nextArticleBackgroundImageUrl}
+                        backdropClass={css.background}
+                        query='?w=707&h=300&q=70&fit=fill'
+                    >
+                        <Link href={nextArticleSlug}>
+                            <a className={css.link}>
+                                <div className={css.label}>
+                                    <span className={css.text}>
+                                        {localizedStrings['next-item']}
+                                    </span>
+                                    <motion.div
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.9 }}
+                                    >
+                                        <Icon
+                                            className={css.carot}
+                                            icon={IconType['DoubleCarot']}
+                                            alt='Previous Item Button'
+                                        />
+                                    </motion.div>
+                                </div>
+                            </a>
+                        </Link>
+                    </Backdrop>
+                </motion.div>
             )}
         </section>
     );

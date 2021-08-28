@@ -63,7 +63,7 @@ const ImageAndText: React.FC<ImageAndTextProps> = ({
                             initial='initial'
                             animate='animate'
                         >
-                            <BasePicture src={image.url} />
+                            <BasePicture image={image} query="?w=576&h=589&q=70&fit=thumb" />
                         </motion.div>
                     </Aspect>
                 </ParallaxChildren>

@@ -6,6 +6,7 @@ import { BaseHeaderProps } from './base-header.types';
 
 // Styles
 import css from './base-header.module.scss';
+import BasePicture from '../../atoms/BasePicture';
 
 const BaseHeader: React.FC<BaseHeaderProps> = ({
     id = '',
@@ -34,7 +35,7 @@ const BaseHeader: React.FC<BaseHeaderProps> = ({
                     duration: 6,
                 }}
             >
-                <img src={thumbnailImage.url} />
+                <BasePicture image={thumbnailImage} />
             </motion.div>
         </div>
     </header>

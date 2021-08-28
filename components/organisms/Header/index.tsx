@@ -1,5 +1,15 @@
 import React from 'react';
-import { motion, useTransform, useViewportScroll } from 'framer-motion';
+import {
+    motion,
+    useTransform,
+    useSpring,
+    useViewportScroll,
+} from 'framer-motion';
+
+// Components
+import BasePicture from '../../atoms/BasePicture';
+import Aspect from '../../atoms/AspectRatio';
+import Backdrop from '../../atoms/Backdrop';
 
 // Types
 import { HeaderProps } from './header.types';
@@ -14,7 +24,10 @@ const Header: React.FC<HeaderProps> = ({
     thumbnailImage = {},
 }) => {
     const { scrollY } = useViewportScroll();
-    const y = useTransform(scrollY, [0, 400], [0, 200]);
+    const y = useSpring(useTransform(scrollY, [0, 400], [0, 50]), {
+        damping: 10,
+        stiffness: 100,
+    });
 
     const titleVariants = {
         initial: {
@@ -32,15 +45,13 @@ const Header: React.FC<HeaderProps> = ({
         <header id={id}>
             <div className={css.container}>
                 <div className={css.inner}>
-                    <motion.div
-                        style={{
-                            y: y,
-                            backgroundImage:
-                                backgroundImageUrl &&
-                                `url(${backgroundImageUrl})`,
-                        }}
-                        className={css.background}
-                    />
+                    <motion.div style={{ y }} className={css.background}>
+                        <Backdrop
+                            fill
+                            backdrop={backgroundImageUrl}
+                            query='?w=1905&h=500&q=70&fit=crop'
+                        />
+                    </motion.div>
                     <motion.div
                         variants={titleVariants}
                         initial='initial'
@@ -61,7 +72,12 @@ const Header: React.FC<HeaderProps> = ({
                     }}
                     className={css.imageContainer}
                 >
-                    <img src={thumbnailImage.url} />
+                    <Aspect ratio='215x205'>
+                        <BasePicture
+                            image={thumbnailImage}
+                            query='?w=215&h=205&q=70&fit=thumb'
+                        />
+                    </Aspect>
                 </motion.div>
             </div>
         </header>
