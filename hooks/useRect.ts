@@ -1,4 +1,4 @@
-import { useLayoutEffect, useCallback, useState } from "react";
+import { useEffect, useCallback, useState } from "react";
 
 type RectResult = {
   bottom: number;
@@ -36,7 +36,7 @@ export function useRect<T extends HTMLElement>(
     setRect(getRect(ref.current)); // Update client rect
   }, [ref]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
