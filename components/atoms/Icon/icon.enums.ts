@@ -24,4 +24,5 @@ export enum IconType {
     DoubleCarot = 'DoubleCarot',
     Shopify = 'Shopify',
     Netlify = 'Netlify',
+    Vercel = 'Vercel',
 }
