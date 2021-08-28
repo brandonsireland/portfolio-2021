@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from "framer-motion"
 
 // Types
 import { BaseHeaderProps } from './base-header.types';
@@ -25,18 +25,20 @@ const BaseHeader: React.FC<BaseHeaderProps> = ({
             <div className={css.inner}>
                 <h1 className={css.title}>{title}</h1>
             </div>
-            <motion.div
-                className={css.imageContainer}
-                animate={{ scale: 1 }}
-                transition={{
-                    type: 'spring',
-                    stiffness: 500,
-                    damping: 30,
-                    duration: 6,
-                }}
-            >
-                <BasePicture image={thumbnailImage} />
-            </motion.div>
+            <LazyMotion features={domAnimation}>
+                <m.div
+                    className={css.imageContainer}
+                    animate={{ scale: 1 }}
+                    transition={{
+                        type: 'spring',
+                        stiffness: 500,
+                        damping: 30,
+                        duration: 6,
+                    }}
+                >
+                    <BasePicture image={thumbnailImage} />
+                </m.div>
+            </LazyMotion>
         </div>
     </header>
 );
