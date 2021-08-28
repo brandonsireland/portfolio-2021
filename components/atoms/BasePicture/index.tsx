@@ -1,37 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import cc from 'classcat';
 
 // Types
-import { BasePictureProps } from './base-picture.types';
+import { BasePictureTypes } from './base-picture.types';
 
 // Styles
 import css from './base-picture.module.scss';
 
-// TODO: refactor? https://nextjs.org/docs/api-reference/next/image
-const BasePicture: React.FC<BasePictureProps> = ({
+const BasePicture: React.FC<BasePictureTypes> = ({
+    image: {
+        url = '',
+        alt = '',
+    } = {},
+    query = '',
     imgClass,
     pictureClass,
-    src = '',
-    alt = '',
 }) => {
-    const [isChained, setIsChained] = useState(false);
 
     const classes = cc([css.image, imgClass]);
 
     const pictureClasses = cc([css.picture, pictureClass]);
 
-    useEffect(() => {
-        const r = new RegExp('[?]', 'g');
-        setIsChained(r.test(src));
-    }, []);
-
     return (
         <picture className={pictureClasses}>
             <source
-                src={`${src}${isChained ? '&' : 'fm=webp'}`}
+                src={`${url}${query}${query !== '' ? '&' : '?'}fm=webp`}
                 type='image/webp'
             ></source>
-            <img className={classes} src={src} alt={alt} />
+            <img className={classes} src={`${url}${query}`} alt={alt}/>
         </picture>
     );
 };

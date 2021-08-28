@@ -1,6 +1,4 @@
 export interface BasePictureProps {
-    imgClass?: string;
-    pictureClass?: string;
     src?: string;
     alt?: string;
     url?: string;
@@ -11,4 +9,12 @@ export interface BasePictureProps {
     contentType?: string;
     id?: string;
     title?: string;
+}
+
+
+export type BasePictureTypes = {
+    image?: BasePictureProps;
+    query?: string;
+    imgClass?: string;
+    pictureClass?: string;
 }
