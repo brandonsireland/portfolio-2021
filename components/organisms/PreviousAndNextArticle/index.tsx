@@ -37,8 +37,8 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
 
     return (
         <section id={id} className={css.container}>
-            {previousArticleSlug !== '' && (
-                <LazyMotion features={domAnimation}>
+            <LazyMotion features={domAnimation}>
+                {previousArticleSlug !== '' && (
                     <m.div
                         whileHover={{ scale: 1.1 }}
                         className={css.articleContainer}
@@ -68,9 +68,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                             </Link>
                         </Backdrop>
                     </m.div>
-                </LazyMotion>
-            )}
-            <LazyMotion features={domAnimation}>
+                )}
                 <m.div
                     whileHover={{ scale: 1.1 }}
                     className={css.returnContainer}
@@ -95,9 +93,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                         </Link>
                     </Backdrop>
                 </m.div>
-            </LazyMotion>
-            {nextArticleSlug !== '' && (
-                <LazyMotion features={domAnimation}>
+                {nextArticleSlug !== '' && (
                     <m.div
                         whileHover={{ scale: 1.1 }}
                         className={css.articleContainer}
@@ -129,8 +125,8 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                             </Link>
                         </Backdrop>
                     </m.div>
-                </LazyMotion>
-            )}
+                )}
+            </LazyMotion>
         </section>
     );
 };
