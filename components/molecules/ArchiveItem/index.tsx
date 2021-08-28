@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from "framer-motion"
 
 // Components
 import Backdrop from '../../atoms/Backdrop';
@@ -34,7 +34,8 @@ const ArchiveItem: React.FC<ArchiveItemProps> = ({
 
     return (
         <BaseLink href={`/projects/${slug}`} className={css.item}>
-            <motion.div
+            <LazyMotion features={domAnimation}>
+            <m.div
                 variants={childVariants}
                 className={css.inner}
                 whileHover={{ scale: 1.1 }}
@@ -50,7 +51,8 @@ const ArchiveItem: React.FC<ArchiveItemProps> = ({
                         <h4 className={css.title}>{title}</h4>
                     </div>
                 </Backdrop>
-            </motion.div>
+            </m.div>
+            </LazyMotion>
         </BaseLink>
     );
 };
