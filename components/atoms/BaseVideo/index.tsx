@@ -23,10 +23,23 @@ const BaseVideo: React.FC<BaseVideoProps> = ({
         threshold: 0.1,
         rootMargin: '200px 0px',
     });
-    
+
     useEffect(() => {
-        inView ? entry?.target?.play() : entry?.target?.pause();
-    },[inView])
+        if (!entry?.target) return;
+
+        const isPlaying =
+            entry?.target?.currentTime > 0 &&
+            !entry?.target?.paused &&
+            !entry?.target?.ended &&
+            entry?.target?.readyState > entry?.target?.HAVE_CURRENT_DATA;
+        
+        if (!isPlaying && inView) {
+            entry?.target?.play();
+        } else {
+            entry?.target?.pause();
+        };
+
+    }, [inView]);
 
     return (
         <video

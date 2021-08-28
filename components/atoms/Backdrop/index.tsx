@@ -19,7 +19,7 @@ const Backdrop: React.FC<BackdropProps> = ({
     fit = 'crop',
     f = 'center',
     fill = false,
-    video = {},
+    video,
     type = 'image',
     backdropOpacity = 1,
     query = '',
@@ -57,7 +57,7 @@ const Backdrop: React.FC<BackdropProps> = ({
                         />
                     )} */}
 
-                        {type !== 'image' && (
+                        {type !== 'image' && video && (
                             <BaseVideo
                                 className={css.video}
                                 autoPlay={true}

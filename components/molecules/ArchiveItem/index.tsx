@@ -13,7 +13,7 @@ import css from './archive-item.module.scss';
 
 const ArchiveItem: React.FC<ArchiveItemProps> = ({
     backgroundImage = {},
-    backgroundVideo = {},
+    backgroundVideo,
     slug = '',
     title = '',
 }) => {
