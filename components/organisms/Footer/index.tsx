@@ -1,6 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 // Components
 import Category from '../../molecules/Category';
 
@@ -40,14 +39,15 @@ const Footer: React.FC<FooterProps> = ({ id = '', footerItems = [] }) => {
     return (
         <footer id={id} className={css.container}>
             {footerItems.length > 0 && (
-                <motion.ul
+                <LazyMotion features={domAnimation}>
+                    <m.ul
                     variants={ulVariants}
                     initial='initial'
                     animate='animate'
                     className={css.list}
                 >
                     {footerItems.map(({ id, value, href }) => (
-                        <motion.li
+                        <m.li
                             key={id}
                             variants={liVariants}
                             whileHover={{ scale: 1.1 }}
@@ -58,9 +58,10 @@ const Footer: React.FC<FooterProps> = ({ id = '', footerItems = [] }) => {
                             className={css.item}
                         >
                             <Category href={href} value={value} />
-                        </motion.li>
+                        </m.li>
                     ))}
-                </motion.ul>
+                </m.ul>
+                </LazyMotion>
             )}
         </footer>
     );
