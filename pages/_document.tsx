@@ -19,8 +19,8 @@ class MyDocument extends Document {
                     />
                     <link
                         rel='icon'
-                        type='image/png'
-                        href='/static/img/meta/favicon.ico'
+                        type='image/x-icon'
+                        href='/images/meta/favicon.ico'
                         sizes='16x16'
                     />
                 </Head>
