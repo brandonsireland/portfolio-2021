@@ -28,8 +28,8 @@ const ArchiveGrid: React.FC<ArchiveGridProps> = ({ pages = [] }) => {
                     initial='initial'
                     animate='animate'
                     className={css.inner}>
-                    {pages.map(({ id, slug, title, backgroundImage }) => (
-                        <ArchiveItem key={id} slug={slug} title={title} backgroundImage={backgroundImage} />
+                    {pages.map(({ id, slug, title, backgroundImage, backgroundVideo }) => (
+                        <ArchiveItem key={id} slug={slug} title={title} backgroundImage={backgroundImage} backgroundVideo={backgroundVideo} />
                     ))}
                 </motion.div>
             )}
