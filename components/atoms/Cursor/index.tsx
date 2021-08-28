@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 import css from './cursor.module.scss';
 
+// TODO: https://codesandbox.io/s/custom-cursor-with-framer-motion-forked-e99kf?file=/src/styles.css:673-1249
 const Cursor = () => {
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
