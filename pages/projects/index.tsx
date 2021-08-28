@@ -9,6 +9,7 @@ import { NavigationProps } from '../../components/organisms/Navigation/navigatio
 import { FooterProps } from '../../components/organisms/Footer/footer.types';
 
 export interface ProjectPageProps {
+    pageMeta: any;
     pagesData: any[];
     globalData: {
         navigation: NavigationProps;
@@ -20,10 +21,12 @@ export interface ProjectPageProps {
 import { client, getContentData } from '../../contentful';
 
 const ProjectPage: React.FC<ProjectPageProps> = ({
+    pageMeta = {},
     pagesData = [],
     globalData: { navigation = {}, footer = {} } = {},
 }) => (
     <ArchivePageTemplate
+        meta={pageMeta}
         navigation={navigation}
         footer={footer}
         pages={pagesData}
@@ -35,6 +38,16 @@ export const getStaticProps: GetStaticProps = async () => {
         .getEntries({
             content_type: 'globalSettings',
             include: 10,
+        })
+        .then(({ items = [] }: { items: Array<any> }) => items[0])
+        .catch((err: string) => console.error(err));
+    
+    const pageMeta = await client
+        .getEntries({
+            content_type: 'page',
+            limit: 1,
+            include: 10,
+            'sys.id': '3VksFByn968fG9kpxNFlj9'
         })
         .then(({ items = [] }: { items: Array<any> }) => items[0])
         .catch((err: string) => console.error(err));
@@ -50,11 +63,14 @@ export const getStaticProps: GetStaticProps = async () => {
             })
         })
         .catch((err: string) => console.error(err));
+    
+        const { meta } = getContentData(pageMeta);
 
     return {
         props: {
             globalData: getContentData(globalSettings),
             pagesData: ProjectPagesData,
+            pageMeta: meta,
         },
     };
 };

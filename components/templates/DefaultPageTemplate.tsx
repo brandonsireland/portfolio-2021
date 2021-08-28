@@ -17,7 +17,7 @@ import { FooterProps } from '../organisms/Footer/footer.types';
 export interface DefaultPageTemplateProps {
     meta: MetaProps;
     navigation: NavigationProps;
-    contentBlocks: ComponentResolverProps[] | [];
+    contentBlocks: ComponentResolverProps[];
     footer: FooterProps;
 }
 

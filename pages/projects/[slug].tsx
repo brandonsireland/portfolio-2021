@@ -93,6 +93,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         .then(({ items: [data = {}] = [] }) => {
             const {
                 slug = '',
+                meta = {},
                 backgroundImage = {},
                 publishDate = '',
                 contentBlocks = [],
@@ -100,6 +101,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
             return {
                 slug,
+                meta,
                 backgroundImage,
                 publishDate,
                 contentBlocks,

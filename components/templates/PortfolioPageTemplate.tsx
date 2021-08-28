@@ -31,30 +31,28 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
     nextArticleData = {},
     currentArticleData = {},
     previousArticleData = {},
-}) => {
-    return (
-        <Fragment>
-            <Meta {...meta} />
-            <Modal />
-            <Cursor />
-            <Navigation {...navigation} isFixed />
-            {contentBlocks &&
-                contentBlocks.map(({ id, contentTypeId, ...data }) => (
-                    <ComponentResolver
-                        key={id}
-                        id={id}
-                        contentTypeId={contentTypeId}
-                        data={data}
-                    />
-                ))}
-            <PreviousAndNextArticle
-                nextArticleData={nextArticleData}
-                currentArticleData={currentArticleData}
-                previousArticleData={previousArticleData}
-            />
-            <Footer {...footer} />
-        </Fragment>
-    );
-};
+}) => (
+    <Fragment>
+        <Meta {...meta} />
+        <Modal />
+        <Cursor />
+        <Navigation {...navigation} isFixed />
+        {contentBlocks &&
+            contentBlocks.map(({ id, contentTypeId, ...data }) => (
+                <ComponentResolver
+                    key={id}
+                    id={id}
+                    contentTypeId={contentTypeId}
+                    data={data}
+                />
+            ))}
+        <PreviousAndNextArticle
+            nextArticleData={nextArticleData}
+            currentArticleData={currentArticleData}
+            previousArticleData={previousArticleData}
+        />
+        <Footer {...footer} />
+    </Fragment>
+);
 
 export default PortfolioPageTemplate;
