@@ -4,5 +4,5 @@ export interface HeaderProps {
     id: string;
     title: string;
     backgroundImage: BasePictureProps;
-    thumbnailImage: BasePictureProps;
+    thumbnailImage?: BasePictureProps;
 }
