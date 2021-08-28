@@ -4,6 +4,8 @@ import ReactModal from 'react-modal';
 
 // Components
 import Icon from '../../atoms/Icon';
+import BasePicture from '../../atoms/BasePicture';
+import BaseVideo from '../../atoms/BaseVideo';
 
 // Context
 import { ModalContext } from '../../../context/ModalContext';
@@ -19,7 +21,8 @@ import css from './masonry-modal.module.scss';
 ReactModal.setAppElement('#__next');
 
 const MasonryModal: React.FC<MasonryModalProps> = ({
-    image: { id = '', url = '' },
+    asset: { id = '', contentType = '' },
+    asset,
 }) => {
     const {
         modal: { displayModal },
@@ -33,15 +36,27 @@ const MasonryModal: React.FC<MasonryModalProps> = ({
             closeTimeoutMS={500}
             onRequestClose={() => setModal({ displayModal: false })}
         >
-            <div className={css.inner}>
+            <motion.div className={css.inner} layoutId={id}>
                 <button
                     className={css.close}
                     onClick={() => setModal({ displayModal: false })}
                 >
                     <Icon icon={IconType['Close']} alt='Close Icon' />
                 </button>
-                <motion.img layoutId={id} className={css.image} src={url} />
-            </div>
+                <div>
+                {contentType === 'video/mp4' ? (
+                    <BaseVideo
+                        playsInline={true}
+                        autoPlay={true}
+                        muted={true}
+                        loop={true}
+                        url={asset.url}
+                    />
+                ): (                    
+                    <BasePicture image={asset} query="?w=569&q=70&fit=thumb" />
+                )}
+                </div>
+            </motion.div>
         </ReactModal>
     );
 };

@@ -4,9 +4,10 @@
     margin: 0 auto;
     padding-bottom: 40px;
     position: relative;
+    overflow: hidden;
 
-    @include media('sm') {
-        padding: 0 100px 40px;
+    @include media('md') {
+        padding: 60px 100px 40px;
     }
 }
 
@@ -27,13 +28,13 @@
     display: flex;
     justify-content: center;
 
-    @include media('sm') {
+    @include media('md') {
         position: absolute;
     }
 }
 
 .text {
-    @include media('sm') {
+    @include media('md') {
         font-size: rem(140px);
         color: rgba(color('accent'), 0.5);
     }

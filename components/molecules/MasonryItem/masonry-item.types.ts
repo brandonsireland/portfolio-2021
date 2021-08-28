@@ -1,6 +1,7 @@
 import { BasePictureProps } from '../../atoms/BasePicture/base-picture.types';
+import { BaseVideoProps } from '../../atoms/BaseVideo/base-video.types';
 
 export interface MasonryItemProps {
-    photo: BasePictureProps;
+    asset: BasePictureProps & BaseVideoProps;
     onClick: () => void;
 }
