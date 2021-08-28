@@ -1,9 +1,11 @@
 import React from 'react';
 import {
-    motion,
     useTransform,
     useSpring,
     useViewportScroll,
+    LazyMotion,
+    domAnimation,
+    m,
 } from 'framer-motion';
 
 // Components
@@ -44,41 +46,43 @@ const Header: React.FC<HeaderProps> = ({
     return (
         <header id={id}>
             <div className={css.container}>
-                <div className={css.inner}>
-                    <motion.div style={{ y }} className={css.background}>
-                        <Backdrop
-                            fill
-                            backdrop={backgroundImageUrl}
-                            query='?w=1905&h=500&q=70&fit=crop'
-                        />
-                    </motion.div>
-                    <motion.div
-                        variants={titleVariants}
-                        initial='initial'
-                        animate='animate'
-                        className={css.content}
+                <LazyMotion features={domAnimation}>
+                    <div className={css.inner}>
+                        <m.div style={{ y }} className={css.background}>
+                            <Backdrop
+                                fill
+                                backdrop={backgroundImageUrl}
+                                query='?w=1905&h=500&q=70&fit=crop'
+                            />
+                        </m.div>
+                        <m.div
+                            variants={titleVariants}
+                            initial='initial'
+                            animate='animate'
+                            className={css.content}
+                        >
+                            <h1 className={css.title}>{title}</h1>
+                        </m.div>
+                    </div>
+                    <m.div
+                        animate={{
+                            scale: [1.5, 1.5, 1],
+                            x: [`-50%`, `-50%`, `-50%`],
+                            y: [`50%`, `50%`, `50%`],
+                            rotate: [0, 360, 360],
+                            opacity: [0, 1, 1],
+                            transition: { delay: 1 },
+                        }}
+                        className={css.imageContainer}
                     >
-                        <h1 className={css.title}>{title}</h1>
-                    </motion.div>
-                </div>
-                <motion.div
-                    animate={{
-                        scale: [1.5, 1.5, 1],
-                        x: [`-50%`, `-50%`, `-50%`],
-                        y: [`50%`, `50%`, `50%`],
-                        rotate: [0, 360, 360],
-                        opacity: [0, 1, 1],
-                        transition: { delay: 1 },
-                    }}
-                    className={css.imageContainer}
-                >
-                    <Aspect ratio='215x205'>
-                        <BasePicture
-                            image={thumbnailImage}
-                            query='?w=215&h=205&q=70&fit=thumb'
-                        />
-                    </Aspect>
-                </motion.div>
+                        <Aspect ratio='215x205'>
+                            <BasePicture
+                                image={thumbnailImage}
+                                query='?w=215&h=205&q=70&fit=thumb'
+                            />
+                        </Aspect>
+                    </m.div>
+                </LazyMotion>
             </div>
         </header>
     );
