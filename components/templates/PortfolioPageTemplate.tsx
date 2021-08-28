@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { motion } from 'framer-motion';
 
 // Components
 import Meta from '../atoms/Meta';
@@ -33,21 +32,6 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
     currentArticleData = {},
     previousArticleData = {},
 }) => {
-    const variants = {
-        animate: {
-            width: '0',
-            transition: {
-                duration: 0.5,
-            },
-        },
-        exit: {
-            width: '100vw',
-            transition: {
-                duration: 0.5,
-            },
-        },
-    };
-
     return (
         <Fragment>
             <Meta {...meta} />
@@ -69,21 +53,6 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
                 previousArticleData={previousArticleData}
             />
             <Footer {...footer} />
-            <motion.div
-                variants={variants}
-                animate='animate'
-                exit='exit'
-                style={{
-                    position: 'fixed',
-                    left: '50%',
-                    top: '50%',
-                    transform: 'translate3d(-50%, -50%, 0)',
-                    backgroundColor: '#0b0414',
-                    zIndex: 2,
-                    height: '100vh',
-                    width: '100vw',
-                }}
-            />
         </Fragment>
     );
 };
