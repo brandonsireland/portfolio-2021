@@ -21,7 +21,6 @@ const ImageAndText: React.FC<ImageAndTextProps> = ({
     backgroundImage = {},
     content = '',
 }) => {
-
     const imageVariants = {
         initial: {
             y: 100,
@@ -59,13 +58,16 @@ const ImageAndText: React.FC<ImageAndTextProps> = ({
                 <ParallaxChildren className={css.imageContainer} topOffset={0}>
                     <Aspect ratio='1x1' visibleOverflow={false}>
                         <LazyMotion features={domAnimation}>
-                        <m.div
-                            variants={imageVariants}
-                            initial='initial'
-                            animate='animate'
-                        >
-                            <BasePicture image={image} query="?w=576&h=589&q=70&fit=thumb" />
-                        </m.div>
+                            <m.div
+                                variants={imageVariants}
+                                initial='initial'
+                                animate='animate'
+                            >
+                                <BasePicture
+                                    image={image}
+                                    query='?w=576&h=589&q=70&fit=thumb'
+                                />
+                            </m.div>
                         </LazyMotion>
                     </Aspect>
                 </ParallaxChildren>
@@ -74,7 +76,8 @@ const ImageAndText: React.FC<ImageAndTextProps> = ({
                         variants={contentVariants}
                         initial='initial'
                         animate='animate'
-                        className={css.contentContainer}>
+                        className={css.contentContainer}
+                    >
                         <Markdown content={content} />
                     </m.div>
                 </LazyMotion>
