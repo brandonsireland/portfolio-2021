@@ -66,11 +66,10 @@ const Header: React.FC<HeaderProps> = ({
                     </div>
                     <m.div
                         animate={{
-                            scale: [1.5, 1.5, 1],
-                            x: [`-50%`, `-50%`, `-50%`],
-                            y: [`50%`, `50%`, `50%`],
-                            rotate: [0, 360, 360],
-                            opacity: [0, 1, 1],
+                            scale: [1.5, 1],
+                            x: [`-50%`, `-50%`],
+                            y: [`50%`, `50%`],
+                            opacity: [0, 1],
                             transition: { delay: 1 },
                         }}
                         className={css.imageContainer}
