@@ -25,12 +25,14 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
             url: nextArticleBackgroundImageUrl = '',
         } = {},
         nextArticleSlug = '',
+        nextArticleTitle = '',
     } = {},
     previousArticleData: {
         previousArticleBackgroundImage: {
             url: previousArticleBackgroundImageUrl = '',
         } = {},
         previousArticleSlug = '',
+        previousArticleTitle = '',
     } = {},
 }) => {
     const { localizedStrings = [] } = useContext(LocalizedStringsContext);
@@ -61,7 +63,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                                             alt='Previous Item Button'
                                         />
                                         <span className={css.text}>
-                                            {localizedStrings['previous-item']}
+                                            {previousArticleTitle}
                                         </span>
                                     </div>
                                 </a>
@@ -108,7 +110,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                                 <a className={css.link}>
                                     <div className={css.label}>
                                         <span className={css.text}>
-                                            {localizedStrings['next-item']}
+                                            {nextArticleTitle}
                                         </span>
                                         <m.div
                                             whileHover={{ scale: 1.1 }}

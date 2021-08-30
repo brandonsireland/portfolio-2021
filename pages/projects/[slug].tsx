@@ -119,11 +119,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         .then(({ items: [data = {}] = [] }) => {
             const {
                 slug: nextArticleSlug = '',
+                title: nextArticleTitle = '',
                 backgroundImage: nextArticleBackgroundImage = {},
             } = getContentData(data);
 
             return {
                 nextArticleSlug,
+                nextArticleTitle,
                 nextArticleBackgroundImage,
             };
         })
@@ -139,11 +141,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         .then(({ items: [data = {}] = [] }) => {
             const {
                 slug: previousArticleSlug = '',
+                title: previousArticleTitle = '',
                 backgroundImage: previousArticleBackgroundImage = {},
             } = getContentData(data);
 
             return {
                 previousArticleSlug,
+                previousArticleTitle,
                 previousArticleBackgroundImage,
             };
         })
