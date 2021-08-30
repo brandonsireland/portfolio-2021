@@ -47,16 +47,15 @@ const MasonryModal: React.FC<MasonryModalProps> = ({
                     <div>
                         {contentType === 'video/mp4' ? (
                             <BaseVideo
-                                playsInline={true}
-                                autoPlay={true}
-                                muted={true}
-                                loop={true}
+                                autoPlay={false}
+                                controls
+                                muted
                                 url={asset.url}
                             />
                         ) : (
                             <BasePicture
                                 image={asset}
-                                query='?w=569&q=70&fit=thumb'
+                                query='?w=900&q=70&fit=thumb'
                             />
                         )}
                     </div>

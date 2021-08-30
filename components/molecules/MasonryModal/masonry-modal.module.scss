@@ -19,7 +19,7 @@
 .inner {
     position: relative;
     margin: auto;
-    max-width: 500px;
+    max-width: 900px;
     width: 100%;
 }
 
@@ -33,9 +33,9 @@
 
 .close {
     width: 30px;
-    position: absolute;
-    top: -30px;
-    right: -30px;
+    position: fixed;
+    top: 30px;
+    right: 30px;
     border: none;
     background: transparent;
     cursor: pointer;
