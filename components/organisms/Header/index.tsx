@@ -26,8 +26,8 @@ const Header: React.FC<HeaderProps> = ({
     thumbnailImage = {},
 }) => {
     const { scrollY } = useViewportScroll();
-    const y = useSpring(useTransform(scrollY, [0, 400], [0, 50]), {
-        damping: 10,
+    const y = useSpring(useTransform(scrollY, [0, 400], [0, -50]), {
+        damping: 5,
         stiffness: 100,
     });
 
@@ -52,7 +52,8 @@ const Header: React.FC<HeaderProps> = ({
                             <Backdrop
                                 fill
                                 backdrop={backgroundImageUrl}
-                                query='?w=1905&h=500&q=70&fit=crop'
+                                overflow={false}
+                                query='?w=1905&h=600&q=70&fit=crop'
                             />
                         </m.div>
                         <m.div

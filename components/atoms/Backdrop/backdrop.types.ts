@@ -1,4 +1,3 @@
-import { BasePictureProps } from "../BasePicture/base-picture.types";
 import { BaseVideoProps } from "../BaseVideo/base-video.types";
 import { ResponsiveImageProps } from "../ResponsiveImage/responsive-image.types";
 
@@ -15,4 +14,5 @@ export interface BackdropProps {
     type?: 'image' | 'video' | 'both';
     backdropOpacity?: number;
     query?: string;
+    overflow?: boolean;
 }

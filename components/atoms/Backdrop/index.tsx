@@ -23,17 +23,18 @@ const Backdrop: React.FC<BackdropProps> = ({
     type = 'image',
     backdropOpacity = 1,
     query = '',
-    children,
+    overflow = true,
+  children,
 }) => {
     return (
         <Fragment>
-            <div className={cc([css.wrap, { [css.fill]: fill }])}>
-                <div className={css.backdropContainer}>
+        <div className={cc([css.wrap, { [css.fill]: fill, [css.overflow]: overflow }])}>
+                <div className={cc([css.backdropContainer, {[css.overflow]: overflow}])}>
                     <div
                         className={cc([
                             css.backdrop,
                             backdropClass,
-                            { [css.isStatic]: isStatic },
+                            { [css.isStatic]: isStatic , [css.overflow]: overflow },
                         ])}
                         style={{
                             backgroundColor: backgroundColor,

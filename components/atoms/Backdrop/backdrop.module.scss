@@ -1,6 +1,5 @@
 .wrap {
     --static-width: 100%;
-    overflow: hidden;
     z-index: 0;
 
     @include media('xs') {
@@ -36,8 +35,8 @@
 
     &.withOverlay {
         pointer-events: auto; // make clickable
-        border: 1px solid #ffeeba;
-        background-color: rgba(red, 0.15);
+        border: 1px solid color('accent');
+        background-color: rgba(color('primary'), 0.15);
         z-index: 10;
     }
 }
@@ -49,7 +48,6 @@
     right: -1px;
     bottom: -1px;
     left: -1px;
-    overflow: hidden;
 }
 
 .backdrop {
@@ -61,7 +59,6 @@
     bottom: 0;
 
     z-index: -1;
-    overflow: hidden;
 
     &.isStatic {
         bottom: unset;
@@ -78,7 +75,6 @@
     right: 0;
     bottom: 0;
     z-index: -1;
-    overflow: hidden;
 }
 
 .video,
@@ -93,4 +89,8 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.overflow {
+    overflow: hidden;
 }
