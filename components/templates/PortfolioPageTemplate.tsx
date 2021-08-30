@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 // Components
 import Meta from '../atoms/Meta';
@@ -37,20 +38,24 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
         <Modal />
         <Cursor />
         <Navigation {...navigation} isFixed />
-        {contentBlocks &&
-            contentBlocks.map(({ id, contentTypeId, ...data }) => (
-                <ComponentResolver
-                    key={id}
-                    id={id}
-                    contentTypeId={contentTypeId}
-                    data={data}
+        <LazyMotion features={domAnimation}>
+            <m.div exit={{ opacity: 0 }}>
+                {contentBlocks &&
+                    contentBlocks.map(({ id, contentTypeId, ...data }) => (
+                        <ComponentResolver
+                            key={id}
+                            id={id}
+                            contentTypeId={contentTypeId}
+                            data={data}
+                        />
+                    ))}
+                <PreviousAndNextArticle
+                    nextArticleData={nextArticleData}
+                    currentArticleData={currentArticleData}
+                    previousArticleData={previousArticleData}
                 />
-            ))}
-        <PreviousAndNextArticle
-            nextArticleData={nextArticleData}
-            currentArticleData={currentArticleData}
-            previousArticleData={previousArticleData}
-        />
+            </m.div>
+        </LazyMotion>
         <Footer {...footer} />
     </Fragment>
 );

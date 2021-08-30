@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 // Components
 import Meta from '../atoms/Meta';
@@ -18,7 +19,7 @@ export interface ArchivePageTemplateProps {
     footer: FooterProps;
     pages: any[];
 }
- 
+
 const ArchivePageTemplate: React.FC<ArchivePageTemplateProps> = ({
     meta = {},
     navigation = {},
@@ -29,9 +30,13 @@ const ArchivePageTemplate: React.FC<ArchivePageTemplateProps> = ({
         <Meta {...meta} />
         <Cursor />
         <Navigation {...navigation} isFixed={false} />
-        <Grid pages={pages} />
+        <LazyMotion features={domAnimation}>
+            <m.div exit={{ opacity: 0 }}>
+                <Grid pages={pages} />
+            </m.div>
+        </LazyMotion>
         <Footer {...footer} />
     </Fragment>
 );
- 
+
 export default ArchivePageTemplate;

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 // Components
 import Meta from '../atoms/Meta';
@@ -7,6 +8,7 @@ import Navigation from '../organisms/Navigation';
 import Footer from '../organisms/Footer';
 import ComponentResolver from '../atoms/ComponentResolver';
 import Modal from '../atoms/Modal';
+import InitialTransition from '../molecules/InitialTransition';
 
 // Types
 import { MetaProps } from '../atoms/Meta/meta.types';
@@ -19,6 +21,7 @@ export interface DefaultPageTemplateProps {
     navigation: NavigationProps;
     contentBlocks: ComponentResolverProps[];
     footer: FooterProps;
+    isFirstMount: any;
 }
 
 const DefaultPageTemplate: React.FC<DefaultPageTemplateProps> = ({
@@ -26,21 +29,27 @@ const DefaultPageTemplate: React.FC<DefaultPageTemplateProps> = ({
     navigation = {},
     contentBlocks = [],
     footer = {},
+    isFirstMount,
 }) => (
     <Fragment>
         <Meta {...meta} />
         <Modal />
         <Cursor />
-        <Navigation {...navigation} isFixed={false}/>
-        {contentBlocks &&
-            contentBlocks.map(({ id, contentTypeId, ...data }) => (
-                <ComponentResolver
-                    key={id}
-                    id={id}
-                    contentTypeId={contentTypeId}
-                    data={data}
-                />
-            ))}
+        {isFirstMount && <InitialTransition />}
+        <Navigation {...navigation} isFixed={false} />
+        <LazyMotion features={domAnimation}>
+            <m.div exit={{ opacity: 0 }}>
+                {contentBlocks &&
+                    contentBlocks.map(({ id, contentTypeId, ...data }) => (
+                        <ComponentResolver
+                            key={id}
+                            id={id}
+                            contentTypeId={contentTypeId}
+                            data={data}
+                        />
+                    ))}
+            </m.div>
+        </LazyMotion>
         <Footer {...footer} />
     </Fragment>
 );

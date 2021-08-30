@@ -1,0 +1,41 @@
+.container {
+    position: fixed;
+    z-index: 101;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: color('primary');
+}
+
+.inner {
+    max-width: 300px;
+    width: 100%;
+    margin: auto;
+    position: relative;
+}
+
+.svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.outerCircle {
+    width: 100%;
+}
+
+.middleCircle {
+    width: 85%;
+    animation-direction: reverse;
+}
+
+.innerCircle {
+    width: 70%;
+}
+
+.initials {
+    width: 40%;
+    transform: translate(-50%, -50%);
+}

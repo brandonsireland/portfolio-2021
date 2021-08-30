@@ -19,6 +19,7 @@ export interface IndexPageProps {
         meta: MetaProps;
         contentBlocks: ComponentResolverProps[];
     };
+    isFirstMount: any;
 };
 
 // Utils
@@ -27,8 +28,10 @@ import { client, getContentData } from '../contentful';
 const IndexPage: React.FC<IndexPageProps> = ({
     pageData: { meta = {}, contentBlocks = [] } = {},
     globalData: { navigation = {}, footer = {} } = {},
+    isFirstMount,
 }) => (
     <DefaultPageTemplate
+        isFirstMount={isFirstMount}
         meta={meta}
         navigation={navigation}
         contentBlocks={contentBlocks}

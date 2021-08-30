@@ -1,7 +1,8 @@
 import React from 'react';
 import { NextPageContext } from 'next';
 import { AppProps } from 'next/app';
-import { AnimateSharedLayout } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 // Context
 import ModalContextProvider from '../context/ModalContext';
@@ -17,15 +18,36 @@ const App: React.FC<AppProps> = ({
     Component: any;
     pageProps: any;
     router: any;
-}) => (
-    <LocalizedStringsContextProvider>
-        <ModalContextProvider>
-            <AnimateSharedLayout>
-                <Component {...pageProps} />
-            </AnimateSharedLayout>
-        </ModalContextProvider>
-    </LocalizedStringsContextProvider>
-);
+}) => {
+    const [isFirstMount, setIsFirstMount] = React.useState(true);
+    const router = useRouter();
+
+    React.useEffect(() => {
+        const handleRouteChange = () => {
+            isFirstMount && setIsFirstMount(false);
+        };
+
+        router.events.on('routeChangeStart', handleRouteChange);
+
+        // If the component is unmounted, unsubscribe
+        // from the event with the `off` method:
+        return () => {
+            router.events.off('routeChangeStart', handleRouteChange);
+        };
+    }, []);
+    return (
+        <LocalizedStringsContextProvider>
+            <ModalContextProvider>
+                <AnimatePresence exitBeforeEnter>
+                    <Component
+                        isFirstMount={isFirstMount}
+                        key={router.route}
+                        {...pageProps} />
+                </AnimatePresence>
+            </ModalContextProvider>
+        </LocalizedStringsContextProvider>
+    );
+};
 
 export const getInitialProps = async ({
     Component,
