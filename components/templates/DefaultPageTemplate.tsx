@@ -13,12 +13,12 @@ import InitialTransition from '../molecules/InitialTransition';
 // Types
 import { MetaType } from '../atoms/Meta/meta.types';
 import { ComponentResolverProps } from '../atoms/ComponentResolver/component-resolver.types';
-import { NavigationType } from '../organisms/Navigation/navigation.types';
+import { NavigationProps } from '../organisms/Navigation/navigation.types';
 import { FooterType } from '../organisms/Footer/footer.types';
 
 export interface DefaultPageTemplateProps {
     meta: MetaType;
-    navigation: NavigationType;
+    navigation: NavigationProps;
     contentBlocks: ComponentResolverProps[];
     footer: FooterType;
     isFirstMount?: boolean;

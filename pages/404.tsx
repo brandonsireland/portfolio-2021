@@ -5,12 +5,12 @@ import { GetStaticProps } from 'next';
 import ErrorPageTemplate from '../components/templates/ErrorPageTemplate';
 
 // Types
-import { NavigationType } from '../components/organisms/Navigation/navigation.types';
+import { NavigationProps } from '../components/organisms/Navigation/navigation.types';
 import { FooterType } from '../components/organisms/Footer/footer.types';
 
 export interface ContactPageProps {
     globalData: {
-        navigation: NavigationType;
+        navigation: NavigationProps;
         footer: FooterType;
     };
 }

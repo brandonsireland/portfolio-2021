@@ -13,13 +13,13 @@ import Footer from '../organisms/Footer';
 // Types
 import { MetaType } from '../atoms/Meta/meta.types';
 import { ComponentResolverProps } from '../atoms/ComponentResolver/component-resolver.types';
-import { NavigationType } from '../organisms/Navigation/navigation.types';
+import { NavigationProps } from '../organisms/Navigation/navigation.types';
 import { FooterType } from '../organisms/Footer/footer.types';
 import { PreviousAndNextArticleProps } from '../organisms/PreviousAndNextArticle/previous-and-next-article.types';
 
 export interface PortfolioPageTemplateProps {
     meta: MetaType;
-    navigation: NavigationType;
+    navigation: NavigationProps;
     contentBlocks: ComponentResolverProps[];
     footer: FooterType;
     nextArticleData: Partial<PreviousAndNextArticleProps>;

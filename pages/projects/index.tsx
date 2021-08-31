@@ -5,7 +5,7 @@ import { GetStaticProps } from 'next';
 import ArchivePageTemplate from '../../components/templates/ArchivePageTemplate';
 
 // Types
-import { NavigationType } from '../../components/organisms/Navigation/navigation.types';
+import { NavigationProps } from '../../components/organisms/Navigation/navigation.types';
 import { FooterType } from '../../components/organisms/Footer/footer.types';
 import { MetaType } from '../../components/atoms/Meta/meta.types';
 
@@ -13,7 +13,7 @@ export interface ProjectPageProps {
     pageMeta: MetaType;
     pagesData: any[];
     globalData: {
-        navigation: NavigationType;
+        navigation: NavigationProps;
         footer: FooterType;
     };
 }

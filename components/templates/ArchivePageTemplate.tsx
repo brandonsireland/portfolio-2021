@@ -10,12 +10,12 @@ import Grid from '../organisms/ArchiveGrid';
 
 // Types
 import { MetaType } from '../atoms/Meta/meta.types';
-import { NavigationType } from '../organisms/Navigation/navigation.types';
+import { NavigationProps } from '../organisms/Navigation/navigation.types';
 import { FooterType } from '../organisms/Footer/footer.types';
 
 export interface ArchivePageTemplateProps {
     meta: MetaType;
-    navigation: NavigationType;
+    navigation: NavigationProps;
     footer: FooterType;
     pages: any[];
 }
