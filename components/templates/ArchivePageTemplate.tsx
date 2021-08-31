@@ -9,7 +9,7 @@ import Footer from '../organisms/Footer';
 import Grid from '../organisms/ArchiveGrid';
 
 // Types
-import { MetaType } from '../atoms/Meta/leta.types';
+import { MetaType } from '../atoms/Meta/meta.types';
 import { NavigationType } from '../organisms/Navigation/navigation.types';
 import { FooterType } from '../organisms/Footer/footer.types';
 

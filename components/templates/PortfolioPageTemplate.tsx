@@ -11,8 +11,8 @@ import PreviousAndNextArticle from '../organisms/PreviousAndNextArticle';
 import Footer from '../organisms/Footer';
 
 // Types
-import { MetaType } from '../atoms/Meta/leta.types';
-import { ComponentResolverProps } from '../atoms/ComponentResolver/lomponent-resolver.types';
+import { MetaType } from '../atoms/Meta/meta.types';
+import { ComponentResolverProps } from '../atoms/ComponentResolver/component-resolver.types';
 import { NavigationType } from '../organisms/Navigation/navigation.types';
 import { FooterType } from '../organisms/Footer/footer.types';
 import { PreviousAndNextArticleProps } from '../organisms/PreviousAndNextArticle/previous-and-next-article.types';

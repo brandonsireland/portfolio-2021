@@ -6,7 +6,7 @@ import { BaseLinkProps } from './base-link.types';
 import Targets from './base-link.data';
 
 // Styles
-import css from './link.module.scss';
+import css from './base-link.module.scss';
 
 const BaseLink: React.FC<BaseLinkProps> = ({
     href,

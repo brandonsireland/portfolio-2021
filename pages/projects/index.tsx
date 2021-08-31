@@ -7,7 +7,7 @@ import ArchivePageTemplate from '../../components/templates/ArchivePageTemplate'
 // Types
 import { NavigationType } from '../../components/organisms/Navigation/navigation.types';
 import { FooterType } from '../../components/organisms/Footer/footer.types';
-import { MetaType } from '../../components/atoms/Meta/leta.types';
+import { MetaType } from '../../components/atoms/Meta/meta.types';
 
 export interface ProjectPageProps {
     pageMeta: MetaType;

@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 // Types
-import { MetaType } from './leta.types';
+import { MetaType } from './meta.types';
 
 const Meta: React.FC<MetaType> = ({
     meta: { title = '', description = '', metaImage = {}, keywords = '' } = {},
