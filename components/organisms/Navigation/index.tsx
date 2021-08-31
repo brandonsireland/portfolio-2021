@@ -15,7 +15,6 @@ const Navigation: React.FC<NavigationType> = ({
     navigationItems = [],
     isFixed = false,
 }) => {
-
     const classes = cc([css.container, { [css.fixed]: isFixed }]);
 
     return (
