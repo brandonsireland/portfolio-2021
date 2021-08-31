@@ -23,63 +23,60 @@ const Backdrop: React.FC<BackdropProps> = ({
     overflow = true,
     children,
 }) => (
-        <Fragment>
+    <Fragment>
+        <div
+            className={cc([
+                css.wrap,
+                { [css.fill]: fill, [css.overflow]: overflow },
+            ])}
+        >
             <div
                 className={cc([
-                    css.wrap,
-                    { [css.fill]: fill, [css.overflow]: overflow },
+                    css.backdropContainer,
+                    { [css.overflow]: overflow },
                 ])}
             >
                 <div
                     className={cc([
-                        css.backdropContainer,
-                        { [css.overflow]: overflow },
+                        css.backdrop,
+                        backdropClass,
+                        {
+                            [css.isStatic]: isStatic,
+                            [css.overflow]: overflow,
+                        },
                     ])}
+                    style={{
+                        backgroundColor: backgroundColor,
+                        opacity: backdropOpacity,
+                    }}
                 >
-                    <div
-                        className={cc([
-                            css.backdrop,
-                            backdropClass,
-                            {
-                                [css.isStatic]: isStatic,
-                                [css.overflow]: overflow,
-                            },
-                        ])}
-                        style={{
-                            backgroundColor: backgroundColor,
-                            opacity: backdropOpacity,
-                        }}
-                    >
-                        <picture>
-                            <source
-                                src={`${backdrop}${query}${
-                                    query !== '' ? '&' : '?'
-                                }fm=webp`}
-                                type='image/webp'
-                            ></source>
-                            <img
-                                className={css.img}
-                                src={`${backdrop}${query}`}
-                            />
-                        </picture>
+                    <picture>
+                        <source
+                            src={`${backdrop}${query}${
+                                query !== '' ? '&' : '?'
+                            }fm=webp`}
+                            type='image/webp'
+                        ></source>
+                        <img className={css.img} src={`${backdrop}${query}`} />
+                    </picture>
 
-                        {type !== 'image' && video && (
-                            <BaseVideo
-                                className={css.video}
-                                autoPlay={true}
-                                loop={true}
-                                muted={true}
-                                playsInline={true}
-                                url={video.url}
-                                poster={backdrop}
-                            />
-                        )}
-                    </div>
+                    {type !== 'image' && video && (
+                        <BaseVideo
+                            className={css.video}
+                            autoPlay={true}
+                            loop={true}
+                            muted={true}
+                            playsInline={true}
+                            url={video.url}
+                            poster={backdrop}
+                        />
+                    )}
                 </div>
-
-                {children}
             </div>
-        </Fragment>
-  );
+
+            {children}
+        </div>
+    </Fragment>
+);
 
 export default Backdrop;

@@ -42,7 +42,8 @@ const App: React.FC<AppProps> = ({
                     <Component
                         isFirstMount={isFirstMount}
                         key={router.route}
-                        {...pageProps} />
+                        {...pageProps}
+                    />
                 </AnimatePresence>
             </ModalContextProvider>
         </LocalizedStringsContextProvider>

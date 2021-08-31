@@ -53,5 +53,5 @@ export default {
     [IconType.MenuButton]: MenuButton,
     [IconType.Shopify]: Shopify,
     [IconType.Netlify]: Netlify,
-    [IconType.Vercel]: Vercel
+    [IconType.Vercel]: Vercel,
 };

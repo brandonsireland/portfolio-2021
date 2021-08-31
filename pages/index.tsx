@@ -20,7 +20,7 @@ export interface IndexPageProps {
         contentBlocks: ComponentResolverProps[];
     };
     isFirstMount: boolean;
-};
+}
 
 // Utils
 import { client, getContentData } from '../contentful';
@@ -37,7 +37,7 @@ const IndexPage: React.FC<IndexPageProps> = ({
         contentBlocks={contentBlocks}
         footer={footer}
     />
-)
+);
 
 export const getStaticProps: GetStaticProps = async () => {
     const globalSettings = await client
@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps = async () => {
         })
         .then(({ items = [] }: { items: Array<any> }) => items[0])
         .catch((err: string) => console.error(err));
-    
+
     const indexPageData = await client
         .getEntries({
             content_type: 'page',

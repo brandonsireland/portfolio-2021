@@ -36,10 +36,7 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
     } = {},
     categories,
     description,
-    image: {
-        url: mediaUrl = '',
-        contentType: mediaContentType = ''
-    } = {},
+    image: { url: mediaUrl = '', contentType: mediaContentType = '' } = {},
     image,
     imageLeft = true,
 }) => {
@@ -104,91 +101,102 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
     return (
         <section id={id} className={css.container} ref={ref}>
             <div className={cc([css.inner, { [css.reverse]: !imageLeft }])}>
-            <LazyMotion features={domAnimation}>
-                <ParallaxChildren className={css.imageContainer}>
-                    <m.div
-                        variants={imageVariants}
-                        initial='initial'
-                        animate={inView && 'animate'}
-                    >
-                        {mediaContentType === 'image/jpeg' ? (
-                            <Aspect ratio={'720x570'} visibleOverflow={false}>
-                                <BasePicture image={image} query="?w=720&h=570&q=100&fit=thumb" />
-                            </Aspect>
-                        ) : (
-                            <BaseVideo
+                <LazyMotion features={domAnimation}>
+                    <ParallaxChildren className={css.imageContainer}>
+                        <m.div
+                            variants={imageVariants}
+                            initial='initial'
+                            animate={inView && 'animate'}
+                        >
+                            {mediaContentType === 'image/jpeg' ? (
+                                <Aspect
+                                    ratio={'720x570'}
+                                    visibleOverflow={false}
+                                >
+                                    <BasePicture
+                                        image={image}
+                                        query='?w=720&h=570&q=100&fit=thumb'
+                                    />
+                                </Aspect>
+                            ) : (
+                                <BaseVideo
                                     url={mediaUrl}
                                     playsInline={true}
                                     autoPlay={true}
                                     muted={true}
                                     loop={true}
                                     controls={false}
-                            />
-                        )}
-                    </m.div>
-                </ParallaxChildren>
-                <m.div
-                    variants={contentVariants}
-                    initial='initial'
-                    animate={inView && 'animate'}
-                    className={cc([
-                        css.contentContainer,
-                        { [css.contentReverse]: !imageLeft },
-                    ])}
-                >
-                    <Markdown content={description} />
-                    <div className={css.content}>
-                        <p className={css.space}>
-                            {localizedStrings['site']}:{' '}
-                        </p>
-                        <BaseLink href={siteUrlHref} target={siteUrlTarget}>
-                            {siteUrlLabel}
-                        </BaseLink>
-                    </div>
-                    <div className={css.content}>
-                        <p className={css.space}>
-                            {localizedStrings['year-created']}:
-                        </p>
-                        <p>{newYear}</p>
-                    </div>
-                    <div className={css.content}>
-                        <p className={css.space}>{localizedStrings['role']}:</p>
-                        <p>{role}</p>
-                    </div>
-                    <div className={css.content}>
-                        <p className={css.space}>
-                            {localizedStrings['agency-associated-with']}:{' '}
-                        </p>
-                        <BaseLink href={agencyAssociatedWithHref}>
-                            {agencyAssociatedWithValue}
-                        </BaseLink>
-                    </div>
-                    <div className={css.content}>
-                        {categories.length > 0 && (
-                            <m.ul
-                                variants={ulVariants}
-                                initial='initial'
-                                animate={inView && 'animate'}
-                                className={css.list}
+                                />
+                            )}
+                        </m.div>
+                    </ParallaxChildren>
+                    <m.div
+                        variants={contentVariants}
+                        initial='initial'
+                        animate={inView && 'animate'}
+                        className={cc([
+                            css.contentContainer,
+                            { [css.contentReverse]: !imageLeft },
+                        ])}
+                    >
+                        <Markdown content={description} />
+                        <div className={css.content}>
+                            <p className={css.space}>
+                                {localizedStrings['site']}:{' '}
+                            </p>
+                            <BaseLink href={siteUrlHref} target={siteUrlTarget}>
+                                {siteUrlLabel}
+                            </BaseLink>
+                        </div>
+                        <div className={css.content}>
+                            <p className={css.space}>
+                                {localizedStrings['year-created']}:
+                            </p>
+                            <p>{newYear}</p>
+                        </div>
+                        <div className={css.content}>
+                            <p className={css.space}>
+                                {localizedStrings['role']}:
+                            </p>
+                            <p>{role}</p>
+                        </div>
+                        <div className={css.content}>
+                            <p className={css.space}>
+                                {localizedStrings['agency-associated-with']}:{' '}
+                            </p>
+                            <BaseLink href={agencyAssociatedWithHref}>
+                                {agencyAssociatedWithValue}
+                            </BaseLink>
+                        </div>
+                        <div className={css.content}>
+                            {categories.length > 0 && (
+                                <m.ul
+                                    variants={ulVariants}
+                                    initial='initial'
+                                    animate={inView && 'animate'}
+                                    className={css.list}
                                 >
-                                {categories.map(({ id, value, href }) => (
-                                    <m.li
-                                    key={id}
-                                    variants={liVariants}
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{
-                                        scale: 0.95,
-                                        rotate: 360,
-                                    }}
-                                    className={css.item}
-                                    >
-                                        <Category href={href} value={value} />
-                                    </m.li>
-                                ))}
-                            </m.ul>
-                        )}
-                    </div>
-                </m.div>
+                                    {categories.map(({ id, value, href }) => (
+                                        <m.li
+                                            key={id}
+                                            variants={liVariants}
+                                            whileHover={{ scale: 1.1 }}
+                                            whileTap={{
+                                                scale: 0.95,
+                                                rotate: 360,
+                                            }}
+                                            className={css.item}
+                                        >
+                                            <Category
+                                                href={href}
+                                                value={value}
+                                            />
+                                        </m.li>
+                                    ))}
+                                </m.ul>
+                            )}
+                        </div>
+                    </m.div>
                 </LazyMotion>
             </div>
         </section>

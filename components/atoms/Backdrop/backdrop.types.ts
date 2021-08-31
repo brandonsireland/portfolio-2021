@@ -1,5 +1,4 @@
-import { BaseVideoProps } from "../BaseVideo/base-video.types";
-
+import { BaseVideoProps } from '../BaseVideo/base-video.types';
 
 export interface BackdropProps {
     backdrop: string;

@@ -14,6 +14,6 @@ module.exports = withImages({
         CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
         CONTENTFUL_HOST: process.env.CONTENTFUL_HOST,
         CONTENTFUL_ENV: process.env.CONTENTFUL_ENV,
-        NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL
+        NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
     },
 });

@@ -11,9 +11,8 @@ export interface BasePictureProps {
     title?: string;
 }
 
-
 export type BasePictureTypes = {
     image?: BasePictureProps;
     query?: string;
     imgClass?: string;
-}
+};

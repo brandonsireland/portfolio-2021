@@ -14,12 +14,12 @@ const Aspect: React.FC<AspectProps> = ({
     const getRatio = () => {
         if (typeof ratio === 'string') {
             const [width, height] = ratio.split('x');
-            return `${Number(height) / Number(width) * 100}%`
+            return `${(Number(height) / Number(width)) * 100}%`;
         }
 
         return '100%';
-    }
-    
+    };
+
     const classes = cc([
         css.base,
         {
@@ -28,7 +28,11 @@ const Aspect: React.FC<AspectProps> = ({
         className,
     ]);
 
-    return <div className={classes} style={{paddingTop: getRatio()}}>{children}</div>;
+    return (
+        <div className={classes} style={{ paddingTop: getRatio() }}>
+            {children}
+        </div>
+    );
 };
 
 export default Aspect;

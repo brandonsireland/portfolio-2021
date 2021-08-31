@@ -45,7 +45,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({
         currentArticleData={backgroundImage}
         previousArticleData={previousPortfolioData}
     />
-)
+);
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const projectPages: any = await client

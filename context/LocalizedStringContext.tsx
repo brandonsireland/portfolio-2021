@@ -3,7 +3,6 @@ import React, { createContext, useState, ReactElement, useEffect } from 'react';
 // Utils
 import { client, getContentData } from '../contentful';
 
-
 export interface LocalizedStringsInterface {
     localizedStrings: string[];
 }
@@ -26,12 +25,17 @@ const defaultLocalizedStringsState: LocalizedStringsState = {
     setLocalizedStrings: (): void => {},
 };
 
-export const LocalizedStringsContext = createContext<LocalizedStringsState>(defaultLocalizedStringsState);
+export const LocalizedStringsContext = createContext<LocalizedStringsState>(
+    defaultLocalizedStringsState,
+);
 
 const LocalizedStringsContextProvider = ({
     children,
 }: LocalizedStringsContextProviderProps): ReactElement => {
-    const [localizedStrings, setLocalizedStrings] = useState<LocalizedStringsInterface>(defaultLocalizedStrings);
+    const [
+        localizedStrings,
+        setLocalizedStrings,
+    ] = useState<LocalizedStringsInterface>(defaultLocalizedStrings);
 
     useEffect(() => {
         const setAllStrings = async () => {
@@ -41,24 +45,35 @@ const LocalizedStringsContextProvider = ({
                     limit: 500,
                     include: 1,
                 })
-                .then(({ items: localizedStrings = [] }: { items: Array<any> }) => {
-                    return localizedStrings.map((string) => getContentData(string))
-                        .reduce((acc, cur) => ({
-                            ...acc,
-                            [cur.id]: cur.value
-                        }), {})
-                })
+                .then(
+                    ({
+                        items: localizedStrings = [],
+                    }: {
+                        items: Array<any>;
+                    }) => {
+                        return localizedStrings
+                            .map(string => getContentData(string))
+                            .reduce(
+                                (acc, cur) => ({
+                                    ...acc,
+                                    [cur.id]: cur.value,
+                                }),
+                                {},
+                            );
+                    },
+                )
                 .catch((err: string) => console.error(err));
 
             setLocalizedStrings(localizedStrings);
         };
 
         setAllStrings();
-            
-    }, [])
+    }, []);
 
     return (
-        <LocalizedStringsContext.Provider value={{ localizedStrings, setLocalizedStrings }}>
+        <LocalizedStringsContext.Provider
+            value={{ localizedStrings, setLocalizedStrings }}
+        >
             {children}
         </LocalizedStringsContext.Provider>
     );

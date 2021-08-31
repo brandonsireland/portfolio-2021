@@ -28,7 +28,10 @@ const ParallaxChildren: React.FC<ParallaxChildrenProps> = ({
 }) => {
     const { scrollY } = useViewportScroll();
     const ref = useRef<HTMLDivElement>(null);
-    const [minHeight, setMinHeight]: [minHeight: string | number, setMinHeight: Function] = useState('auto');
+    const [minHeight, setMinHeight]: [
+        minHeight: string | number,
+        setMinHeight: Function,
+    ] = useState('auto');
     const [elementTop, setElementTop] = useState(0);
 
     const springConfig = {

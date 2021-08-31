@@ -1,5 +1,11 @@
 import React, { useEffect } from 'react';
-import { useMotionValue, useSpring, LazyMotion, domAnimation, m } from 'framer-motion';
+import {
+    useMotionValue,
+    useSpring,
+    LazyMotion,
+    domAnimation,
+    m,
+} from 'framer-motion';
 
 import css from './cursor.module.scss';
 

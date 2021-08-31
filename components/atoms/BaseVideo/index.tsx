@@ -28,12 +28,14 @@ const BaseVideo: React.FC<BaseVideoProps> = ({
         if (!entry?.target) return;
         const target: Partial<HTMLMediaElement> = entry.target;
 
-        const isPlaying = target.currentTime &&
-        target?.currentTime > 0 &&
+        const isPlaying =
+            target.currentTime &&
+            target?.currentTime > 0 &&
             !target.paused &&
             !target.ended &&
             target.readyState &&
-            target.readyState > target && target?.HAVE_CURRENT_DATA;
+            target.readyState > target &&
+            target?.HAVE_CURRENT_DATA;
 
         if (!isPlaying && inView) {
             target?.play && target?.play();

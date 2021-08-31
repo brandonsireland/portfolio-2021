@@ -42,13 +42,13 @@ export const getStaticProps: GetStaticProps = async () => {
         })
         .then(({ items = [] }: { items: Array<any> }) => items[0])
         .catch((err: string) => console.error(err));
-    
+
     const pageMeta = await client
         .getEntries({
             content_type: 'page',
             limit: 1,
             include: 10,
-            'sys.id': '3VksFByn968fG9kpxNFlj9'
+            'sys.id': '3VksFByn968fG9kpxNFlj9',
         })
         .then(({ items = [] }: { items: Array<any> }) => items[0])
         .catch((err: string) => console.error(err));
@@ -60,12 +60,12 @@ export const getStaticProps: GetStaticProps = async () => {
         })
         .then(({ items = [] }: { items: Array<any> }) => {
             return items.map(item => {
-                return getContentData(item)
-            })
+                return getContentData(item);
+            });
         })
         .catch((err: string) => console.error(err));
-    
-        const { meta } = getContentData(pageMeta);
+
+    const { meta } = getContentData(pageMeta);
 
     return {
         props: {

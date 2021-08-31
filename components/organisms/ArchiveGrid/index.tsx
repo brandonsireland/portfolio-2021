@@ -1,5 +1,5 @@
 import React from 'react';
-import { LazyMotion, domAnimation, m } from "framer-motion"
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 // Components
 import ArchiveItem from '../../molecules/ArchiveItem';
@@ -28,10 +28,25 @@ const ArchiveGrid: React.FC<ArchiveGridProps> = ({ pages = [] }) => {
                         variants={divVariants}
                         initial='initial'
                         animate='animate'
-                        className={css.inner}>
-                        {pages.map(({ id, slug, title, backgroundImage, backgroundVideo }) => (
-                            <ArchiveItem key={id} slug={slug} title={title} backgroundImage={backgroundImage} backgroundVideo={backgroundVideo} />
-                        ))}
+                        className={css.inner}
+                    >
+                        {pages.map(
+                            ({
+                                id,
+                                slug,
+                                title,
+                                backgroundImage,
+                                backgroundVideo,
+                            }) => (
+                                <ArchiveItem
+                                    key={id}
+                                    slug={slug}
+                                    title={title}
+                                    backgroundImage={backgroundImage}
+                                    backgroundVideo={backgroundVideo}
+                                />
+                            ),
+                        )}
                     </m.div>
                 </LazyMotion>
             )}

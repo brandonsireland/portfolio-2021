@@ -14,7 +14,7 @@ import BaseVideo from '../../atoms/BaseVideo';
 
 const MasonryItem: React.FC<MasonryItemProps> = ({
     onClick,
-    asset: { id = '', contentType = '', },
+    asset: { id = '', contentType = '' },
     asset,
 }) => {
     const { ref, inView } = useInView({
@@ -26,7 +26,7 @@ const MasonryItem: React.FC<MasonryItemProps> = ({
             ref={ref}
             layoutId={id}
             onClick={onClick}
-            initial={{y: 100, opacity: 0}}
+            initial={{ y: 100, opacity: 0 }}
             animate={inView && { y: 0, opacity: 1 }}
             transition={{ duration: 0.2 }}
             whileHover={{ scale: 1.05, zIndex: 2 }}
@@ -40,7 +40,7 @@ const MasonryItem: React.FC<MasonryItemProps> = ({
                     loop={true}
                     url={asset.url}
                 />
-            ): (                    
+            ) : (
                 <BasePicture image={asset} query='?w=373&q=78&fit=fill' />
             )}
         </motion.div>

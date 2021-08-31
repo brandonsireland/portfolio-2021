@@ -17,12 +17,12 @@ export interface ContactPageProps {
 
 // Utils
 import { client, getContentData } from '../contentful';
- 
+
 const ErrorPage: React.FC<ContactPageProps> = ({
     globalData: { navigation = {}, footer = {} } = {},
 }) => {
-    return ( <ErrorPageTemplate navigation={navigation} footer={footer} /> );
-}
+    return <ErrorPageTemplate navigation={navigation} footer={footer} />;
+};
 
 export const getStaticProps: GetStaticProps = async () => {
     const globalSettings = await client
@@ -33,12 +33,11 @@ export const getStaticProps: GetStaticProps = async () => {
         .then(({ items = [] }: { items: Array<any> }) => items[0])
         .catch((err: string) => console.error(err));
 
-
     return {
         props: {
             globalData: getContentData(globalSettings),
         },
     };
 };
- 
+
 export default ErrorPage;

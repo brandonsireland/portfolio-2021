@@ -8,5 +8,5 @@ export interface MetaProps {
 }
 
 export interface MetaType {
-    meta?: MetaProps
+    meta?: MetaProps;
 }

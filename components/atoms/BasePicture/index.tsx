@@ -13,10 +13,7 @@ import css from './base-picture.module.scss';
 
 // https://github.com/thebuilder/react-intersection-observer/blob/master/docs/Recipes.md#lazy-image-load
 const BasePicture: React.FC<BasePictureTypes> = ({
-    image: {
-        url = '',
-        alt = '',
-    } = {},
+    image: { url = '', alt = '' } = {},
     query = '',
     imgClass,
 }) => {
@@ -37,7 +34,12 @@ const BasePicture: React.FC<BasePictureTypes> = ({
                         src={`${url}${query}${query !== '' ? '&' : '?'}fm=webp`}
                         type='image/webp'
                     ></source>
-                    <img className={classes} src={`${url}${query}`} alt={alt} loading="lazy" />
+                    <img
+                        className={classes}
+                        src={`${url}${query}`}
+                        alt={alt}
+                        loading='lazy'
+                    />
                 </Fragment>
             ) : null}
         </picture>

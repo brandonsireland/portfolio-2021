@@ -26,9 +26,7 @@ export default function getRect<T extends React.RefObject<HTMLElement>>(
     return rect;
 }
 
-export function useRect(
-    ref: any,
-): RectResult {
+export function useRect(ref: any): RectResult {
     const [rect, setRect] = useState<RectResult>(
         ref && ref.current ? getRect(ref.current) : getRect(),
     );
@@ -47,7 +45,9 @@ export function useRect(
         // @ts-ignore
         if (typeof ResizeObserver === 'function') {
             // @ts-ignore
-            let resizeObserver = new ResizeObserver(() => handleResize()) as any;
+            let resizeObserver = new ResizeObserver(() =>
+                handleResize(),
+            ) as any;
             resizeObserver.observe(element);
             return () => {
                 if (!resizeObserver) return;

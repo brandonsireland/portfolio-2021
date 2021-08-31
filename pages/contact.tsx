@@ -23,7 +23,7 @@ export interface ContactPageProps {
 
 // Utils
 import { client, getContentData } from '../contentful';
- 
+
 const ContactPage: React.FC<ContactPageProps> = ({
     pageData: { meta = {}, contentBlocks = [] } = {},
     globalData: { navigation = {}, footer = {} } = {},
@@ -34,7 +34,7 @@ const ContactPage: React.FC<ContactPageProps> = ({
         contentBlocks={contentBlocks}
         footer={footer}
     />
-)
+);
 
 export const getStaticProps: GetStaticProps = async () => {
     const globalSettings = await client
@@ -43,8 +43,8 @@ export const getStaticProps: GetStaticProps = async () => {
             include: 10,
         })
         .then(({ items = [] }: { items: Array<any> }) => items[0])
-            .catch((err: string) => console.error(err));
-    
+        .catch((err: string) => console.error(err));
+
     const contactPageData = await client
         .getEntries({
             content_type: 'page',
@@ -63,5 +63,4 @@ export const getStaticProps: GetStaticProps = async () => {
     };
 };
 
- 
 export default ContactPage;

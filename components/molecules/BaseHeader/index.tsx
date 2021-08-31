@@ -1,5 +1,5 @@
 import React from 'react';
-import { LazyMotion, domAnimation, m } from "framer-motion"
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 // Types
 import { BaseHeaderProps } from './base-header.types';

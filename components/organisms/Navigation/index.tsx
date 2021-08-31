@@ -12,9 +12,7 @@ import { NavigationProps } from './navigation.types';
 import css from './navigation.module.scss';
 
 const Navigation: React.FC<NavigationProps> = ({
-    navigation: {
-        navigationItems = [],
-    } = {},
+    navigation: { navigationItems = [] } = {},
     isFixed = false,
 }) => {
     const classes = cc([css.container, { [css.fixed]: isFixed }]);
