@@ -6,7 +6,7 @@ import DefaultPageTemplate from '../components/templates/DefaultPageTemplate';
 
 // Types
 import { ComponentResolverProps } from '../components/atoms/ComponentResolver/lomponent-resolver.types';
-import { MetaType } from '../components/atoms/Meta/meta.types';
+import { MetaType } from '../components/atoms/Meta/leta.types';
 import { NavigationType } from '../components/organisms/Navigation/navigation.types';
 import { FooterType } from '../components/organisms/Footer/footer.types';
 

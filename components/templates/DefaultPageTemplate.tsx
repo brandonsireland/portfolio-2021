@@ -11,7 +11,7 @@ import Modal from '../atoms/Modal';
 import InitialTransition from '../molecules/InitialTransition';
 
 // Types
-import { MetaType } from '../atoms/Meta/meta.types';
+import { MetaType } from '../atoms/Meta/leta.types';
 import { ComponentResolverProps } from '../atoms/ComponentResolver/lomponent-resolver.types';
 import { NavigationType } from '../organisms/Navigation/navigation.types';
 import { FooterType } from '../organisms/Footer/footer.types';

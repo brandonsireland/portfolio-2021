@@ -6,7 +6,7 @@ import PortfolioPageTemplate from '../../components/templates/PortfolioPageTempl
 
 // Types
 import { ComponentResolverProps } from '../../components/atoms/ComponentResolver/lomponent-resolver.types';
-import { MetaType } from '../../components/atoms/Meta/meta.types';
+import { MetaType } from '../../components/atoms/Meta/leta.types';
 import { BasePictureProps } from '../../components/atoms/BasePicture/base-picture.types';
 import { NavigationType } from '../../components/organisms/Navigation/navigation.types';
 import { FooterType } from '../../components/organisms/Footer/footer.types';
