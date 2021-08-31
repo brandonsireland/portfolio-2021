@@ -20,6 +20,7 @@
     }
   },
   "dependencies": {
+    "@netlify/plugin-nextjs": "^3.9.0",
     "contentful": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "flickity": "^2.2.2",
