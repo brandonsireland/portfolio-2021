@@ -8,16 +8,16 @@ import Error from '../atoms/404';
 
 // Types
 import { NavigationType } from '../organisms/Navigation/navigation.types';
-import { FooterProps } from '../organisms/Footer/footer.types';
+import { FooterType } from '../organisms/Footer/footer.types';
 
 export interface ErrorPageTemplateProps {
     navigation: NavigationType;
-    footer: FooterProps;
+    footer: FooterType;
 }
 
 const ErrorPageTemplate: React.FC<ErrorPageTemplateProps> = ({
     navigation = {},
-    footer,
+    footer = {},
 }) => (
     <Fragment>
         <Cursor />

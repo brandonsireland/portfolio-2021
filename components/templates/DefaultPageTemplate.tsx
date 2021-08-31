@@ -14,13 +14,13 @@ import InitialTransition from '../molecules/InitialTransition';
 import { MetaType } from '../atoms/Meta/meta.types';
 import { ComponentResolverProps } from '../atoms/ComponentResolver/component-resolver.types';
 import { NavigationType } from '../organisms/Navigation/navigation.types';
-import { FooterProps } from '../organisms/Footer/footer.types';
+import { FooterType } from '../organisms/Footer/footer.types';
 
 export interface DefaultPageTemplateProps {
     meta: MetaType;
     navigation: NavigationType;
     contentBlocks: ComponentResolverProps[];
-    footer: FooterProps;
+    footer: FooterType;
     isFirstMount: boolean;
 }
 
@@ -28,7 +28,7 @@ const DefaultPageTemplate: React.FC<DefaultPageTemplateProps> = ({
     meta = {},
     navigation = {},
     contentBlocks,
-    footer,
+    footer = {},
     isFirstMount,
 }) => (
     <Fragment>

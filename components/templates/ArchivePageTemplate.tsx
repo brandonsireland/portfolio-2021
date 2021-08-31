@@ -11,19 +11,19 @@ import Grid from '../organisms/ArchiveGrid';
 // Types
 import { MetaType } from '../atoms/Meta/meta.types';
 import { NavigationType } from '../organisms/Navigation/navigation.types';
-import { FooterProps } from '../organisms/Footer/footer.types';
+import { FooterType } from '../organisms/Footer/footer.types';
 
 export interface ArchivePageTemplateProps {
     meta: MetaType;
     navigation: NavigationType;
-    footer: FooterProps;
+    footer: FooterType;
     pages: any[];
 }
 
 const ArchivePageTemplate: React.FC<ArchivePageTemplateProps> = ({
     meta = {},
     navigation = {},
-    footer,
+    footer = {},
     pages,
 }) => (
     <Fragment>

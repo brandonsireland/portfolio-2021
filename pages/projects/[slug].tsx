@@ -9,7 +9,7 @@ import { ComponentResolverProps } from '../../components/atoms/ComponentResolver
 import { MetaType } from '../../components/atoms/Meta/meta.types';
 import { BasePictureProps } from '../../components/atoms/BasePicture/base-picture.types';
 import { NavigationType } from '../../components/organisms/Navigation/navigation.types';
-import { FooterProps } from '../../components/organisms/Footer/footer.types';
+import { FooterType } from '../../components/organisms/Footer/footer.types';
 import { PreviousAndNextArticleProps } from '../../components/organisms/PreviousAndNextArticle/previous-and-next-article.types';
 
 export interface ProjectPageProps {
@@ -20,7 +20,7 @@ export interface ProjectPageProps {
     };
     globalData: {
         navigation: NavigationType;
-        footer: FooterProps;
+        footer: FooterType;
     };
     articleData: {
         nextPortfolioData: Partial<PreviousAndNextArticleProps>;

@@ -6,12 +6,12 @@ import ErrorPageTemplate from '../components/templates/ErrorPageTemplate';
 
 // Types
 import { NavigationType } from '../components/organisms/Navigation/navigation.types';
-import { FooterProps } from '../components/organisms/Footer/footer.types';
+import { FooterType } from '../components/organisms/Footer/footer.types';
 
 export interface ContactPageProps {
     globalData: {
         navigation: NavigationType;
-        footer: FooterProps;
+        footer: FooterType;
     };
 }
 

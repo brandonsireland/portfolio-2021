@@ -8,12 +8,12 @@ import DefaultPageTemplate from '../components/templates/DefaultPageTemplate';
 import { ComponentResolverProps } from '../components/atoms/ComponentResolver/component-resolver.types';
 import { MetaType } from '../components/atoms/Meta/meta.types';
 import { NavigationType } from '../components/organisms/Navigation/navigation.types';
-import { FooterProps } from '../components/organisms/Footer/footer.types';
+import { FooterType } from '../components/organisms/Footer/footer.types';
 
 export interface ContactPageProps {
     globalData: {
         navigation: NavigationType;
-        footer: FooterProps;
+        footer: FooterType;
     };
     pageData: {
         meta: MetaType;
