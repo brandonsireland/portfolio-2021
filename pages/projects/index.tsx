@@ -7,9 +7,10 @@ import ArchivePageTemplate from '../../components/templates/ArchivePageTemplate'
 // Types
 import { NavigationType } from '../../components/organisms/Navigation/navigation.types';
 import { FooterProps } from '../../components/organisms/Footer/footer.types';
+import { MetaType } from '../../components/atoms/Meta/meta.types';
 
 export interface ProjectPageProps {
-    pageMeta: MetaProps;
+    pageMeta: MetaType;
     pagesData: any[];
     globalData: {
         navigation: NavigationType;
@@ -19,7 +20,6 @@ export interface ProjectPageProps {
 
 // Utils
 import { client, getContentData } from '../../contentful';
-import { MetaProps } from '../../components/atoms/Meta/meta.types';
 
 const ProjectPage: React.FC<ProjectPageProps> = ({
     pageMeta = {},

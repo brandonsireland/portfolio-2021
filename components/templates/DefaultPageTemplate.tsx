@@ -32,7 +32,7 @@ const DefaultPageTemplate: React.FC<DefaultPageTemplateProps> = ({
     isFirstMount,
 }) => (
     <Fragment>
-        <Meta meta={meta} />
+        <Meta {...meta} />
         <Modal />
         <Cursor />
         {isFirstMount && <InitialTransition />}

@@ -6,14 +6,15 @@ import PortfolioPageTemplate from '../../components/templates/PortfolioPageTempl
 
 // Types
 import { ComponentResolverProps } from '../../components/atoms/ComponentResolver/component-resolver.types';
-import { MetaProps } from '../../components/atoms/Meta/meta.types';
+import { MetaType } from '../../components/atoms/Meta/meta.types';
 import { BasePictureProps } from '../../components/atoms/BasePicture/base-picture.types';
 import { NavigationType } from '../../components/organisms/Navigation/navigation.types';
 import { FooterProps } from '../../components/organisms/Footer/footer.types';
+import { PreviousAndNextArticleProps } from '../../components/organisms/PreviousAndNextArticle/previous-and-next-article.types';
 
 export interface ProjectPageProps {
     pageData: {
-        meta: MetaProps;
+        meta: MetaType;
         backgroundImage: BasePictureProps;
         contentBlocks: ComponentResolverProps[];
     };
@@ -29,7 +30,6 @@ export interface ProjectPageProps {
 
 // Utils
 import { client, getContentData } from '../../contentful';
-import { PreviousAndNextArticleProps } from '../../components/organisms/PreviousAndNextArticle/previous-and-next-article.types';
 
 const ProjectPage: React.FC<ProjectPageProps> = ({
     pageData: { meta = {}, backgroundImage = {}, contentBlocks = [] } = {},

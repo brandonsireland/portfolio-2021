@@ -6,17 +6,17 @@ import DefaultPageTemplate from '../components/templates/DefaultPageTemplate';
 
 // Types
 import { ComponentResolverProps } from '../components/atoms/ComponentResolver/component-resolver.types';
-import { MetaProps } from '../components/atoms/Meta/meta.types';
-import { NavigationProps } from '../components/organisms/Navigation/navigation.types';
+import { MetaType } from '../components/atoms/Meta/meta.types';
+import { NavigationType } from '../components/organisms/Navigation/navigation.types';
 import { FooterProps } from '../components/organisms/Footer/footer.types';
 
 export interface ContactPageProps {
     globalData: {
-        navigation: NavigationProps;
+        navigation: NavigationType;
         footer: FooterProps;
     };
     pageData: {
-        meta: MetaProps;
+        meta: MetaType;
         contentBlocks: ComponentResolverProps[];
     };
 }

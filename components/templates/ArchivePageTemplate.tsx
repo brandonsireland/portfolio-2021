@@ -27,7 +27,7 @@ const ArchivePageTemplate: React.FC<ArchivePageTemplateProps> = ({
     pages,
 }) => (
     <Fragment>
-        <Meta meta={meta} />
+        <Meta {...meta} />
         <Cursor />
         <Navigation {...navigation} isFixed={false} />
         <LazyMotion features={domAnimation}>
