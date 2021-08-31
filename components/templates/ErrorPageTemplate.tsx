@@ -7,21 +7,21 @@ import Footer from '../organisms/Footer';
 import Error from '../atoms/404';
 
 // Types
-import { NavigationProps } from '../organisms/Navigation/navigation.types';
+import { NavigationType } from '../organisms/Navigation/navigation.types';
 import { FooterProps } from '../organisms/Footer/footer.types';
 
 export interface ErrorPageTemplateProps {
-    navigation: NavigationProps;
+    navigation: NavigationType;
     footer: FooterProps;
 }
 
 const ErrorPageTemplate: React.FC<ErrorPageTemplateProps> = ({
     navigation = {},
-    footer = {},
+    footer,
 }) => (
     <Fragment>
         <Cursor />
-        <Navigation {...navigation} isFixed/>
+        <Navigation navigation={navigation} isFixed/>
         <Error />
         <Footer {...footer} />
     </Fragment>

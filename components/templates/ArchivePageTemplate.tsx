@@ -10,26 +10,26 @@ import Grid from '../organisms/ArchiveGrid';
 
 // Types
 import { MetaProps } from '../atoms/Meta/meta.types';
-import { NavigationProps } from '../organisms/Navigation/navigation.types';
+import { NavigationType } from '../organisms/Navigation/navigation.types';
 import { FooterProps } from '../organisms/Footer/footer.types';
 
 export interface ArchivePageTemplateProps {
     meta: MetaProps;
-    navigation: NavigationProps;
+    navigation: NavigationType;
     footer: FooterProps;
     pages: any[];
 }
 
 const ArchivePageTemplate: React.FC<ArchivePageTemplateProps> = ({
-    meta = {},
+    meta,
     navigation = {},
-    footer = {},
-    pages = [],
+    footer,
+    pages,
 }) => (
     <Fragment>
         <Meta {...meta} />
         <Cursor />
-        <Navigation {...navigation} isFixed={false} />
+        <Navigation navigation={navigation} isFixed={false} />
         <LazyMotion features={domAnimation}>
             <m.div exit={{ opacity: 0 }}>
                 <Grid pages={pages} />

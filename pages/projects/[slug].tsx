@@ -8,7 +8,7 @@ import PortfolioPageTemplate from '../../components/templates/PortfolioPageTempl
 import { ComponentResolverProps } from '../../components/atoms/ComponentResolver/component-resolver.types';
 import { MetaProps } from '../../components/atoms/Meta/meta.types';
 import { BasePictureProps } from '../../components/atoms/BasePicture/base-picture.types';
-import { NavigationProps } from '../../components/organisms/Navigation/navigation.types';
+import { NavigationType } from '../../components/organisms/Navigation/navigation.types';
 import { FooterProps } from '../../components/organisms/Footer/footer.types';
 
 export interface ProjectPageProps {
@@ -18,17 +18,18 @@ export interface ProjectPageProps {
         contentBlocks: ComponentResolverProps[];
     };
     globalData: {
-        navigation: NavigationProps;
+        navigation: NavigationType;
         footer: FooterProps;
     };
     articleData: {
-        nextPortfolioData: any;
-        previousPortfolioData: any;
+        nextPortfolioData: Partial<PreviousAndNextArticleProps>;
+        previousPortfolioData: Partial<PreviousAndNextArticleProps>;
     };
 }
 
 // Utils
 import { client, getContentData } from '../../contentful';
+import { PreviousAndNextArticleProps } from '../../components/organisms/PreviousAndNextArticle/previous-and-next-article.types';
 
 const ProjectPage: React.FC<ProjectPageProps> = ({
     pageData: { meta = {}, backgroundImage = {}, contentBlocks = [] } = {},

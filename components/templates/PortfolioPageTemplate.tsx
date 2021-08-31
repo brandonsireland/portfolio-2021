@@ -11,33 +11,36 @@ import PreviousAndNextArticle from '../organisms/PreviousAndNextArticle';
 import Footer from '../organisms/Footer';
 
 // Types
-import { MetaProps } from '../atoms/Meta/meta.types';
+import { MetaType } from '../atoms/Meta/meta.types';
 import { ComponentResolverProps } from '../atoms/ComponentResolver/component-resolver.types';
+import { NavigationType } from '../organisms/Navigation/navigation.types';
+import { FooterProps } from '../organisms/Footer/footer.types';
+import { PreviousAndNextArticleProps } from '../organisms/PreviousAndNextArticle/previous-and-next-article.types';
 
 export interface PortfolioPageTemplateProps {
-    meta: MetaProps;
-    navigation: any;
+    meta: MetaType;
+    navigation: NavigationType;
     contentBlocks: ComponentResolverProps[] | [];
-    footer: any;
-    nextArticleData: any;
-    currentArticleData: any;
-    previousArticleData: any;
+    footer: FooterProps;
+    nextArticleData: Partial<PreviousAndNextArticleProps>;
+    currentArticleData: Partial<PreviousAndNextArticleProps>;
+    previousArticleData: Partial<PreviousAndNextArticleProps>;
 }
 
 const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
-    meta = {},
+    meta,
     navigation = {},
-    contentBlocks = [],
-    footer = {},
-    nextArticleData = {},
-    currentArticleData = {},
-    previousArticleData = {},
+    contentBlocks,
+    footer,
+    nextArticleData,
+    currentArticleData,
+    previousArticleData,
 }) => (
     <Fragment>
         <Meta {...meta} />
         <Modal />
         <Cursor />
-        <Navigation {...navigation} isFixed />
+        <Navigation navigation={navigation} isFixed />
         <LazyMotion features={domAnimation}>
             <m.div exit={{ opacity: 0 }}>
                 {contentBlocks &&

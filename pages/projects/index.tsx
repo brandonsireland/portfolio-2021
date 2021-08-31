@@ -5,20 +5,21 @@ import { GetStaticProps } from 'next';
 import ArchivePageTemplate from '../../components/templates/ArchivePageTemplate';
 
 // Types
-import { NavigationProps } from '../../components/organisms/Navigation/navigation.types';
+import { NavigationType } from '../../components/organisms/Navigation/navigation.types';
 import { FooterProps } from '../../components/organisms/Footer/footer.types';
 
 export interface ProjectPageProps {
-    pageMeta: any;
+    pageMeta: MetaProps;
     pagesData: any[];
     globalData: {
-        navigation: NavigationProps;
+        navigation: NavigationType;
         footer: FooterProps;
     };
 }
 
 // Utils
 import { client, getContentData } from '../../contentful';
+import { MetaProps } from '../../components/atoms/Meta/meta.types';
 
 const ProjectPage: React.FC<ProjectPageProps> = ({
     pageMeta = {},
