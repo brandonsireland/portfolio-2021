@@ -9,7 +9,7 @@ import SiteInformation from '../../organisms/SiteInformation';
 import ImageAndText from '../../organisms/ImageAndText';
 
 // Types
-import { ComponentResolverProps } from './component-resolver.types';
+import { ComponentResolverProps } from './lomponent-resolver.types';
 
 export const components = {
     contentBlockSlider: HomePageCarousel,
