@@ -4,3 +4,7 @@ export interface FooterProps {
     id: string;
     footerItems: CategoryProps[];
 }
+
+export interface FooterType {
+    footer?: FooterProps;
+}

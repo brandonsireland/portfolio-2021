@@ -13,7 +13,7 @@ import { FooterType } from '../../components/organisms/Footer/footer.types';
 import { PreviousAndNextArticleProps } from '../../components/organisms/PreviousAndNextArticle/previous-and-next-article.types';
 
 export interface ProjectPageProps {
-    pageData: {
+    pageData?: {
         meta: MetaType;
         backgroundImage: BasePictureProps;
         contentBlocks: ComponentResolverProps[];
@@ -84,7 +84,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         .then(({ items = [] }: { items: Array<any> }) => items[0])
         .catch((err: string) => console.error(err));
 
-    const pageData = await client
+    const pageData: any = await client
         .getEntries({
             content_type: 'portfolioItem',
             limit: 1,
@@ -110,7 +110,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         })
         .catch(err => console.error(err));
 
-    const nextPortfolioData = await client
+    const nextPortfolioData: any = await client
         .getEntries({
             content_type: 'portfolioItem',
             limit: 1,
@@ -132,7 +132,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         })
         .catch(err => console.error(err));
 
-    const previousPortfolioData = await client
+    const previousPortfolioData: any = await client
         .getEntries({
             content_type: 'portfolioItem',
             limit: 1,

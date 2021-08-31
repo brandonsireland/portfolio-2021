@@ -3,7 +3,6 @@ import { useMotionValue, useSpring, LazyMotion, domAnimation, m } from 'framer-m
 
 import css from './cursor.module.scss';
 
-// TODO: https://codesandbox.io/s/custom-cursor-with-framer-motion-forked-e99kf?file=/src/styles.css:673-1249
 const Cursor = () => {
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
@@ -20,12 +19,12 @@ const Cursor = () => {
             // Sets background 'Spotlight'
             document.documentElement.style.setProperty(
                 '--cursorX',
-                cursorXSpring.current + 'px',
+                cursorXSpring.get() + 'px',
             );
 
             document.documentElement.style.setProperty(
                 '--cursorY',
-                cursorYSpring.current + 'px',
+                cursorYSpring.get() + 'px',
             );
         };
 

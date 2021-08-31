@@ -3,13 +3,15 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 // Types
-import { MetaProps } from './meta.types';
+import { MetaType } from './meta.types';
 
-const Meta: React.FC<MetaProps> = ({
-    title,
-    description,
-    metaImage,
-    keywords,
+const Meta: React.FC<MetaType> = ({
+    meta: {
+        title = '',
+        description = '',
+        metaImage = {},
+        keywords = '',
+    } = {}
 }) => {
     const { route, query } = useRouter();
 

@@ -16,7 +16,7 @@ export interface IndexPageProps {
         footer: FooterType;
     };
     pageData: {
-        meta?: MetaType;
+        meta: MetaType;
         contentBlocks: ComponentResolverProps[];
     };
     isFirstMount: boolean;

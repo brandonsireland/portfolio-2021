@@ -21,7 +21,7 @@ export interface DefaultPageTemplateProps {
     navigation: NavigationType;
     contentBlocks: ComponentResolverProps[];
     footer: FooterType;
-    isFirstMount: boolean;
+    isFirstMount?: boolean;
 }
 
 const DefaultPageTemplate: React.FC<DefaultPageTemplateProps> = ({

@@ -26,19 +26,20 @@ const BaseVideo: React.FC<BaseVideoProps> = ({
 
     useEffect(() => {
         if (!entry?.target) return;
+        const target: Partial<HTMLMediaElement> = entry.target;
 
-        const isPlaying =
-            entry?.target?.currentTime > 0 &&
-            !entry?.target?.paused &&
-            !entry?.target?.ended &&
-            entry?.target?.readyState > entry?.target?.HAVE_CURRENT_DATA;
-        
+        const isPlaying = target.currentTime &&
+        target?.currentTime > 0 &&
+            !target.paused &&
+            !target.ended &&
+            target.readyState &&
+            target.readyState > target && target?.HAVE_CURRENT_DATA;
+
         if (!isPlaying && inView) {
-            entry?.target?.play();
+            target?.play && target?.play();
         } else {
-            entry?.target?.pause();
-        };
-
+            target?.pause && target?.pause();
+        }
     }, [inView]);
 
     return (

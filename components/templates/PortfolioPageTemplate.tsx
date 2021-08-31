@@ -20,7 +20,7 @@ import { PreviousAndNextArticleProps } from '../organisms/PreviousAndNextArticle
 export interface PortfolioPageTemplateProps {
     meta: MetaType;
     navigation: NavigationType;
-    contentBlocks: ComponentResolverProps[] | [];
+    contentBlocks: ComponentResolverProps[];
     footer: FooterType;
     nextArticleData: Partial<PreviousAndNextArticleProps>;
     currentArticleData: Partial<PreviousAndNextArticleProps>;

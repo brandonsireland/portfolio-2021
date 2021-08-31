@@ -12,7 +12,9 @@ import { ArchiveItemProps } from './archive-item.types';
 import css from './archive-item.module.scss';
 
 const ArchiveItem: React.FC<ArchiveItemProps> = ({
-    backgroundImage = {},
+    backgroundImage: {
+        url: backgroundImageUrl = ''
+    } = {},
     backgroundVideo,
     slug = '',
     title = '',
@@ -41,7 +43,7 @@ const ArchiveItem: React.FC<ArchiveItemProps> = ({
                 whileHover={{ scale: 1.1 }}
             >
                 <Backdrop
-                    backdrop={backgroundImage.url}
+                    backdrop={backgroundImageUrl}
                     video={backgroundVideo}
                     type={backgroundVideo ? 'video' : 'image'}
                     fill

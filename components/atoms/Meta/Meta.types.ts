@@ -6,3 +6,7 @@ export interface MetaProps {
     metaImage: BasePictureProps;
     keywords: string;
 }
+
+export interface MetaType {
+    meta?: MetaProps
+}

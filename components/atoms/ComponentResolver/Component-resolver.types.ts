@@ -5,3 +5,7 @@ export interface ComponentResolverProps {
     id?: string;
     data?: any;
 }
+
+export interface ComponentResolverType {
+    componentResolver?: ComponentResolverProps;
+}
