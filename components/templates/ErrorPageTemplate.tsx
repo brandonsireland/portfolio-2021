@@ -21,7 +21,7 @@ const ErrorPageTemplate: React.FC<ErrorPageTemplateProps> = ({
 }) => (
     <Fragment>
         <Cursor />
-        <Navigation navigation={navigation} isFixed/>
+        <Navigation {...navigation} isFixed/>
         <Error />
         <Footer {...footer} />
     </Fragment>

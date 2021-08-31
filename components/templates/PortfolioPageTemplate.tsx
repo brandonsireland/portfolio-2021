@@ -28,7 +28,7 @@ export interface PortfolioPageTemplateProps {
 }
 
 const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
-    meta,
+    meta = {},
     navigation = {},
     contentBlocks,
     footer,
@@ -40,7 +40,7 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
         <Meta {...meta} />
         <Modal />
         <Cursor />
-        <Navigation navigation={navigation} isFixed />
+        <Navigation {...navigation} isFixed />
         <LazyMotion features={domAnimation}>
             <m.div exit={{ opacity: 0 }}>
                 {contentBlocks &&

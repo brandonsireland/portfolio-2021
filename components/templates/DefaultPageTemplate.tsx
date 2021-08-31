@@ -11,7 +11,7 @@ import Modal from '../atoms/Modal';
 import InitialTransition from '../molecules/InitialTransition';
 
 // Types
-import { MetaProps, MetaType } from '../atoms/Meta/meta.types';
+import { MetaType } from '../atoms/Meta/meta.types';
 import { ComponentResolverProps } from '../atoms/ComponentResolver/component-resolver.types';
 import { NavigationType } from '../organisms/Navigation/navigation.types';
 import { FooterProps } from '../organisms/Footer/footer.types';
@@ -25,7 +25,7 @@ export interface DefaultPageTemplateProps {
 }
 
 const DefaultPageTemplate: React.FC<DefaultPageTemplateProps> = ({
-    meta,
+    meta = {},
     navigation = {},
     contentBlocks,
     footer,
@@ -36,7 +36,7 @@ const DefaultPageTemplate: React.FC<DefaultPageTemplateProps> = ({
         <Modal />
         <Cursor />
         {isFirstMount && <InitialTransition />}
-        <Navigation navigation={navigation} isFixed={false} />
+        <Navigation {...navigation} isFixed={false} />
         <LazyMotion features={domAnimation}>
             <m.div exit={{ opacity: 0 }}>
                 {contentBlocks &&
