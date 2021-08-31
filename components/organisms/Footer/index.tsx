@@ -10,7 +10,8 @@ import { FooterType } from './footer.types';
 import css from './footer.module.scss';
 
 const Footer: React.FC<FooterType> = ({
-    footer: { id = '', footerItems = [] } = {},
+    id = '',
+    footerItems =[]
 }) => {
     const ulVariants = {
         initial: {

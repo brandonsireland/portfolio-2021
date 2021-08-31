@@ -6,15 +6,16 @@ import Logo from '../../atoms/Logo';
 import BaseLink from '../../atoms/BaseLink';
 
 // Types
-import { NavigationProps } from './navigation.types';
+import { NavigationType } from './navigation.types';
 
 // Styles
 import css from './navigation.module.scss';
 
-const Navigation: React.FC<NavigationProps> = ({
-    navigation: { navigationItems = [] } = {},
+const Navigation: React.FC<NavigationType> = ({
+    navigationItems = [],
     isFixed = false,
 }) => {
+
     const classes = cc([css.container, { [css.fixed]: isFixed }]);
 
     return (

@@ -1,10 +1,10 @@
 import { CategoryProps } from '../../molecules/Category/category.types';
 
-export interface FooterProps {
+export interface FooterType {
     id: string;
     footerItems: CategoryProps[];
 }
 
-export interface FooterType {
-    footer?: FooterProps;
+export interface FooterProps {
+    footer?: FooterType;
 }
