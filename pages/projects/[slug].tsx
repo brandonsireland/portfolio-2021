@@ -5,7 +5,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import PortfolioPageTemplate from '../../components/templates/PortfolioPageTemplate';
 
 // Types
-import { ComponentResolverProps } from '../../components/atoms/ComponentResolver/component-resolver.types';
+import { ComponentResolverProps } from '../../components/atoms/ComponentResolver/lomponent-resolver.types';
 import { MetaType } from '../../components/atoms/Meta/meta.types';
 import { BasePictureProps } from '../../components/atoms/BasePicture/base-picture.types';
 import { NavigationType } from '../../components/organisms/Navigation/navigation.types';
