@@ -22,7 +22,7 @@ import css from './header.module.scss';
 const Header: React.FC<HeaderProps> = ({
     id = '',
     title = '',
-    backgroundImage: { url: backgroundImageUrl = '' } = {},
+    backgroundImage: { url: backgroundImageUrl = '', alt: backgroundImageAlt = '' } = {},
     thumbnailImage = {},
 }) => {
     const { scrollY } = useViewportScroll();
@@ -53,6 +53,7 @@ const Header: React.FC<HeaderProps> = ({
                                 fill
                                 backdrop={backgroundImageUrl}
                                 overflow={false}
+                                alt={backgroundImageAlt}
                                 query='?w=1905&h=600&q=70&fit=crop'
                             />
                         </m.div>

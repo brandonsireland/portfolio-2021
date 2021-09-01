@@ -49,6 +49,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                             fill
                             backdrop={previousArticleBackgroundImageUrl}
                             backdropClass={css.background}
+                            alt='Previous Article Background Image'
                             query='?w=707&h=300&q=70&fit=fill'
                         >
                             <Link href={previousArticleSlug}>
@@ -79,6 +80,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                         fill
                         backdrop={currentArticleBackgroundImageUrl}
                         backdropClass={css.background}
+                        alt='Current Article Background Image'
                         query='?w=490&h=300&q=70&fit=fill'
                     >
                         <Link href='/projects'>
@@ -104,6 +106,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                             fill
                             backdrop={nextArticleBackgroundImageUrl}
                             backdropClass={css.background}
+                            alt='Next Article Background Image'
                             query='?w=707&h=300&q=70&fit=fill'
                         >
                             <Link href={nextArticleSlug}>

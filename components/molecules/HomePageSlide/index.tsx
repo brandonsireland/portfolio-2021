@@ -13,7 +13,7 @@ import css from './home-page-slide.module.scss';
 
 const HomePageSlide: React.FC<HomePageSlideProps> = ({
     slug = '',
-    backgroundImage: { url: backgroundImageUrl = '' } = {},
+    backgroundImage: { url: backgroundImageUrl = '', alt = '' } = {},
     foregroundImage = {},
     foregroundLogo = {},
 }) => (
@@ -23,6 +23,7 @@ const HomePageSlide: React.FC<HomePageSlideProps> = ({
                 fill
                 backdropClass={css.slide}
                 backdrop={backgroundImageUrl}
+                alt={alt}
                 query='?w=550&h=550&q=70&fit=thumb'
             >
                 <div className={css.inner}>

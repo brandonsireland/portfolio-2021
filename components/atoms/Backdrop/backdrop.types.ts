@@ -11,4 +11,5 @@ export interface BackdropProps {
     backdropOpacity?: number;
     query?: string;
     overflow?: boolean;
+    alt?: string;
 }

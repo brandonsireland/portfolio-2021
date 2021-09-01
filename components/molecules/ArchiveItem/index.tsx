@@ -12,7 +12,7 @@ import { ArchiveItemProps } from './archive-item.types';
 import css from './archive-item.module.scss';
 
 const ArchiveItem: React.FC<ArchiveItemProps> = ({
-    backgroundImage: { url: backgroundImageUrl = '' } = {},
+    backgroundImage: { url: backgroundImageUrl = '', alt: backgroundImageAlt = '' } = {},
     backgroundVideo,
     slug = '',
     title = '',
@@ -45,6 +45,7 @@ const ArchiveItem: React.FC<ArchiveItemProps> = ({
                         video={backgroundVideo}
                         type={backgroundVideo ? 'video' : 'image'}
                         fill
+                        alt={backgroundImageAlt}
                         query='?w=381&h=400&q=70&fit=fill'
                     >
                         <div className={css.content}>
