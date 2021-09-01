@@ -6,15 +6,15 @@ import ArchivePageTemplate from '../../components/templates/ArchivePageTemplate'
 
 // Types
 import { NavigationProps } from '../../components/organisms/Navigation/navigation.types';
-import { FooterType } from '../../components/organisms/Footer/footer.types';
-import { MetaType } from '../../components/atoms/Meta/meta.types';
+import { FooterProps } from '../../components/organisms/Footer/footer.types';
+import { MetaProps } from '../../components/atoms/Meta/meta.types';
 
 export interface ProjectPageProps {
-    pageMeta: MetaType;
+    pageMeta: MetaProps;
     pagesData: any[];
     globalData: {
         navigation: NavigationProps;
-        footer: FooterType;
+        footer: FooterProps;
     };
 }
 

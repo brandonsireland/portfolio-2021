@@ -6,17 +6,17 @@ import DefaultPageTemplate from '../components/templates/DefaultPageTemplate';
 
 // Types
 import { ComponentResolverProps } from '../components/atoms/ComponentResolver/component-resolver.types';
-import { MetaType } from '../components/atoms/Meta/meta.types';
+import { MetaProps } from '../components/atoms/Meta/meta.types';
 import { NavigationProps } from '../components/organisms/Navigation/navigation.types';
-import { FooterType } from '../components/organisms/Footer/footer.types';
+import { FooterProps } from '../components/organisms/Footer/footer.types';
 
 export interface IndexPageProps {
     globalData: {
         navigation: NavigationProps;
-        footer: FooterType;
+        footer: FooterProps;
     };
     pageData: {
-        meta: MetaType;
+        meta: MetaProps;
         contentBlocks: ComponentResolverProps[];
     };
     isFirstMount: boolean;

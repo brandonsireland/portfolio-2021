@@ -6,21 +6,21 @@ import PortfolioPageTemplate from '../../components/templates/PortfolioPageTempl
 
 // Types
 import { ComponentResolverProps } from '../../components/atoms/ComponentResolver/component-resolver.types';
-import { MetaType } from '../../components/atoms/Meta/meta.types';
+import { MetaProps } from '../../components/atoms/Meta/meta.types';
 import { BasePictureProps } from '../../components/atoms/BasePicture/base-picture.types';
 import { NavigationProps } from '../../components/organisms/Navigation/navigation.types';
-import { FooterType } from '../../components/organisms/Footer/footer.types';
+import { FooterProps } from '../../components/organisms/Footer/footer.types';
 import { PreviousAndNextArticleProps } from '../../components/organisms/PreviousAndNextArticle/previous-and-next-article.types';
 
 export interface ProjectPageProps {
-    pageData?: {
-        meta: MetaType;
+    pageData: {
+        meta: MetaProps;
         backgroundImage: BasePictureProps;
         contentBlocks: ComponentResolverProps[];
     };
     globalData: {
         navigation: NavigationProps;
-        footer: FooterType;
+        footer: FooterProps;
     };
     articleData: {
         nextPortfolioData: Partial<PreviousAndNextArticleProps>;

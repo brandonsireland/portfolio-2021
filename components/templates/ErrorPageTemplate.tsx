@@ -8,11 +8,11 @@ import Error from '../atoms/404';
 
 // Types
 import { NavigationProps } from '../organisms/Navigation/navigation.types';
-import { FooterType } from '../organisms/Footer/footer.types';
+import { FooterProps } from '../organisms/Footer/footer.types';
 
 export interface ErrorPageTemplateProps {
     navigation?: NavigationProps;
-    footer: FooterType;
+    footer: FooterProps;
 }
 
 const ErrorPageTemplate: React.FC<ErrorPageTemplateProps> = ({

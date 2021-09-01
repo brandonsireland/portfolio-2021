@@ -4,12 +4,12 @@ import { LazyMotion, domAnimation, m } from 'framer-motion';
 import Category from '../../molecules/Category';
 
 // Types
-import { FooterType } from './footer.types';
+import { FooterProps } from './footer.types';
 
 // Style
 import css from './footer.module.scss';
 
-const Footer: React.FC<FooterType> = ({
+const Footer: React.FC<FooterProps> = ({
     id = '',
     footerItems =[]
 }) => {

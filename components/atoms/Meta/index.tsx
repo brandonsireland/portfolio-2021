@@ -1,14 +1,48 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 // Types
-import { MetaType } from './meta.types';
+import { MetaProps } from './meta.types';
 
-const Meta: React.FC<MetaType> = ({
-    meta: { title = '', description = '', metaImage = {}, keywords = '' } = {},
+const Meta: React.FC<MetaProps> = ({
+    title = '',
+    description = '',
+    metaImage = {},
+    keywords = '',
 }) => {
     const { route, query } = useRouter();
+
+    useEffect(() => {
+        const pageTitle = title;
+        const attentionMessage = 'Come Back!';
+        let blinkEvent: any = null;
+
+        const visibility = () => {
+            var isPageActive = !document.hidden;
+
+            if (!isPageActive) {
+                blink();
+            } else {
+                document.title = pageTitle;
+                clearInterval(blinkEvent);
+            }
+        };
+
+        const blink = () => {
+            blinkEvent = setInterval(function () {
+                if (document.title === attentionMessage) {
+                    document.title = pageTitle;
+                } else {
+                    document.title = attentionMessage;
+                }
+            }, 100);
+        };
+        document.addEventListener('visibilitychange', visibility);
+
+        return () =>
+            document.removeEventListener('visibilitychange', visibility);
+    }, []);
 
     const path = Object.keys(query).reduce((acc, cur) => {
         return acc.replace(`[${cur}]`, `${query[cur]}`);
