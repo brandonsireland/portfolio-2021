@@ -52,7 +52,7 @@ const Backdrop: React.FC<BackdropProps> = ({
                 >
                     <picture>
                         <source
-                            src={`${backdrop}${query}${
+                            srcSet={`${backdrop}${query}${
                                 query !== '' ? '&' : '?'
                             }fm=webp`}
                             type='image/webp'
