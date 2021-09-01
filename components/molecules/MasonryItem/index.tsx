@@ -15,7 +15,7 @@ import BaseVideo from '../../atoms/BaseVideo';
 
 const MasonryItem: React.FC<MasonryItemProps> = ({
     onClick,
-    asset: { id = '', contentType = '' },
+    asset: { contentType = '' },
     asset,
 }) => {
     const { ref, inView } = useInView({
