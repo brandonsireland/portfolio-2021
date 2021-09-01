@@ -12,6 +12,7 @@ import css from './backdrop.module.scss';
 
 const Backdrop: React.FC<BackdropProps> = ({
     backdrop,
+    alt,
     backgroundColor,
     backdropClass,
     isStatic = false,
@@ -57,7 +58,7 @@ const Backdrop: React.FC<BackdropProps> = ({
                             }fm=webp`}
                             type='image/webp'
                         ></source>
-                        <img className={css.img} src={`${backdrop}${query}`} />
+                        <img className={css.img} src={`${backdrop}${query}`} alt={alt}/>
                     </picture>
 
                     {type !== 'image' && video && (
