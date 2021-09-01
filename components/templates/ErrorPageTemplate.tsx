@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
+import dynamic from 'next/dynamic';
 
 // Components
 import Cursor from '../atoms/Cursor';
 import Navigation from '../organisms/Navigation';
-import Footer from '../organisms/Footer';
 import Error from '../atoms/404';
+
+const Footer = dynamic(() => import('../organisms/Footer'));
 
 // Types
 import { NavigationProps } from '../organisms/Navigation/navigation.types';

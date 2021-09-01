@@ -1,14 +1,15 @@
 import React, { Fragment } from 'react';
+import dynamic from 'next/dynamic';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 // Components
 import Meta from '../atoms/Meta';
 import Cursor from '../atoms/Cursor';
 import Navigation from '../organisms/Navigation';
-import Footer from '../organisms/Footer';
 import ComponentResolver from '../atoms/ComponentResolver';
-import Modal from '../atoms/Modal';
 import InitialTransition from '../molecules/InitialTransition';
+
+const Footer = dynamic(() => import('../organisms/Footer'));
 
 // Types
 import { MetaProps } from '../atoms/Meta/meta.types';
@@ -33,7 +34,6 @@ const DefaultPageTemplate: React.FC<DefaultPageTemplateProps> = ({
 }) => (
     <Fragment>
         <Meta {...meta} />
-        <Modal />
         <Cursor />
         {isFirstMount && <InitialTransition />}
         <Navigation {...navigation} isFixed={false} />

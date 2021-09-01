@@ -1,14 +1,17 @@
 import React, { Fragment } from 'react';
+import dynamic from 'next/dynamic';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 // Components
 import Meta from '../atoms/Meta';
-import Modal from '../atoms/Modal';
 import ComponentResolver from '../atoms/ComponentResolver';
 import Cursor from '../atoms/Cursor';
 import Navigation from '../organisms/Navigation';
-import PreviousAndNextArticle from '../organisms/PreviousAndNextArticle';
-import Footer from '../organisms/Footer';
+
+const Modal = dynamic(() => import('../atoms/Modal'));
+const PreviousAndNextArticle = dynamic(() => import('../organisms/PreviousAndNextArticle'));
+const Footer = dynamic(() => import('../organisms/Footer'));
+
 
 // Types
 import { MetaProps } from '../atoms/Meta/meta.types';

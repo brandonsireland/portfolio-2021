@@ -1,8 +1,7 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 
 // Components
-const MasonryModal = dynamic(() => import('../../molecules/MasonryModal'));
+import MasonryModal from '../../molecules/MasonryModal';
 
 // Context
 import { ModalConsumer } from '../../../context/ModalContext';

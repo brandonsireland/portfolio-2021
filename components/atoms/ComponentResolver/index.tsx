@@ -1,12 +1,15 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 
 // Components
-import BeautifyJSON from '../BeautifyJSON';
 import HomePageCarousel from '../../organisms/HomePageCarousel';
 import Header from '../../organisms/Header';
-import MasonryGrid from '../../organisms/MasonryGrid';
 import SiteInformation from '../../organisms/SiteInformation';
 import ImageAndText from '../../organisms/ImageAndText';
+
+// Dynamic Component imports for optimization
+const BeautifyJSON = dynamic(() => import('../BeautifyJSON'));
+const MasonryGrid = dynamic(() => import('../../organisms/MasonryGrid'));
 
 // Types
 import { ComponentResolverProps } from './component-resolver.types';
