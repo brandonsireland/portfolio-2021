@@ -8,7 +8,8 @@ import { MetaProps } from './meta.types';
 const Meta: React.FC<MetaProps> = ({
     title = '',
     description = '',
-    metaImage = {},
+    openGraphImage = {},
+    twitterImage = {},
     keywords = '',
 }) => {
     const { route, query } = useRouter();
@@ -71,13 +72,18 @@ const Meta: React.FC<MetaProps> = ({
                 </>
             )}
 
-            {metaImage && (
+            {openGraphImage && (
                 <>
-                    <meta name='og:image' content={metaImage.url} />
+                    <meta name='og:image' content={openGraphImage.url} />
                     <meta name='twitter:card' content='summary_large_image' />
+                </>
+            )}
+
+            {twitterImage && (
+                <>
                     <meta
                         name='twitter:image'
-                        content={`${metaImage.url}?w=300&h=157`}
+                        content={`${twitterImage.url}?w=300&h=157`}
                     />
                 </>
             )}

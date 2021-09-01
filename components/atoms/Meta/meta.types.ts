@@ -3,6 +3,7 @@ import { BasePictureProps } from '../BasePicture/base-picture.types';
 export interface MetaProps {
     title?: string;
     description?: string;
-    metaImage?: BasePictureProps;
+    openGraphImage?: BasePictureProps;
+    twitterImage?: BasePictureProps;
     keywords?: string;
 }
