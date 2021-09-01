@@ -10,7 +10,6 @@ import {
 
 // Components
 import MasonryItem from '../../molecules/MasonryItem';
-import MasonryModal from '../../molecules/MasonryModal';
 
 // Types
 import { MasonryGridProps } from './masonry-grid.types';
@@ -75,7 +74,7 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({
                                 asset={asset}
                                 onClick={() =>
                                     setModal({
-                                        component: MasonryModal,
+                                        component: 'MasonryModal',
                                         displayModal: true,
                                         props: { asset: asset },
                                     })
