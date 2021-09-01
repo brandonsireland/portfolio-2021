@@ -34,9 +34,11 @@ const Backdrop: React.FC<BackdropProps> = ({
         rootMargin: '200px 0px',
         skip: supportsLazyLoading !== false,
     });
+    
     return (
         <Fragment>
             <div
+                ref={ref}
                 className={cc([
                     css.wrap,
                     { [css.fill]: fill, [css.overflow]: overflow },
@@ -62,7 +64,7 @@ const Backdrop: React.FC<BackdropProps> = ({
                             opacity: backdropOpacity,
                         }}
                     >
-                        <picture ref={ref}>
+                        <picture>
                         {inView || supportsLazyLoading ? (
                                 <Fragment>
                                     <source
