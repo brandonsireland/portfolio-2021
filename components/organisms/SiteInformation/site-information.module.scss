@@ -25,6 +25,10 @@
     align-items: center;
     color: color('white');
     margin: auto;
+
+    @include media('md') {
+        justify-content: flex-start;
+    }
 }
 
 .content {
@@ -87,6 +91,7 @@
 
     @include media('md') {
         align-items: flex-end;
+        text-align: right;
     }
 }
 
