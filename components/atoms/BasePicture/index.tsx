@@ -26,24 +26,21 @@ const BasePicture: React.FC<BasePictureTypes> = ({
 
     const classes = cc([css.image, imgClass]);
 
-    return (
+    return inView || supportsLazyLoading ? (
         <picture ref={ref} className={css.picture}>
-            {inView || supportsLazyLoading ? (
-                <Fragment>
-                    <source
-                        srcSet={`${url}${query}${query !== '' ? '&' : '?'}fm=webp`}
-                        type='image/webp'
-                    ></source>
-                    <img
-                        className={classes}
-                        src={`${url}${query}`}
-                        alt={alt}
-                        loading='lazy'
-                    />
-                </Fragment>
-            ) : null}
+            <Fragment>
+                <source
+                    srcSet={`${url}${query}${query !== '' ? '&' : '?'}fm=webp`}
+                    type='image/webp'
+                ></source>
+                <img
+                    className={classes}
+                    src={`${url}${query}`}
+                    alt={alt}
+                    loading='lazy'
+                />
+            </Fragment>
         </picture>
-    );
+    ) : null;
 };
-
 export default BasePicture;
