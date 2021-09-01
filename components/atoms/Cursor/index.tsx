@@ -45,7 +45,7 @@ const Cursor = () => {
         return () => {
             window.removeEventListener('mousemove', moveCursor);
         };
-    }, [width]);
+    }, []);
 
     return width >= 768 ? (
         <LazyMotion features={domAnimation}>
