@@ -19,7 +19,7 @@ const BaseLink: React.FC<BaseLinkProps> = ({
     const classes = cc([css.link, className]);
 
     return linkPattern.test(href) ? (
-        <a className={classes} href={href} target={Targets[target]}>
+        <a className={classes} href={href} target={Targets[target]} rel="noopener">
             {children}
         </a>
     ) : (
