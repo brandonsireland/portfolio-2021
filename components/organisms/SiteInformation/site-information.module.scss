@@ -4,8 +4,11 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 40px 40px 0;
+    padding: 20px 20px 0;
 
+    @include media('sm') {
+        padding: 40px 40px 0;
+    }
     @include media('md') {
         padding: 160px 40px 0;
     }
@@ -26,11 +29,14 @@
 
 .content {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .list {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     padding-left: 0;
 }
@@ -43,7 +49,11 @@
 
 .reverse {
     flex-direction: row-reverse;
-    text-align: right;
+    text-align: center;
+
+    @include media('md') {
+        text-align: right;
+    }
 }
 
 .imageContainer {
@@ -57,18 +67,27 @@
 
 .contentContainer {
     width: 100%;
-    padding: 0 30px 30px;
     display: flex;
     flex-direction: column;
+    text-align: center;
+
+    @include media('sm') {
+        padding: 0 30px 30px;
+    }
 
     @include media('md') {
         max-width: 50%;
         padding: 30px;
+        text-align: left;
     }
 }
 
 .contentReverse {
-    align-items: flex-end;
+    align-items: center;
+
+    @include media('md') {
+        align-items: flex-end;
+    }
 }
 
 .space {

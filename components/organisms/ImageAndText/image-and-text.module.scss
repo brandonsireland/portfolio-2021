@@ -3,7 +3,11 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 160px 40px 0;
+    padding: 20px;
+
+    @include media('md') {
+        padding: 160px 40px 0;
+    }
 }
 
 .inner {
@@ -13,6 +17,7 @@
     width: 100%;
     max-width: $max-width;
     margin: auto;
+    flex-wrap: wrap;
 }
 
 .reverse {
@@ -21,13 +26,21 @@
 
 .imageContainer {
     width: 100%;
-    max-width: 40%;
     position: relative;
-    margin-top: -40px;
+
+    @include media('md') {
+        margin-top: -40px;
+        max-width: 40%;
+    }
 }
 
 .contentContainer {
     width: 100%;
-    max-width: 50%;
-    padding: 30px;
+    margin-top: 30px;
+
+    @include media('md') {
+        max-width: 50%;
+        padding: 30px;
+        margin-top: 0;
+    }
 }

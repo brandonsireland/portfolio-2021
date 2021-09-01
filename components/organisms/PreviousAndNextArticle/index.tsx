@@ -81,7 +81,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                         backdropClass={css.background}
                         query='?w=490&h=300&q=70&fit=fill'
                     >
-                        <Link href='/archive'>
+                        <Link href='/projects'>
                             <a className={cc([css.returnLink, css.link])}>
                                 <Icon
                                     className={css.menu}

@@ -31,7 +31,7 @@ const BasePicture: React.FC<BasePictureTypes> = ({
             {inView || supportsLazyLoading ? (
                 <Fragment>
                     <source
-                        src={`${url}${query}${query !== '' ? '&' : '?'}fm=webp`}
+                        srcSet={`${url}${query}${query !== '' ? '&' : '?'}fm=webp`}
                         type='image/webp'
                     ></source>
                     <img

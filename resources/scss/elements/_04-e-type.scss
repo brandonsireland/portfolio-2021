@@ -43,7 +43,7 @@ h6 {
 
 h1 {
     font-size: rem(32px);
-    line-height: math.div(43, 32);
+    line-height: math.div(34, 32);
 
     @include media('sm') {
         font-size: rem(56px);

@@ -13,6 +13,7 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .link {
@@ -21,8 +22,13 @@
 }
 
 .fourofour {
-    font-size: rem(260px);
-    line-height: (280 / 260);
+    font-size: 160px;
+    line-height: (180 / 160);
     font-weight: bold;
     font-family: $secondary-font-family;
+
+    @include media('sm') {
+        font-size: rem(260px);
+        line-height: (280 / 260);
+    }
 }

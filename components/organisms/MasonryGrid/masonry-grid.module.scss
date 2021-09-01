@@ -2,9 +2,12 @@
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    padding-bottom: 40px;
     position: relative;
     overflow: hidden;
+
+    @include media('sm') {
+        padding-bottom: 40px;
+    }
 
     @include media('md') {
         padding: 60px 100px 40px;
@@ -12,13 +15,17 @@
 }
 
 .inner {
-    column-count: 2;
+    column-count: 1;
     column-gap: 20px;
     padding: 0 20px;
     position: relative;
     z-index: 1;
 
     @include media('sm') {
+        column-count: 2;
+    }
+
+    @include media('md') {
         column-count: 3;
     }
 }
