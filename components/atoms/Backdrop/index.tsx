@@ -62,8 +62,8 @@ const Backdrop: React.FC<BackdropProps> = ({
                             opacity: backdropOpacity,
                         }}
                     >
+                        <picture ref={ref}>
                         {inView || supportsLazyLoading ? (
-                            <picture>
                                 <Fragment>
                                     <source
                                         srcSet={`${backdrop}${query}${
@@ -77,8 +77,8 @@ const Backdrop: React.FC<BackdropProps> = ({
                                         alt={alt}
                                     />
                                 </Fragment>
-                            </picture>
                         ) : null}
+                        </picture>
 
                         {type !== 'image' && video && (
                             <BaseVideo
