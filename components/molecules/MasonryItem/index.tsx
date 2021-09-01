@@ -1,5 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 // Components
@@ -22,28 +23,29 @@ const MasonryItem: React.FC<MasonryItemProps> = ({
     });
 
     return (
-        <motion.div
-            ref={ref}
-            layoutId={id}
-            onClick={onClick}
-            initial={{ y: 100, opacity: 0 }}
-            animate={inView && { y: 0, opacity: 1 }}
-            transition={{ duration: 0.2 }}
-            whileHover={{ scale: 1.05, zIndex: 2 }}
-            className={css.item}
-        >
-            {contentType === 'video/mp4' ? (
-                <BaseVideo
-                    playsInline={true}
-                    autoPlay={true}
-                    muted={true}
-                    loop={true}
-                    url={asset.url}
-                />
-            ) : (
-                <BasePicture image={asset} query='?w=373&q=78&fit=fill' />
-            )}
-        </motion.div>
+        <LazyMotion features={domAnimation}>
+            <m.div
+                ref={ref}
+                onClick={onClick}
+                initial={{ y: 100, opacity: 0 }}
+                animate={inView && { y: 0, opacity: 1 }}
+                transition={{ duration: 0.2 }}
+                whileHover={{ scale: 1.05, zIndex: 2 }}
+                className={css.item}
+            >
+                {contentType === 'video/mp4' ? (
+                    <BaseVideo
+                        playsInline={true}
+                        autoPlay={true}
+                        muted={true}
+                        loop={true}
+                        url={asset.url}
+                    />
+                ) : (
+                    <BasePicture image={asset} query='?w=373&q=78&fit=fill' />
+                )}
+            </m.div>
+        </LazyMotion>
     );
 };
 

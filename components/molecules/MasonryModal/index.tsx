@@ -21,7 +21,7 @@ import css from './masonry-modal.module.scss';
 ReactModal.setAppElement('#__next');
 
 const MasonryModal: React.FC<MasonryModalProps> = ({
-    asset: { id = '', contentType = '' },
+    asset: { contentType = '' },
     asset,
 }) => {
     const {
@@ -37,7 +37,7 @@ const MasonryModal: React.FC<MasonryModalProps> = ({
             onRequestClose={() => setModal({ displayModal: false })}
         >
             <LazyMotion features={domAnimation}>
-                <m.div className={css.inner} layoutId={id}>
+                <m.div className={css.inner}>
                     <button
                         className={css.close}
                         onClick={() => setModal({ displayModal: false })}
