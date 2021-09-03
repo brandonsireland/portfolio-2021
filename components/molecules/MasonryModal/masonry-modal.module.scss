@@ -12,6 +12,8 @@
         margin: auto;
         inset: 0 !important;
         width: 100%;
+        left: 0 !important;
+        right: 0 !important;
 
         @include media('sm') {
             padding: 40px !important;
