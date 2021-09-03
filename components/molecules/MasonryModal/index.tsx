@@ -4,7 +4,7 @@ import ReactModal from 'react-modal';
 
 // Components
 import Icon from '../../atoms/Icon';
-import BasePicture from '../../atoms/BasePicture';
+import ResponsiveMedia from '../ResponsiveMedia';
 import BaseVideo from '../../atoms/BaseVideo';
 
 // Context
@@ -20,9 +20,28 @@ import css from './masonry-modal.module.scss';
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 ReactModal.setAppElement('#__next');
 
+// query='?w=900&q=70&fit=thumb'
+
+const modalQuery = {
+    w1024up: {
+        maxWidthQuery: '&w=900',
+        fit: '&fit=thumb',
+        quality: '?q=78'
+    },
+    w1023: {
+        maxWidthQuery: '&w=900',
+        fit: '&fit=thumb',
+        quality: '?q=78'
+    },
+    w767: {
+        maxWidthQuery: '&w=900',
+        fit: '&fit=thumb',
+        quality: '?q=78'
+    },
+};
+
 const MasonryModal: React.FC<MasonryModalProps> = ({
-    asset: { contentType = '' },
-    asset,
+    asset = {},
 }) => {
     const {
         modal: { displayModal },
@@ -45,18 +64,16 @@ const MasonryModal: React.FC<MasonryModalProps> = ({
                         <Icon icon={IconType['Close']} alt='Close Icon' />
                     </button>
                     <div>
-                        {contentType === 'video/mp4' ? (
+                        {asset && asset?.poster ? (
                             <BaseVideo
                                 autoPlay={false}
                                 controls
                                 muted
-                                url={asset.url}
+                                url={asset.default?.url}
+                                poster={asset.poster.url}
                             />
                         ) : (
-                            <BasePicture
-                                image={asset}
-                                query='?w=900&q=70&fit=thumb'
-                            />
+                            <ResponsiveMedia srcset={asset} queries={modalQuery} />
                         )}
                     </div>
                 </m.div>

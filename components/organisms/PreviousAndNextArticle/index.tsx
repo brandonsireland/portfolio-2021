@@ -5,7 +5,7 @@ import cc from 'classcat';
 
 // Components
 import Icon from '../../atoms/Icon';
-import Backdrop from '../../atoms/Backdrop';
+import Backdrop from '../../molecules/Backdrop';
 
 // Types
 import { PreviousAndNextArticleProps } from './previous-and-next-article.types';
@@ -17,20 +17,52 @@ import { LocalizedStringsContext } from '../../../context/LocalizedStringContext
 // Styles
 import css from './previous-and-next-article.module.scss';
 
+const prevAndNextQuery = {
+    w1024up: {
+        maxWidthQuery: '&w=707',
+        maxHeightQuery: '&h=300',
+        fit: '&fit=fill',
+      },
+      w1023: {
+          maxWidthQuery: '&w=707',
+          maxHeightQuery: '&h=300',
+          fit: '&fit=fill',
+      },
+      w767: {
+          maxWidthQuery: '&w=707',
+          maxHeightQuery: '&h=300',
+          fit: '&fit=fill',
+      }
+}
+
+const currentQuery = {
+    w1024up: {
+        maxWidthQuery: '&w=390',
+        maxHeightQuery: '&h=300',
+        fit: '&fit=fill',
+      },
+      w1023: {
+          maxWidthQuery: '&w=390',
+          maxHeightQuery: '&h=300',
+          fit: '&fit=fill',
+      },
+      w767: {
+          maxWidthQuery: '&w=390',
+          maxHeightQuery: '&h=300',
+          fit: '&fit=fill',
+      }
+}
+
 const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
     id = '',
-    currentArticleData: { url: currentArticleBackgroundImageUrl = '' } = {},
+    currentArticleData = {},
     nextArticleData: {
-        nextArticleBackgroundImage: {
-            url: nextArticleBackgroundImageUrl = '',
-        } = {},
+        nextArticleBackgroundImage,
         nextArticleSlug = '',
         nextArticleTitle = '',
     } = {},
     previousArticleData: {
-        previousArticleBackgroundImage: {
-            url: previousArticleBackgroundImageUrl = '',
-        } = {},
+        previousArticleBackgroundImage,
         previousArticleSlug = '',
         previousArticleTitle = '',
     } = {},
@@ -47,10 +79,11 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                     >
                         <Backdrop
                             fill
-                            backdrop={previousArticleBackgroundImageUrl}
+                            backdrop={previousArticleBackgroundImage}
                             backdropClass={css.background}
                             alt='Previous Article Background Image'
-                            query='?w=707&h=300&q=70&fit=fill'
+                            type={previousArticleBackgroundImage.poster ? 'video' : 'image'}
+                            query={prevAndNextQuery}
                         >
                             <Link href={previousArticleSlug}>
                                 <a className={css.link}>
@@ -78,10 +111,11 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                 >
                     <Backdrop
                         fill
-                        backdrop={currentArticleBackgroundImageUrl}
+                        backdrop={currentArticleData}
                         backdropClass={css.background}
+                        type={currentArticleData.poster ? 'video' : 'image'}
                         alt='Current Article Background Image'
-                        query='?w=490&h=300&q=70&fit=fill'
+                        query={currentQuery}
                     >
                         <Link href='/projects'>
                             <a className={cc([css.returnLink, css.link])}>
@@ -104,10 +138,11 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                     >
                         <Backdrop
                             fill
-                            backdrop={nextArticleBackgroundImageUrl}
+                            backdrop={nextArticleBackgroundImage}
                             backdropClass={css.background}
+                            type={nextArticleBackgroundImage.poster ? 'video' : 'image'}
                             alt='Next Article Background Image'
-                            query='?w=707&h=300&q=70&fit=fill'
+                            query={prevAndNextQuery}
                         >
                             <Link href={nextArticleSlug}>
                                 <a className={css.link}>

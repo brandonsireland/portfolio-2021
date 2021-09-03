@@ -9,7 +9,7 @@ import Markdown from '../../atoms/Markdown';
 import Aspect from '../../atoms/AspectRatio';
 import BaseLink from '../../atoms/BaseLink';
 import Category from '../../molecules/Category';
-import BasePicture from '../../atoms/BasePicture';
+import ResponsiveMedia from '../../molecules/ResponsiveMedia';
 import BaseVideo from '../../atoms/BaseVideo';
 
 // Types
@@ -20,6 +20,74 @@ import { LocalizedStringsContext } from '../../../context/LocalizedStringContext
 
 // Styles
 import css from './site-information.module.scss';
+
+const ulVariants = {
+    initial: {
+        transition: { staggerChildren: 0.05, staggerDirection: -1 },
+    },
+    animate: {
+        transition: { staggerChildren: 0.3, delayChildren: 1.6 },
+    },
+};
+
+const liVariants = {
+    initial: {
+        y: 50,
+        opacity: 0,
+        transition: {
+            y: { stiffness: 1000 },
+        },
+    },
+    animate: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            y: { stiffness: 1000, velocity: -100 },
+        },
+    },
+};
+
+const imageVariants = {
+    initial: {
+        y: 100,
+        opacity: 0,
+    },
+    animate: {
+        y: 0,
+        opacity: 1,
+        transition: { delay: 0.3, duration: 0.6 },
+    },
+};
+
+const contentVariants = {
+    initial: {
+        y: 100,
+        opacity: 0,
+    },
+    animate: {
+        y: 0,
+        opacity: 1,
+        transition: { delay: 0.4, duration: 0.6 },
+    },
+};
+
+const siteInfoQuery = {
+    w1024up: {
+        maxWidthQuery: '&w=720',
+        maxHeightQuery: '&h=570',
+        fit: '&fit=thumb',
+    },
+    w1023: {
+        maxWidthQuery: '&w=720',
+        maxHeightQuery: '&h=570',
+        fit: '&fit=thumb',
+    },
+    w767: {
+        maxWidthQuery: '&w=720',
+        maxHeightQuery: '&h=570',
+        fit: '&fit=thumb',
+    },
+};
 
 const SiteInformation: React.FC<SiteInformationProps> = ({
     id = '',
@@ -36,67 +104,15 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
     } = {},
     categories,
     description,
-    image: { url: mediaUrl = '', contentType: mediaContentType = '' } = {},
-    image,
+    media = {},
     imageLeft = true,
 }) => {
     const { localizedStrings = [] } = useContext(LocalizedStringsContext);
-
     const { ref, inView } = useInView({
         threshold: 0.4,
     });
-
     const newYear = new Date(yearCreated).getFullYear();
 
-    const ulVariants = {
-        initial: {
-            transition: { staggerChildren: 0.05, staggerDirection: -1 },
-        },
-        animate: {
-            transition: { staggerChildren: 0.3, delayChildren: 1.6 },
-        },
-    };
-
-    const liVariants = {
-        initial: {
-            y: 50,
-            opacity: 0,
-            transition: {
-                y: { stiffness: 1000 },
-            },
-        },
-        animate: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                y: { stiffness: 1000, velocity: -100 },
-            },
-        },
-    };
-
-    const imageVariants = {
-        initial: {
-            y: 100,
-            opacity: 0,
-        },
-        animate: {
-            y: 0,
-            opacity: 1,
-            transition: { delay: 0.3, duration: 0.6 },
-        },
-    };
-
-    const contentVariants = {
-        initial: {
-            y: 100,
-            opacity: 0,
-        },
-        animate: {
-            y: 0,
-            opacity: 1,
-            transition: { delay: 0.4, duration: 0.6 },
-        },
-    };
 
     return (
         <section id={id} className={css.container} ref={ref}>
@@ -108,25 +124,23 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                             initial='initial'
                             animate={inView && 'animate'}
                         >
-                            {mediaContentType === 'image/jpeg' ? (
-                                <Aspect
-                                    ratio={'720x570'}
-                                    visibleOverflow={false}
-                                >
-                                    <BasePicture
-                                        image={image}
-                                        query='?w=720&h=570&q=100&fit=thumb'
-                                    />
-                                </Aspect>
-                            ) : (
+                            {media?.poster ? (
                                 <BaseVideo
-                                    url={mediaUrl}
+                                    url={media.default && media?.default.url}
+                                    poster={media?.poster.url}
                                     playsInline={true}
                                     autoPlay={true}
                                     muted={true}
                                     loop={true}
                                     controls={false}
                                 />
+                            ) : (                                    
+                                    <Aspect
+                                    ratio={'720x570'}
+                                    visibleOverflow={false}
+                                >
+                                    <ResponsiveMedia srcset={media} queries={siteInfoQuery} />
+                                </Aspect>
                             )}
                         </m.div>
                     </ParallaxChildren>

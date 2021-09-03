@@ -17,7 +17,7 @@ const BaseVideo: React.FC<BaseVideoProps> = ({
     loop = false,
     controls = false,
     className = '',
-    poster = '',
+    poster,
 }) => {
     const { ref, inView, entry } = useInView({
         threshold: 0.1,

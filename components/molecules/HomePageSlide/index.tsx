@@ -3,7 +3,7 @@ import React from 'react';
 // Components
 import BasePicture from '../../atoms/BasePicture';
 import BaseLink from '../../atoms/BaseLink';
-import Backdrop from '../../atoms/Backdrop';
+import Backdrop from '../Backdrop';
 
 // Types
 import { HomePageSlideProps } from './home-page-slide.types';
@@ -11,9 +11,32 @@ import { HomePageSlideProps } from './home-page-slide.types';
 // Styles
 import css from './home-page-slide.module.scss';
 
+const homeSlideQuery = {
+    w1024up: {
+        maxWidthQuery: '',
+        maxHeightQuery: '&h=550',
+        fit: '&fit=thumb',
+      },
+      w1023: {
+          maxWidthQuery: '',
+          maxHeightQuery: '&h=550',
+          fit: '&fit=thumb',
+      },
+      w767: {
+          maxWidthQuery: '',
+          maxHeightQuery: '&h=550',
+          fit: '&fit=thumb',
+    },
+    w575: {
+        maxWidthQuery: '',
+        maxHeightQuery: '&h=550',
+        fit: '&fit=thumb',
+    },
+}
+
 const HomePageSlide: React.FC<HomePageSlideProps> = ({
     slug = '',
-    backgroundImage: { url: backgroundImageUrl = '', alt = '' } = {},
+    backgroundMedia = {},
     foregroundImage = {},
     foregroundLogo = {},
 }) => (
@@ -22,9 +45,8 @@ const HomePageSlide: React.FC<HomePageSlideProps> = ({
             <Backdrop
                 fill
                 backdropClass={css.slide}
-                backdrop={backgroundImageUrl}
-                alt={alt}
-                query='?w=550&h=550&q=70&fit=thumb'
+                backdrop={backgroundMedia}
+                query={homeSlideQuery}
             >
                 <div className={css.inner}>
                     <BasePicture

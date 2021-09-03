@@ -11,7 +11,7 @@ import {
 // Components
 import BasePicture from '../../atoms/BasePicture';
 import Aspect from '../../atoms/AspectRatio';
-import Backdrop from '../../atoms/Backdrop';
+import Backdrop from '../../molecules/Backdrop';
 
 // Types
 import { HeaderProps } from './header.types';
@@ -19,10 +19,38 @@ import { HeaderProps } from './header.types';
 // Styles
 import css from './header.module.scss';
 
+const headerQuery = {
+    default: {
+        maxWidthQuery: '',
+        maxHeightQuery: '&h=550',
+        fit: '&fit=fill',
+    },
+    w1024up: {
+        maxWidthQuery: '',
+        maxHeightQuery: '&h=600',
+        fit: '&fit=fill',
+      },
+    w1023: {
+        maxWidthQuery: '',
+          maxHeightQuery: '&h=600',
+          fit: '&fit=fill',
+      },
+    w767: {
+        maxWidthQuery: '',
+          maxHeightQuery: '&h=600',
+          fit: '&fit=fill',
+    },
+    w575: {
+        maxWidthQuery: '',
+          maxHeightQuery: '&h=600',
+          fit: '&fit=fill',
+      }
+}
+
 const Header: React.FC<HeaderProps> = ({
     id = '',
     title = '',
-    backgroundImage: { url: backgroundImageUrl = '', alt: backgroundImageAlt = '' } = {},
+    media = {},
     thumbnailImage = {},
 }) => {
     const { scrollY } = useViewportScroll();
@@ -51,10 +79,9 @@ const Header: React.FC<HeaderProps> = ({
                         <m.div style={{ y }} className={css.background}>
                             <Backdrop
                                 fill
-                                backdrop={backgroundImageUrl}
+                                backdrop={media}
                                 overflow={false}
-                                alt={backgroundImageAlt}
-                                query='?w=1905&h=600&q=70&fit=crop'
+                                query={headerQuery}
                             />
                         </m.div>
                         <m.div

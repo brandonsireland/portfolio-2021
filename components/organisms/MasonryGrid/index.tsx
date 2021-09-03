@@ -28,7 +28,7 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({
     id = '',
     title = '',
     titleLeft = true,
-    masonryPhotos = [],
+    masonryMedia = [],
 }) => {
     const { setModal } = useContext(ModalContext);
     const { scrollY } = useViewportScroll();
@@ -66,9 +66,9 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({
                         </div>
                     )}
                 </LazyMotion>
-                {masonryPhotos.length > 0 && (
+                {masonryMedia.length > 0 && (
                     <div className={css.inner}>
-                        {masonryPhotos.map(asset => (
+                        {masonryMedia.map(asset => (
                             <MasonryItem
                                 key={asset.id}
                                 asset={asset}

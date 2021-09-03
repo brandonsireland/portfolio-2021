@@ -1,15 +1,14 @@
-import { BaseVideoProps } from '../BaseVideo/base-video.types';
+import { SrcSetProps } from '../ResponsiveMedia/responsive-media.types';
 
 export interface BackdropProps {
-    backdrop: string;
+    backdrop?: string | SrcSetProps;
     backgroundColor?: string;
     backdropClass?: string;
     isStatic?: boolean;
     fill?: boolean;
-    video?: BaseVideoProps;
-    type?: 'image' | 'video' | 'both';
+    type?: 'image' | 'video';
     backdropOpacity?: number;
-    query?: string;
+    query?: any;
     overflow?: boolean;
     alt?: string;
 }

@@ -7,7 +7,6 @@ import PortfolioPageTemplate from '../../components/templates/PortfolioPageTempl
 // Types
 import { ComponentResolverProps } from '../../components/atoms/ComponentResolver/component-resolver.types';
 import { MetaProps } from '../../components/atoms/Meta/meta.types';
-import { BasePictureProps } from '../../components/atoms/BasePicture/base-picture.types';
 import { NavigationProps } from '../../components/organisms/Navigation/navigation.types';
 import { FooterProps } from '../../components/organisms/Footer/footer.types';
 import { PreviousAndNextArticleProps } from '../../components/organisms/PreviousAndNextArticle/previous-and-next-article.types';
@@ -15,7 +14,7 @@ import { PreviousAndNextArticleProps } from '../../components/organisms/Previous
 export interface ProjectPageProps {
     pageData: {
         meta: MetaProps;
-        backgroundImage: BasePictureProps;
+        archiveMedia: Partial<PreviousAndNextArticleProps>;
         contentBlocks: ComponentResolverProps[];
     };
     globalData: {
@@ -32,7 +31,7 @@ export interface ProjectPageProps {
 import { client, getContentData } from '../../contentful';
 
 const ProjectPage: React.FC<ProjectPageProps> = ({
-    pageData: { meta = {}, backgroundImage = {}, contentBlocks = [] } = {},
+    pageData: { meta = {}, archiveMedia = {}, contentBlocks = [] } = {},
     globalData: { navigation = {}, footer = {} } = {},
     articleData: { nextPortfolioData = {}, previousPortfolioData = {} } = {},
 }) => (
@@ -42,7 +41,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({
         contentBlocks={contentBlocks}
         footer={footer}
         nextArticleData={nextPortfolioData}
-        currentArticleData={backgroundImage}
+        currentArticleData={archiveMedia}
         previousArticleData={previousPortfolioData}
     />
 );
@@ -95,7 +94,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             const {
                 slug = '',
                 meta = {},
-                backgroundImage = {},
+                archiveMedia = {},
                 publishDate = '',
                 contentBlocks = [],
             } = getContentData(data);
@@ -103,7 +102,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             return {
                 slug,
                 meta,
-                backgroundImage,
+                archiveMedia,
                 publishDate,
                 contentBlocks,
             };
@@ -121,7 +120,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             const {
                 slug: nextArticleSlug = '',
                 title: nextArticleTitle = '',
-                backgroundImage: nextArticleBackgroundImage = {},
+                archiveMedia: nextArticleBackgroundImage = {},
             } = getContentData(data);
 
             return {
@@ -143,7 +142,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             const {
                 slug: previousArticleSlug = '',
                 title: previousArticleTitle = '',
-                backgroundImage: previousArticleBackgroundImage = {},
+                archiveMedia: previousArticleBackgroundImage = {},
             } = getContentData(data);
 
             return {

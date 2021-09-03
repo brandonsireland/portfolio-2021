@@ -35,15 +35,13 @@ const ArchiveGrid: React.FC<ArchiveGridProps> = ({ pages = [] }) => {
                                 id,
                                 slug,
                                 title,
-                                backgroundImage,
-                                backgroundVideo,
+                                archiveMedia,
                             }) => (
                                 <ArchiveItem
                                     key={id}
                                     slug={slug}
                                     title={title}
-                                    backgroundImage={backgroundImage}
-                                    backgroundVideo={backgroundVideo}
+                                    archiveMedia={archiveMedia}
                                 />
                             ),
                         )}

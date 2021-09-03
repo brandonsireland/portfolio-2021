@@ -4,24 +4,38 @@ import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 // Components
-import BasePicture from '../../atoms/BasePicture';
+import ResponsiveMedia from '../ResponsiveMedia';
+import BaseVideo from '../../atoms/BaseVideo';
 
 // Types
 import { MasonryItemProps } from './masonry-item.types';
 
 // Styles
 import css from './masonry-item.module.scss';
-import BaseVideo from '../../atoms/BaseVideo';
+
+const masonryQuery = {
+    w1024up: {
+        maxWidthQuery: '&w=373',
+        fit: '&fit=fill',
+    },
+    w1023: {
+        maxWidthQuery: '&w=373',
+        fit: '&fit=fill',
+    },
+    w767: {
+        maxWidthQuery: '&w=373',
+        fit: '&fit=fill',
+    },
+};
 
 const MasonryItem: React.FC<MasonryItemProps> = ({
     onClick,
-    asset: { contentType = '' },
-    asset,
+    asset = {},
 }) => {
     const { ref, inView } = useInView({
         threshold: 0.1,
     });
-
+    
     return (
         <LazyMotion features={domAnimation}>
             <m.div
@@ -33,16 +47,17 @@ const MasonryItem: React.FC<MasonryItemProps> = ({
                 whileHover={{ scale: 1.05, zIndex: 2 }}
                 className={css.item}
             >
-                {contentType === 'video/mp4' ? (
+                {asset.poster ? (
                     <BaseVideo
                         playsInline={true}
                         autoPlay={true}
                         muted={true}
                         loop={true}
-                        url={asset.url}
+                        url={asset.default?.url}
+                        poster={asset.poster.url}
                     />
                 ) : (
-                    <BasePicture image={asset} query='?w=373&q=78&fit=fill' />
+                    <ResponsiveMedia srcset={asset} queries={masonryQuery} />
                 )}
             </m.div>
         </LazyMotion>

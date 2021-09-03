@@ -1,44 +1,30 @@
 import React, { Fragment } from 'react';
 import cc from 'classcat';
-import { useInView } from 'react-intersection-observer';
 
 // Components
-import BaseVideo from '../BaseVideo';
+import BaseVideo from '../../atoms/BaseVideo';
+import ResponsiveMedia from '../ResponsiveMedia';
 
 // Types
 import { BackdropProps } from './backdrop.types';
-
-// Hooks
-import useNativeLazyLoading from '../../../hooks/useNativeLazyLoading';
 
 // Styles
 import css from './backdrop.module.scss';
 
 const Backdrop: React.FC<BackdropProps> = ({
-    backdrop,
-    alt,
+    backdrop = {},
     backgroundColor,
     backdropClass,
     isStatic = false,
     fill = false,
-    video,
     type = 'image',
     backdropOpacity = 1,
-    query = '',
+    query,
     overflow = true,
     children,
-}) => {
-    const supportsLazyLoading = useNativeLazyLoading();
-    const { ref, inView } = useInView({
-        triggerOnce: true,
-        rootMargin: '200px 0px',
-        skip: supportsLazyLoading !== false,
-    });
-    
-    return (
+}) => (
         <Fragment>
             <div
-                ref={ref}
                 className={cc([
                     css.wrap,
                     { [css.fill]: fill, [css.overflow]: overflow },
@@ -64,33 +50,21 @@ const Backdrop: React.FC<BackdropProps> = ({
                             opacity: backdropOpacity,
                         }}
                     >
-                        <picture>
-                        {inView || supportsLazyLoading ? (
-                                <Fragment>
-                                    <source
-                                        srcSet={`${backdrop}${query}${
-                                            query !== '' ? '&' : '?'
-                                        }fm=webp`}
-                                        type='image/webp'
-                                    ></source>
-                                    <img
-                                        className={css.img}
-                                        src={`${backdrop}${query}`}
-                                        alt={alt}
-                                    />
-                                </Fragment>
+                        
+                        {typeof backdrop !== 'string' && type === 'image' ? (
+                            <ResponsiveMedia srcset={backdrop} queries={query} imageClass={css.img} />
                         ) : null}
-                        </picture>
 
-                        {type !== 'image' && video && (
+
+                        {typeof backdrop === 'object' && type === 'video' && (
                             <BaseVideo
                                 className={css.video}
                                 autoPlay={true}
                                 loop={true}
                                 muted={true}
                                 playsInline={true}
-                                url={video.url}
-                                poster={backdrop}
+                                url={backdrop?.default?.url}
+                                poster={backdrop?.poster?.url}
                             />
                         )}
                     </div>
@@ -100,6 +74,5 @@ const Backdrop: React.FC<BackdropProps> = ({
             </div>
         </Fragment>
     );
-};
 
 export default Backdrop;

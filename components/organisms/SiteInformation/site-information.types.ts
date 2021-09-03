@@ -1,6 +1,6 @@
 import { BaseLinkProps } from '../../atoms/BaseLink/base-link.types';
-import { BasePictureProps } from '../../atoms/BasePicture/base-picture.types';
 import { CategoryProps } from '../../molecules/Category/category.types';
+import { SrcSetProps } from '../../molecules/ResponsiveMedia/responsive-media.types';
 
 export interface SiteInformationProps {
     id: string;
@@ -10,6 +10,6 @@ export interface SiteInformationProps {
     role: string;
     categories: CategoryProps[];
     description: string;
-    image: BasePictureProps;
     imageLeft: boolean;
+    media?: SrcSetProps
 }
