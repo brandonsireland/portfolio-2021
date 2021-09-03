@@ -9,7 +9,7 @@ import { BaseVideoProps } from './base-video.types';
 import css from './base-video.module.scss';
 
 const BaseVideo: React.FC<BaseVideoProps> = ({
-    contentType = 'video/webm',
+    contentType = 'video/mp4',
     url = '',
     playsInline = false,
     autoPlay = false,
@@ -53,6 +53,8 @@ const BaseVideo: React.FC<BaseVideoProps> = ({
             muted={muted}
             loop={loop}
             poster={poster}
+            webkit-playsinline={`${playsInline}`}
+            x5-playsinline={`${playsInline}`}
             className={cc([css.video, className])}
         >
             <source type={contentType} src={url} />
