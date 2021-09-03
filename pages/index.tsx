@@ -8,12 +8,10 @@ import DefaultPageTemplate from '../components/templates/DefaultPageTemplate';
 import { ComponentResolverProps } from '../components/atoms/ComponentResolver/component-resolver.types';
 import { MetaProps } from '../components/atoms/Meta/meta.types';
 import { NavigationProps } from '../components/organisms/Navigation/navigation.types';
-import { FooterProps } from '../components/organisms/Footer/footer.types';
 
 export interface IndexPageProps {
     globalData: {
         navigation: NavigationProps;
-        footer: FooterProps;
     };
     pageData: {
         meta: MetaProps;
@@ -27,7 +25,7 @@ import { client, getContentData } from '../contentful';
 
 const IndexPage: React.FC<IndexPageProps> = ({
     pageData: { meta = {}, contentBlocks = [] } = {},
-    globalData: { navigation = {}, footer = {} } = {},
+    globalData: { navigation = {} } = {},
     isFirstMount = false,
 }) => (
     <DefaultPageTemplate
@@ -35,7 +33,6 @@ const IndexPage: React.FC<IndexPageProps> = ({
         meta={meta}
         navigation={navigation}
         contentBlocks={contentBlocks}
-        footer={footer}
     />
 );
 

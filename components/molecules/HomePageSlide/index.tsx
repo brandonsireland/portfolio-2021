@@ -29,7 +29,7 @@ const homeSlideQuery = {
     },
     w575: {
         maxWidthQuery: '',
-        maxHeightQuery: '&h=450',
+        maxHeightQuery: '&h=500',
         fit: '&fit=thumb',
     },
 };
