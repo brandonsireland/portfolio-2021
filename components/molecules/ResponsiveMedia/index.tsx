@@ -72,10 +72,10 @@ const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
     const supportsLazyLoading = useNativeLazyLoading();
     const { ref, inView } = useInView({
         triggerOnce: true,
-        rootMargin: '200px 0px',
+        rootMargin: '300px 0px',
         skip: supportsLazyLoading !== false,
     });
-
+    console.log(inView, supportsLazyLoading);
     const generateBreakpoints = ({
         defaultKey = '',
         queryBreakpoints = [],
