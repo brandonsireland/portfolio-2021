@@ -9,7 +9,8 @@ import ImageAndText from '../../organisms/ImageAndText';
 
 // Dynamic Component imports for optimization
 const BeautifyJSON = dynamic(() => import('../BeautifyJSON'));
-const MasonryGrid = dynamic(() => import('../../organisms/MasonryGrid'));
+// const MasonryGrid = dynamic(() => import('../../organisms/MasonryGrid'));
+import MasonryGrid from '../../organisms/MasonryGrid';
 
 // Types
 import { ComponentResolverProps } from './component-resolver.types';
