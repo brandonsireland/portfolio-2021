@@ -22,36 +22,36 @@ const prevAndNextQuery = {
         maxWidthQuery: '&w=707',
         maxHeightQuery: '&h=300',
         fit: '&fit=fill',
-      },
-      w1023: {
-          maxWidthQuery: '&w=707',
-          maxHeightQuery: '&h=300',
-          fit: '&fit=fill',
-      },
-      w767: {
-          maxWidthQuery: '&w=707',
-          maxHeightQuery: '&h=300',
-          fit: '&fit=fill',
-      }
-}
+    },
+    w1023: {
+        maxWidthQuery: '&w=707',
+        maxHeightQuery: '&h=300',
+        fit: '&fit=fill',
+    },
+    w767: {
+        maxWidthQuery: '&w=707',
+        maxHeightQuery: '&h=300',
+        fit: '&fit=fill',
+    },
+};
 
 const currentQuery = {
     w1024up: {
         maxWidthQuery: '&w=390',
         maxHeightQuery: '&h=300',
         fit: '&fit=fill',
-      },
-      w1023: {
-          maxWidthQuery: '&w=390',
-          maxHeightQuery: '&h=300',
-          fit: '&fit=fill',
-      },
-      w767: {
-          maxWidthQuery: '&w=390',
-          maxHeightQuery: '&h=300',
-          fit: '&fit=fill',
-      }
-}
+    },
+    w1023: {
+        maxWidthQuery: '&w=390',
+        maxHeightQuery: '&h=300',
+        fit: '&fit=fill',
+    },
+    w767: {
+        maxWidthQuery: '&w=390',
+        maxHeightQuery: '&h=300',
+        fit: '&fit=fill',
+    },
+};
 
 const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
     id = '',
@@ -82,7 +82,11 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                             backdrop={previousArticleBackgroundImage}
                             backdropClass={css.background}
                             alt='Previous Article Background Image'
-                            type={previousArticleBackgroundImage.poster ? 'video' : 'image'}
+                            type={
+                                previousArticleBackgroundImage.poster
+                                    ? 'video'
+                                    : 'image'
+                            }
                             query={prevAndNextQuery}
                         >
                             <Link href={previousArticleSlug}>
@@ -140,7 +144,11 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                             fill
                             backdrop={nextArticleBackgroundImage}
                             backdropClass={css.background}
-                            type={nextArticleBackgroundImage.poster ? 'video' : 'image'}
+                            type={
+                                nextArticleBackgroundImage.poster
+                                    ? 'video'
+                                    : 'image'
+                            }
                             alt='Next Article Background Image'
                             query={prevAndNextQuery}
                         >

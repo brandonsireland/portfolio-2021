@@ -30,21 +30,14 @@ const ArchiveGrid: React.FC<ArchiveGridProps> = ({ pages = [] }) => {
                         animate='animate'
                         className={css.inner}
                     >
-                        {pages.map(
-                            ({
-                                id,
-                                slug,
-                                title,
-                                archiveMedia,
-                            }) => (
-                                <ArchiveItem
-                                    key={id}
-                                    slug={slug}
-                                    title={title}
-                                    archiveMedia={archiveMedia}
-                                />
-                            ),
-                        )}
+                        {pages.map(({ id, slug, title, archiveMedia }) => (
+                            <ArchiveItem
+                                key={id}
+                                slug={slug}
+                                title={title}
+                                archiveMedia={archiveMedia}
+                            />
+                        ))}
                     </m.div>
                 </LazyMotion>
             )}

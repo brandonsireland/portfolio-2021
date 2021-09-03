@@ -9,9 +9,10 @@ import Cursor from '../atoms/Cursor';
 import Navigation from '../organisms/Navigation';
 
 const Modal = dynamic(() => import('../atoms/Modal'));
-const PreviousAndNextArticle = dynamic(() => import('../organisms/PreviousAndNextArticle'));
+const PreviousAndNextArticle = dynamic(
+    () => import('../organisms/PreviousAndNextArticle'),
+);
 const Footer = dynamic(() => import('../organisms/Footer'));
-
 
 // Types
 import { MetaProps } from '../atoms/Meta/meta.types';

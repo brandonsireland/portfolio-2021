@@ -11,5 +11,5 @@ export interface SiteInformationProps {
     categories: CategoryProps[];
     description: string;
     imageLeft: boolean;
-    media?: SrcSetProps
+    media?: SrcSetProps;
 }

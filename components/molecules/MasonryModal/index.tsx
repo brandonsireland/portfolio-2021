@@ -26,23 +26,21 @@ const modalQuery = {
     w1024up: {
         maxWidthQuery: '&w=900',
         fit: '&fit=thumb',
-        quality: '?q=78'
+        quality: '?q=78',
     },
     w1023: {
         maxWidthQuery: '&w=900',
         fit: '&fit=thumb',
-        quality: '?q=78'
+        quality: '?q=78',
     },
     w767: {
         maxWidthQuery: '&w=900',
         fit: '&fit=thumb',
-        quality: '?q=78'
+        quality: '?q=78',
     },
 };
 
-const MasonryModal: React.FC<MasonryModalProps> = ({
-    asset = {},
-}) => {
+const MasonryModal: React.FC<MasonryModalProps> = ({ asset = {} }) => {
     const {
         modal: { displayModal },
         setModal,
@@ -73,7 +71,10 @@ const MasonryModal: React.FC<MasonryModalProps> = ({
                                 poster={asset.poster.url}
                             />
                         ) : (
-                            <ResponsiveMedia srcset={asset} queries={modalQuery} />
+                            <ResponsiveMedia
+                                srcset={asset}
+                                queries={modalQuery}
+                            />
                         )}
                     </div>
                 </m.div>

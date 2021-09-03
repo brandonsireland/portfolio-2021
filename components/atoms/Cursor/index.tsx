@@ -8,7 +8,7 @@ import {
 } from 'framer-motion';
 
 // Hook
-import useWindowSize  from '../../../hooks/useWindowSize';
+import useWindowSize from '../../../hooks/useWindowSize';
 
 // Styles
 import css from './cursor.module.scss';

@@ -32,10 +32,8 @@ export const LocalizedStringsContext = createContext<LocalizedStringsState>(
 const LocalizedStringsContextProvider = ({
     children,
 }: LocalizedStringsContextProviderProps): ReactElement => {
-    const [
-        localizedStrings,
-        setLocalizedStrings,
-    ] = useState<LocalizedStringsInterface>(defaultLocalizedStrings);
+    const [localizedStrings, setLocalizedStrings] =
+        useState<LocalizedStringsInterface>(defaultLocalizedStrings);
 
     useEffect(() => {
         const setAllStrings = async () => {

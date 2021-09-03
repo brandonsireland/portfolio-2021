@@ -9,10 +9,7 @@ import { FooterProps } from './footer.types';
 // Style
 import css from './footer.module.scss';
 
-const Footer: React.FC<FooterProps> = ({
-    id = '',
-    footerItems =[]
-}) => {
+const Footer: React.FC<FooterProps> = ({ id = '', footerItems = [] }) => {
     const ulVariants = {
         initial: {
             transition: { staggerChildren: 0.05, staggerDirection: -1 },

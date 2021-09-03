@@ -28,14 +28,11 @@ const masonryQuery = {
     },
 };
 
-const MasonryItem: React.FC<MasonryItemProps> = ({
-    onClick,
-    asset = {},
-}) => {
+const MasonryItem: React.FC<MasonryItemProps> = ({ onClick, asset = {} }) => {
     const { ref, inView } = useInView({
         threshold: 0.1,
     });
-    
+
     return (
         <LazyMotion features={domAnimation}>
             <m.div

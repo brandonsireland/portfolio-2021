@@ -12,7 +12,7 @@ export interface SrcSetProps {
 }
 
 export interface ResponsiveMediaProps {
-    srcset?: SrcSetProps,
+    srcset?: SrcSetProps;
     alt?: string;
     queries?: any;
     imageClass?: string | string[];

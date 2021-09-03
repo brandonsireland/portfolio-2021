@@ -7,8 +7,8 @@ import MasonryModal from '../../molecules/MasonryModal';
 import { ModalConsumer } from '../../../context/ModalContext';
 
 const components = {
-    MasonryModal: MasonryModal
-}
+    MasonryModal: MasonryModal,
+};
 
 const Modal: React.FC = () => (
     <ModalConsumer>

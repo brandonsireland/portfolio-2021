@@ -16,18 +16,18 @@ const archiveQuery = {
         maxWidthQuery: '&w=381',
         maxHeightQuery: '&h=400',
         fit: '&fit=fill',
-      },
-      w1023: {
-          maxWidthQuery: '&w=381',
-          maxHeightQuery: '&h=400',
-          fit: '&fit=fill',
-      },
-      w767: {
-          maxWidthQuery: '&w=381',
-          maxHeightQuery: '&h=400',
-          fit: '&fit=fill',
-      }
-}
+    },
+    w1023: {
+        maxWidthQuery: '&w=381',
+        maxHeightQuery: '&h=400',
+        fit: '&fit=fill',
+    },
+    w767: {
+        maxWidthQuery: '&w=381',
+        maxHeightQuery: '&h=400',
+        fit: '&fit=fill',
+    },
+};
 
 const ArchiveItem: React.FC<ArchiveItemProps> = ({
     archiveMedia = {},

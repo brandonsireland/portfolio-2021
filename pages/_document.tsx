@@ -12,8 +12,20 @@ class MyDocument extends Document {
         return (
             <Html lang='en'>
                 <Head>
-                    <link rel='preload' href='/fonts/neuzit-black.woff2' as='font' type='font/woff2' crossOrigin='true' />
-                    <link rel='preload' href='/fonts/ProximaNova-Regular.woff2' as='font' type='font/woff2' crossOrigin='true' />
+                    <link
+                        rel='preload'
+                        href='/fonts/neuzit-black.woff2'
+                        as='font'
+                        type='font/woff2'
+                        crossOrigin='true'
+                    />
+                    <link
+                        rel='preload'
+                        href='/fonts/ProximaNova-Regular.woff2'
+                        as='font'
+                        type='font/woff2'
+                        crossOrigin='true'
+                    />
                     <meta charSet='UTF-8' />
                     <meta
                         name='viewport'

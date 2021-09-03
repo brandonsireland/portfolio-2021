@@ -23,56 +23,58 @@ const Backdrop: React.FC<BackdropProps> = ({
     overflow = true,
     children,
 }) => (
-        <Fragment>
+    <Fragment>
+        <div
+            className={cc([
+                css.wrap,
+                { [css.fill]: fill, [css.overflow]: overflow },
+            ])}
+        >
             <div
                 className={cc([
-                    css.wrap,
-                    { [css.fill]: fill, [css.overflow]: overflow },
+                    css.backdropContainer,
+                    { [css.overflow]: overflow },
                 ])}
             >
                 <div
                     className={cc([
-                        css.backdropContainer,
-                        { [css.overflow]: overflow },
+                        css.backdrop,
+                        backdropClass,
+                        {
+                            [css.isStatic]: isStatic,
+                            [css.overflow]: overflow,
+                        },
                     ])}
+                    style={{
+                        backgroundColor: backgroundColor,
+                        opacity: backdropOpacity,
+                    }}
                 >
-                    <div
-                        className={cc([
-                            css.backdrop,
-                            backdropClass,
-                            {
-                                [css.isStatic]: isStatic,
-                                [css.overflow]: overflow,
-                            },
-                        ])}
-                        style={{
-                            backgroundColor: backgroundColor,
-                            opacity: backdropOpacity,
-                        }}
-                    >
-                        
-                        {typeof backdrop !== 'string' && type === 'image' ? (
-                            <ResponsiveMedia srcset={backdrop} queries={query} imageClass={css.img} />
-                        ) : null}
+                    {typeof backdrop !== 'string' && type === 'image' ? (
+                        <ResponsiveMedia
+                            srcset={backdrop}
+                            queries={query}
+                            imageClass={css.img}
+                        />
+                    ) : null}
 
-
-                        {typeof backdrop === 'object' && type === 'video' && (
-                            <BaseVideo
-                                className={css.video}
-                                autoPlay={true}
-                                loop={true}
-                                muted={true}
-                                playsInline={true}
-                                url={backdrop?.default?.url}
-                                poster={backdrop?.poster?.url}
-                            />
-                        )}
-                    </div>
+                    {typeof backdrop === 'object' && type === 'video' && (
+                        <BaseVideo
+                            className={css.video}
+                            autoPlay={true}
+                            loop={true}
+                            muted={true}
+                            playsInline={true}
+                            url={backdrop?.default?.url}
+                            poster={backdrop?.poster?.url}
+                        />
+                    )}
                 </div>
-
-                {children}
             </div>
-        </Fragment>
-    );
+
+            {children}
+        </div>
+    </Fragment>
+);
 
 export default Backdrop;

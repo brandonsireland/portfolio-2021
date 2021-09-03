@@ -29,23 +29,23 @@ const headerQuery = {
         maxWidthQuery: '',
         maxHeightQuery: '&h=600',
         fit: '&fit=fill',
-      },
+    },
     w1023: {
         maxWidthQuery: '',
-          maxHeightQuery: '&h=600',
-          fit: '&fit=fill',
-      },
+        maxHeightQuery: '&h=600',
+        fit: '&fit=fill',
+    },
     w767: {
         maxWidthQuery: '',
-          maxHeightQuery: '&h=600',
-          fit: '&fit=fill',
+        maxHeightQuery: '&h=600',
+        fit: '&fit=fill',
     },
     w575: {
         maxWidthQuery: '',
-          maxHeightQuery: '&h=600',
-          fit: '&fit=fill',
-      }
-}
+        maxHeightQuery: '&h=600',
+        fit: '&fit=fill',
+    },
+};
 
 const Header: React.FC<HeaderProps> = ({
     id = '',

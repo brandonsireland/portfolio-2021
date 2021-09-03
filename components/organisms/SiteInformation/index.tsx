@@ -113,7 +113,6 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
     });
     const newYear = new Date(yearCreated).getFullYear();
 
-
     return (
         <section id={id} className={css.container} ref={ref}>
             <div className={cc([css.inner, { [css.reverse]: !imageLeft }])}>
@@ -134,12 +133,15 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                                     loop={true}
                                     controls={false}
                                 />
-                            ) : (                                    
-                                    <Aspect
+                            ) : (
+                                <Aspect
                                     ratio={'720x570'}
                                     visibleOverflow={false}
                                 >
-                                    <ResponsiveMedia srcset={media} queries={siteInfoQuery} />
+                                    <ResponsiveMedia
+                                        srcset={media}
+                                        queries={siteInfoQuery}
+                                    />
                                 </Aspect>
                             )}
                         </m.div>

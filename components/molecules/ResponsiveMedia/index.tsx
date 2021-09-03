@@ -136,7 +136,7 @@ const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
     useEffect(() => {
         setGeneratedBreak(generateBreakpoints(defaultConfig));
     }, []);
-    console.log(generatedBreak);
+    
     return (
         <div ref={ref} className={css.pictureContainer}>
             {inView || supportsLazyLoading ? (
@@ -149,7 +149,12 @@ const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
                                     <Fragment key={key}>
                                         <source
                                             key={key + 'webp'}
-                                            srcSet={generatedBreak ? `${generatedBreak[key]()}&fm=webp` : ''
+                                            srcSet={
+                                                generatedBreak
+                                                    ? `${generatedBreak[
+                                                          key
+                                                      ]()}&fm=webp`
+                                                    : ''
                                             }
                                             media={
                                                 minWidth

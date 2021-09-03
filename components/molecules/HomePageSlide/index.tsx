@@ -16,23 +16,23 @@ const homeSlideQuery = {
         maxWidthQuery: '',
         maxHeightQuery: '&h=550',
         fit: '&fit=thumb',
-      },
-      w1023: {
-          maxWidthQuery: '',
-          maxHeightQuery: '&h=550',
-          fit: '&fit=thumb',
-      },
-      w767: {
-          maxWidthQuery: '',
-          maxHeightQuery: '&h=550',
-          fit: '&fit=thumb',
+    },
+    w1023: {
+        maxWidthQuery: '',
+        maxHeightQuery: '&h=550',
+        fit: '&fit=thumb',
+    },
+    w767: {
+        maxWidthQuery: '',
+        maxHeightQuery: '&h=550',
+        fit: '&fit=thumb',
     },
     w575: {
         maxWidthQuery: '',
         maxHeightQuery: '&h=550',
         fit: '&fit=thumb',
     },
-}
+};
 
 const HomePageSlide: React.FC<HomePageSlideProps> = ({
     slug = '',
