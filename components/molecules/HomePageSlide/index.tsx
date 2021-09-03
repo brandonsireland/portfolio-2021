@@ -14,22 +14,22 @@ import css from './home-page-slide.module.scss';
 const homeSlideQuery = {
     w1024up: {
         maxWidthQuery: '',
-        maxHeightQuery: '&h=550',
+        maxHeightQuery: '&h=500',
         fit: '&fit=thumb',
     },
     w1023: {
         maxWidthQuery: '',
-        maxHeightQuery: '&h=550',
+        maxHeightQuery: '&h=500',
         fit: '&fit=thumb',
     },
     w767: {
         maxWidthQuery: '',
-        maxHeightQuery: '&h=550',
+        maxHeightQuery: '&h=500',
         fit: '&fit=thumb',
     },
     w575: {
         maxWidthQuery: '',
-        maxHeightQuery: '&h=550',
+        maxHeightQuery: '&h=450',
         fit: '&fit=thumb',
     },
 };
