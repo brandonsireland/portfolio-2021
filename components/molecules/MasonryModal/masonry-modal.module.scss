@@ -7,12 +7,15 @@
         color: color('black') !important;
         border: none !important;
         background: transparent !important;
-        padding: 40px !important;
         display: flex;
         align-items: center;
         margin: auto;
         inset: 0 !important;
         width: 100%;
+
+        @include media('sm') {
+            padding: 40px !important;
+        }
     }
 }
 
