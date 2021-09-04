@@ -22,10 +22,6 @@
   "dependencies": {
     "contentful": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
-    "flickity": "^2.2.2",
-    "flickity-as-nav-for": "^2.0.1",
-    "flickity-fullscreen": "^1.1.1",
-    "flickity-imagesloaded": "^2.0.0",
     "framer-motion": "^4.1.17",
     "lodash": "^4.17.21",
     "next": "11.1.0",
@@ -35,7 +31,8 @@
     "react-markdown": "6.0.3",
     "react-modal": "^3.14.3",
     "rehype-raw": "5.1.0",
-    "sass": "^1.37.3"
+    "sass": "^1.37.3",
+    "swiper": "^7.0.3"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",

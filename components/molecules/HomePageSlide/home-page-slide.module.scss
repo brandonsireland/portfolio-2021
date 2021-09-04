@@ -1,6 +1,7 @@
-:global(.is-selected) {
+:global(.swiper-slide-active) {
     > .slideContainer {
         transform: scale(1.2);
+        z-index: 2;
 
         .foregroundImage {
             opacity: 1;
@@ -9,7 +10,7 @@
 
         .foregroundLogo {
             opacity: 1;
-            transform: translate3d(-50%, -100%, 0);
+            transform: translate3d(-50%, -150%, 0);
         }
 
         .slide {
@@ -27,14 +28,9 @@
 .slideContainer {
     width: 100%;
     height: 500px;
-    margin-right: 50px;
     transition: transform 0.4s ease;
     will-change: transform;
-    padding: 20px 0;
-
-    @include media('sm') {
-        height: 500px;
-    }
+    position: relative;
 }
 
 .slide {
