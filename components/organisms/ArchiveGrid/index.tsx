@@ -18,6 +18,9 @@ const ArchiveGrid: React.FC<ArchiveGridProps> = ({ pages = [] }) => {
         animate: {
             transition: { staggerChildren: 0.1 },
         },
+        exit: {
+            opacity: 0
+        }
     };
 
     return (
@@ -28,6 +31,7 @@ const ArchiveGrid: React.FC<ArchiveGridProps> = ({ pages = [] }) => {
                         variants={divVariants}
                         initial='initial'
                         animate='animate'
+                        exit='exit'
                         className={css.inner}
                     >
                         {pages.map(({ id, slug, title, archiveMedia }) => (

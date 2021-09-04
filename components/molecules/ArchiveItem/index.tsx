@@ -47,6 +47,9 @@ const ArchiveItem: React.FC<ArchiveItemProps> = ({
                 y: { stiffness: 1000, velocity: -100 },
             },
         },
+        exit: {
+            opacity: 0,
+        }
     };
 
     return (
@@ -55,6 +58,9 @@ const ArchiveItem: React.FC<ArchiveItemProps> = ({
                 <m.div
                     variants={childVariants}
                     className={css.inner}
+                    initial='initial'
+                    animate='animate'
+                    exit='exit'
                     whileHover={{ scale: 1.1 }}
                 >
                     <Backdrop
