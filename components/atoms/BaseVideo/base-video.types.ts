@@ -8,4 +8,5 @@ export interface BaseVideoProps {
     playsInline?: boolean;
     className?: string;
     poster?: string;
+    title?: string;
 }
