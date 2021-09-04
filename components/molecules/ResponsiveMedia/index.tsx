@@ -66,13 +66,14 @@ const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
     alt = '',
     queries,
     imageClass = '',
+    rootMargin = '-50px 0px'
 }) => {
     const { width = 768 } = useWindowSize();
     const [generatedBreak, setGeneratedBreak] = useState<any>(null);
     const supportsLazyLoading = useNativeLazyLoading();
     const { ref, inView } = useInView({
         triggerOnce: true,
-        rootMargin: '-50px 0px',
+        rootMargin: rootMargin,
         skip: supportsLazyLoading !== false,
     });
 

@@ -11,4 +11,5 @@ export interface BackdropProps {
     query?: any;
     overflow?: boolean;
     alt?: string;
+    rootMargin?: string;
 }
