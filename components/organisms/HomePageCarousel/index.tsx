@@ -17,7 +17,6 @@ const HomePageCarousel: React.FC<HomePageCarouselProps> = ({ slides = [] }) => {
         wrapAround: true,
         cellAlign: 'center',
         prevNextButtons: false,
-        lazyLoad: true,
     };
 
     return (
