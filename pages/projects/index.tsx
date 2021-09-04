@@ -2,19 +2,20 @@ import React from 'react';
 import { GetStaticProps } from 'next';
 
 // Components
-import ArchivePageTemplate from '../../components/templates/ArchivePageTemplate';
+import DefaultPageTemplate from '../../components/templates/DefaultPageTemplate';
 
 // Types
 import { NavigationProps } from '../../components/organisms/Navigation/navigation.types';
-import { FooterProps } from '../../components/organisms/Footer/footer.types';
 import { MetaProps } from '../../components/atoms/Meta/meta.types';
+import { ComponentResolverProps } from '../../components/atoms/ComponentResolver/component-resolver.types';
 
 export interface ProjectPageProps {
-    pageMeta: MetaProps;
-    pagesData: any[];
+    pageData: {
+        meta: MetaProps;
+        contentBlocks: ComponentResolverProps[];
+    };
     globalData: {
         navigation: NavigationProps;
-        footer: FooterProps;
     };
 }
 
@@ -22,17 +23,18 @@ export interface ProjectPageProps {
 import { client, getContentData } from '../../contentful';
 
 const ProjectPage: React.FC<ProjectPageProps> = ({
-    pageMeta = {},
-    pagesData = [],
-    globalData: { navigation = {}, footer = {} } = {},
-}) => (
-    <ArchivePageTemplate
-        meta={pageMeta}
-        navigation={navigation}
-        footer={footer}
-        pages={pagesData}
-    />
-);
+    pageData: { meta = {}, contentBlocks = [] } = {},
+    globalData: { navigation = {} } = {},
+}) => {
+    console.log(contentBlocks);
+    return  (
+        <DefaultPageTemplate
+            meta={meta}
+            navigation={navigation}
+            contentBlocks={contentBlocks}
+        />
+    )
+};
 
 export const getStaticProps: GetStaticProps = async () => {
     const globalSettings = await client
@@ -43,7 +45,7 @@ export const getStaticProps: GetStaticProps = async () => {
         .then(({ items = [] }: { items: Array<any> }) => items[0])
         .catch((err: string) => console.error(err));
 
-    const pageMeta = await client
+    const pageData = await client
         .getEntries({
             content_type: 'page',
             limit: 1,
@@ -52,26 +54,12 @@ export const getStaticProps: GetStaticProps = async () => {
         })
         .then(({ items = [] }: { items: Array<any> }) => items[0])
         .catch((err: string) => console.error(err));
-
-    const ProjectPagesData = await client
-        .getEntries({
-            content_type: 'portfolioItem',
-            include: 10,
-        })
-        .then(({ items = [] }: { items: Array<any> }) => {
-            return items.map(item => {
-                return getContentData(item);
-            });
-        })
-        .catch((err: string) => console.error(err));
-
-    const { meta } = getContentData(pageMeta);
-
+    
+    console.log(getContentData(pageData));
     return {
         props: {
             globalData: getContentData(globalSettings),
-            pagesData: ProjectPagesData,
-            pageMeta: meta,
+            pageData: getContentData(pageData),
         },
     };
 };

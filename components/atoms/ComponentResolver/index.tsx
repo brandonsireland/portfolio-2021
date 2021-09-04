@@ -6,11 +6,11 @@ import HomePageCarousel from '../../organisms/HomePageCarousel';
 import Header from '../../organisms/Header';
 import SiteInformation from '../../organisms/SiteInformation';
 import ImageAndText from '../../organisms/ImageAndText';
+import ArchiveGrid from '../../organisms/ArchiveGrid';
+import MasonryGrid from '../../organisms/MasonryGrid';
 
 // Dynamic Component imports for optimization
 const BeautifyJSON = dynamic(() => import('../BeautifyJSON'));
-// const MasonryGrid = dynamic(() => import('../../organisms/MasonryGrid'));
-import MasonryGrid from '../../organisms/MasonryGrid';
 
 // Types
 import { ComponentResolverProps } from './component-resolver.types';
@@ -21,6 +21,7 @@ export const components = {
     contentBlockSiteInformation: SiteInformation,
     contentBlockMasonryImages: MasonryGrid,
     contentBlockImageText: ImageAndText,
+    contentBlockArchive: ArchiveGrid,
 };
 
 const ComponentResolver: React.FC<ComponentResolverProps> = ({

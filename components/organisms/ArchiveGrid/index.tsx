@@ -10,7 +10,7 @@ import { ArchiveGridProps } from './archive-grid.types';
 // Styles
 import css from './archive-grid.module.scss';
 
-const ArchiveGrid: React.FC<ArchiveGridProps> = ({ pages = [] }) => {
+const ArchiveGrid: React.FC<ArchiveGridProps> = ({ portfolioItems = [] }) => {
     const divVariants = {
         initial: {
             transition: { staggerChildren: 0.05, staggerDirection: -1 },
@@ -25,7 +25,7 @@ const ArchiveGrid: React.FC<ArchiveGridProps> = ({ pages = [] }) => {
 
     return (
         <section className={css.container}>
-            {pages.length > 0 && (
+            {portfolioItems.length > 0 && (
                 <LazyMotion features={domAnimation}>
                     <m.div
                         variants={divVariants}
@@ -34,7 +34,7 @@ const ArchiveGrid: React.FC<ArchiveGridProps> = ({ pages = [] }) => {
                         exit='exit'
                         className={css.inner}
                     >
-                        {pages.map(({ id, slug, title, archiveMedia }) => (
+                        {portfolioItems.map(({ id, slug, title, archiveMedia }) => (
                             <ArchiveItem
                                 key={id}
                                 slug={slug}
