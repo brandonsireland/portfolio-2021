@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/lib/node_modules/node/lib/node_modules/node/lib/node_modules/node/bin/node /usr/local/bin/yarn add swiper
+  /usr/local/lib/node_modules/node/lib/node_modules/node/lib/node_modules/node/bin/node /usr/local/bin/yarn add react-gtm-module --save
 
 PATH: 
   /Users/workflow/google-cloud-sdk/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin
@@ -38,10 +38,6 @@ npm manifest:
     "dependencies": {
       "contentful": "^8.2.0",
       "eslint-config-prettier": "^8.3.0",
-      "flickity": "^2.2.2",
-      "flickity-as-nav-for": "^2.0.1",
-      "flickity-fullscreen": "^1.1.1",
-      "flickity-imagesloaded": "^2.0.0",
       "framer-motion": "^4.1.17",
       "lodash": "^4.17.21",
       "next": "11.1.0",
@@ -51,7 +47,8 @@ npm manifest:
       "react-markdown": "6.0.3",
       "react-modal": "^3.14.3",
       "rehype-raw": "5.1.0",
-      "sass": "^1.37.3"
+      "sass": "^1.37.3",
+      "swiper": "^7.0.3"
     },
     "devDependencies": {
       "@types/next": "^9.0.0",
@@ -1328,10 +1325,6 @@ Lockfile:
       inherits "^2.0.1"
       minimalistic-assert "^1.0.0"
   
-  desandro-matches-selector@^2.0.0:
-    version "2.0.2"
-    resolved "https://registry.yarnpkg.com/desandro-matches-selector/-/desandro-matches-selector-2.0.2.tgz#717beed4dc13e7d8f3762f707a6d58a6774218e1"
-  
   diffie-hellman@^5.0.0:
     version "5.0.3"
     resolved "https://registry.yarnpkg.com/diffie-hellman/-/diffie-hellman-5.0.3.tgz#40e8ee98f55a2149607146921c63e1ae5f3d2875"
@@ -1364,6 +1357,12 @@ Lockfile:
     dependencies:
       domelementtype "^2.0.1"
       entities "^2.0.0"
+  
+  dom7@^4.0.0:
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/dom7/-/dom7-4.0.0.tgz#69c8fb9b170c92d64f385fdc37f81456e82b80a1"
+    dependencies:
+      ssr-window "^4.0.0"
   
   domain-browser@4.19.0:
     version "4.19.0"
@@ -1716,10 +1715,6 @@ Lockfile:
     version "1.8.1"
     resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   
-  ev-emitter@^1.0.0, ev-emitter@^1.0.1, ev-emitter@^1.1.1:
-    version "1.1.1"
-    resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.1.1.tgz#8f18b0ce5c76a5d18017f71c0a795c65b9138f2a"
-  
   events@^3.0.0:
     version "3.3.0"
     resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
@@ -1848,12 +1843,6 @@ Lockfile:
     dependencies:
       semver-regex "^3.1.2"
   
-  fizzy-ui-utils@^2.0.0, fizzy-ui-utils@^2.0.7:
-    version "2.0.7"
-    resolved "https://registry.yarnpkg.com/fizzy-ui-utils/-/fizzy-ui-utils-2.0.7.tgz#7df45dcc4eb374a08b65d39bb9a4beedf7330505"
-    dependencies:
-      desandro-matches-selector "^2.0.0"
-  
   flat-cache@^3.0.4:
     version "3.0.4"
     resolved "https://registry.yarnpkg.com/flat-cache/-/flat-cache-3.0.4.tgz#61b0338302b2fe9f957dcc32fc2a87f1c3048b11"
@@ -1864,37 +1853,6 @@ Lockfile:
   flatted@^3.1.0:
     version "3.2.2"
     resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.2.tgz#64bfed5cb68fe3ca78b3eb214ad97b63bedce561"
-  
-  flickity-as-nav-for@^2.0.1:
-    version "2.0.1"
-    resolved "https://registry.yarnpkg.com/flickity-as-nav-for/-/flickity-as-nav-for-2.0.1.tgz#64edcc3b27ccdfcbc89bab9c086bd6cac4651b1b"
-    dependencies:
-      fizzy-ui-utils "^2.0.0"
-      flickity "^2.0.0"
-  
-  flickity-fullscreen@^1.1.1:
-    version "1.1.1"
-    resolved "https://registry.yarnpkg.com/flickity-fullscreen/-/flickity-fullscreen-1.1.1.tgz#76d8c621ff45f086d5f4eab841f788e1fc48169b"
-    dependencies:
-      flickity "^2.1.0"
-  
-  flickity-imagesloaded@^2.0.0:
-    version "2.0.0"
-    resolved "https://registry.yarnpkg.com/flickity-imagesloaded/-/flickity-imagesloaded-2.0.0.tgz#a2d1d6aae6c26369ef2fa44f3eb948ea474e976b"
-    dependencies:
-      flickity "^2.0.0"
-      imagesloaded "^4.1.0"
-  
-  flickity@^2.0.0, flickity@^2.1.0, flickity@^2.2.2:
-    version "2.2.2"
-    resolved "https://registry.yarnpkg.com/flickity/-/flickity-2.2.2.tgz#29597ac4d9b81938a58610a0eeb9db915508063d"
-    dependencies:
-      desandro-matches-selector "^2.0.0"
-      ev-emitter "^1.1.1"
-      fizzy-ui-utils "^2.0.7"
-      get-size "^2.0.3"
-      unidragger "^2.3.0"
-      unipointer "^2.3.0"
   
   follow-redirects@^1.10.0:
     version "1.14.2"
@@ -1959,10 +1917,6 @@ Lockfile:
   get-own-enumerable-property-symbols@^3.0.0:
     version "3.0.2"
     resolved "https://registry.yarnpkg.com/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-3.0.2.tgz#b5fde77f22cbe35f390b4e089922c50bce6ef664"
-  
-  get-size@^2.0.3:
-    version "2.0.3"
-    resolved "https://registry.yarnpkg.com/get-size/-/get-size-2.0.3.tgz#54a1d0256b20ea7ac646516756202769941ad2ef"
   
   get-stdin@^8.0.0:
     version "8.0.0"
@@ -2261,12 +2215,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/image-size/-/image-size-1.0.0.tgz#58b31fe4743b1cec0a0ac26f5c914d3c5b2f0750"
     dependencies:
       queue "6.0.2"
-  
-  imagesloaded@^4.1.0:
-    version "4.1.4"
-    resolved "https://registry.yarnpkg.com/imagesloaded/-/imagesloaded-4.1.4.tgz#1376efcd162bb768c34c3727ac89cc04051f3cc7"
-    dependencies:
-      ev-emitter "^1.0.0"
   
   import-fresh@^3.0.0, import-fresh@^3.2.1:
     version "3.3.0"
@@ -4017,6 +3965,10 @@ Lockfile:
     version "1.0.3"
     resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   
+  ssr-window@^4.0.0:
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-4.0.0.tgz#4ee82fc360c5f88a022f321740bcfec59ada1a61"
+  
   stacktrace-parser@0.1.10:
     version "0.1.10"
     resolved "https://registry.yarnpkg.com/stacktrace-parser/-/stacktrace-parser-0.1.10.tgz#29fb0cae4e0d0b85155879402857a1639eb6051a"
@@ -4319,6 +4271,13 @@ Lockfile:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/svg-tags/-/svg-tags-1.0.0.tgz#58f71cee3bd519b59d4b2a843b6c7de64ac04764"
   
+  swiper@^7.0.3:
+    version "7.0.3"
+    resolved "https://registry.yarnpkg.com/swiper/-/swiper-7.0.3.tgz#91db72a948d72fce0bb31613a2a4a3023570a01d"
+    dependencies:
+      dom7 "^4.0.0"
+      ssr-window "^4.0.0"
+  
   table@^6.0.9, table@^6.6.0:
     version "6.7.1"
     resolved "https://registry.yarnpkg.com/table/-/table-6.7.1.tgz#ee05592b7143831a8c94f3cee6aae4c1ccef33e2"
@@ -4460,12 +4419,6 @@ Lockfile:
       has-symbols "^1.0.2"
       which-boxed-primitive "^1.0.2"
   
-  unidragger@^2.3.0:
-    version "2.3.1"
-    resolved "https://registry.yarnpkg.com/unidragger/-/unidragger-2.3.1.tgz#2e8c34feff61affa96dc895234ddfc1ea4ec7515"
-    dependencies:
-      unipointer "^2.3.0"
-  
   unified@^9.0.0, unified@^9.1.0:
     version "9.2.2"
     resolved "https://registry.yarnpkg.com/unified/-/unified-9.2.2.tgz#67649a1abfc3ab85d2969502902775eb03146975"
@@ -4476,12 +4429,6 @@ Lockfile:
       is-plain-obj "^2.0.0"
       trough "^1.0.0"
       vfile "^4.0.0"
-  
-  unipointer@^2.3.0:
-    version "2.3.0"
-    resolved "https://registry.yarnpkg.com/unipointer/-/unipointer-2.3.0.tgz#ba0dc462ce31c2a88e80810e19c3bae0ce47ed9f"
-    dependencies:
-      ev-emitter "^1.0.1"
   
   unist-builder@^2.0.0:
     version "2.0.3"

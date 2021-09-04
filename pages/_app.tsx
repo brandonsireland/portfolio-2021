@@ -2,6 +2,7 @@ import React from 'react';
 import { NextPageContext } from 'next';
 import { AppProps } from 'next/app';
 import { AnimatePresence } from 'framer-motion';
+import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
 
 // Context
@@ -21,8 +22,11 @@ const App: React.FC<AppProps> = ({
 }) => {
     const [isFirstMount, setIsFirstMount] = React.useState(true);
     const router = useRouter();
-
+    
     React.useEffect(() => {
+        // Google Tag Manager
+        TagManager.initialize({ gtmId: process.env.GTM_ID || '' });
+
         const handleRouteChange = () => {
             isFirstMount && setIsFirstMount(false);
         };
