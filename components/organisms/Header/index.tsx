@@ -10,7 +10,6 @@ import {
 
 // Components
 import BasePicture from '../../atoms/BasePicture';
-import Aspect from '../../atoms/AspectRatio';
 import Backdrop from '../../molecules/Backdrop';
 
 // Types
@@ -103,12 +102,10 @@ const Header: React.FC<HeaderProps> = ({
                         }}
                         className={css.imageContainer}
                     >
-                        <Aspect ratio='215x205'>
-                            <BasePicture
-                                image={thumbnailImage}
-                                query='?w=215&h=205&q=70&fit=thumb'
-                            />
-                        </Aspect>
+                        <BasePicture
+                            image={thumbnailImage}
+                            query='?w=215&q=70&fit=fill'
+                        />
                     </m.div>
                 </LazyMotion>
             </div>
