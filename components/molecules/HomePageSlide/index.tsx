@@ -47,7 +47,6 @@ const HomePageSlide: React.FC<HomePageSlideProps> = ({
                 backdropClass={css.slide}
                 backdrop={backgroundMedia}
                 query={homeSlideQuery}
-                rootMargin='100px 0px'
             >
                 <div className={css.inner}>
                     <BasePicture
