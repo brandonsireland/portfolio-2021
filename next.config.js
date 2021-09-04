@@ -15,5 +15,6 @@ module.exports = withImages({
         CONTENTFUL_HOST: process.env.CONTENTFUL_HOST,
         CONTENTFUL_ENV: process.env.CONTENTFUL_ENV,
         NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+        GTM_ID: process.env.GTM_ID,
     },
 });
