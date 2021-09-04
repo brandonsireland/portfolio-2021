@@ -4,10 +4,7 @@
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-
-    @include media('sm') {
-        padding-bottom: 40px;
-    }
+    padding-bottom: 60px;
 
     @include media('md') {
         padding: 60px 100px 40px;
