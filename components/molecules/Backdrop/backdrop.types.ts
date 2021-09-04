@@ -12,5 +12,4 @@ export interface BackdropProps {
     overflow?: boolean;
     alt?: string;
     rootMargin?: string;
-    triggerOnce?: boolean;
 }

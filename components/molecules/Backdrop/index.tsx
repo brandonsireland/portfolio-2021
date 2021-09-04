@@ -22,7 +22,6 @@ const Backdrop: React.FC<BackdropProps> = ({
     query,
     overflow = true,
     rootMargin,
-    triggerOnce,
     children,
 }) => (
     <Fragment>
@@ -57,7 +56,6 @@ const Backdrop: React.FC<BackdropProps> = ({
                             srcset={backdrop}
                             queries={query}
                             imageClass={css.img}
-                            triggerOnce={triggerOnce}
                             rootMargin={rootMargin}
                         />
                     ) : null}
