@@ -86,7 +86,7 @@ const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
                 return srcset[defaultKey]?.url;
             },
         };
-        console.log(bypassInView, srcset?.default?.title);
+
         const computedBreakpoints = queryBreakpoints.reduce((acc, curr) => {
             const computedKey = curr.key;
 
