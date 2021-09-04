@@ -25,7 +25,7 @@ const App: React.FC<AppProps> = ({
     
     React.useEffect(() => {
         // Google Tag Manager
-        TagManager.initialize({ gtmId: process.env.GTM_ID || '' });
+        TagManager.initialize({ gtmId: process.env.GTM_ID || 'GTM-NQ5W7L8' });
 
         const handleRouteChange = () => {
             isFirstMount && setIsFirstMount(false);
