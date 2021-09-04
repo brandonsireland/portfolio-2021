@@ -6,7 +6,7 @@ import Meta from '../atoms/Meta';
 import Cursor from '../atoms/Cursor';
 import Navigation from '../organisms/Navigation';
 import ComponentResolver from '../atoms/ComponentResolver';
-// import InitialTransition from '../molecules/InitialTransition';
+import InitialTransition from '../molecules/InitialTransition';
 
 // Types
 import { MetaProps } from '../atoms/Meta/meta.types';
@@ -24,12 +24,12 @@ const DefaultPageTemplate: React.FC<DefaultPageTemplateProps> = ({
     meta = {},
     navigation = {},
     contentBlocks,
-    // isFirstMount,
+    isFirstMount,
 }) => (
     <Fragment>
         <Meta {...meta} />
         <Cursor />
-        {/* {isFirstMount && <InitialTransition />} */}
+        {isFirstMount && <InitialTransition />}
         <Navigation {...navigation} isFixed={false} />
         <LazyMotion features={domAnimation}>
             <m.div exit={{ opacity: 0 }}>
