@@ -76,7 +76,9 @@ const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
         rootMargin: rootMargin,
         skip: supportsLazyLoading !== false,
     });
-
+    console.log(`ref is in view: ${inView}
+    browser supports lazy loading: ${supportsLazyLoading}
+    `);
     const generateBreakpoints = ({
         defaultKey = '',
         queryBreakpoints = [],
