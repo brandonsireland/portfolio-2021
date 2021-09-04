@@ -66,20 +66,17 @@ const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
     alt = '',
     queries,
     imageClass = '',
-    rootMargin = '-50px 0px',
+    bypassInView = false
 }) => {
     const { width = 768 } = useWindowSize();
     const [generatedBreak, setGeneratedBreak] = useState<any>(null);
     const supportsLazyLoading = useNativeLazyLoading();
     const { ref, inView } = useInView({
         triggerOnce: true,
-        rootMargin: rootMargin,
+        rootMargin: '-50px 0px',
         skip: supportsLazyLoading !== false,
     });
-    console.log(`ref is in view: ${inView}
-    ${srcset?.default?.title}
-    browser supports lazy loading: ${supportsLazyLoading}
-    `);
+
     const generateBreakpoints = ({
         defaultKey = '',
         queryBreakpoints = [],
@@ -89,7 +86,7 @@ const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
                 return srcset[defaultKey]?.url;
             },
         };
-
+        console.log(bypassInView, srcset?.default?.title);
         const computedBreakpoints = queryBreakpoints.reduce((acc, curr) => {
             const computedKey = curr.key;
 
@@ -143,7 +140,7 @@ const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
     
     return (
         <div ref={ref} className={css.pictureContainer}>
-            {inView || supportsLazyLoading ? (
+            {bypassInView || inView || supportsLazyLoading ? (
                 <picture>
                     {defaultConfig.queryBreakpoints &&
                         defaultConfig.queryBreakpoints.map(

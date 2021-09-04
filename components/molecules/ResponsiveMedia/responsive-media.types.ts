@@ -17,4 +17,5 @@ export interface ResponsiveMediaProps {
     queries?: any;
     imageClass?: string | string[];
     rootMargin?: string;
+    bypassInView?: boolean;
 }
