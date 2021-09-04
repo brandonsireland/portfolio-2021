@@ -29,7 +29,7 @@ const DefaultPageTemplate: React.FC<DefaultPageTemplateProps> = ({
     <Fragment>
         <Meta {...meta} />
         <Cursor />
-        {isFirstMount && <InitialTransition />}
+        {/* {isFirstMount && <InitialTransition />} */}
         <Navigation {...navigation} isFixed={false} />
         <LazyMotion features={domAnimation}>
             <m.div exit={{ opacity: 0 }}>
