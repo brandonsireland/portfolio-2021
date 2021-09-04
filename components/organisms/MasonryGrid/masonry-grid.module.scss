@@ -4,7 +4,6 @@
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    padding-bottom: 60px;
 
     @include media('md') {
         padding: 60px 100px 40px;
@@ -14,7 +13,7 @@
 .inner {
     column-count: 1;
     column-gap: 20px;
-    padding: 0 20px;
+    padding: 0 20px 60px;
     position: relative;
     z-index: 1;
     min-height: 400px;
