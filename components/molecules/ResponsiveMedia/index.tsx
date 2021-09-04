@@ -72,7 +72,7 @@ const ResponsiveMedia: React.FC<ResponsiveMediaProps> = ({
     const supportsLazyLoading = useNativeLazyLoading();
     const { ref, inView } = useInView({
         triggerOnce: true,
-        rootMargin: '400px 0px',
+        rootMargin: '-50px 0px',
         skip: supportsLazyLoading !== false,
     });
 
