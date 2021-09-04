@@ -29,7 +29,7 @@ class Carousel extends React.Component<CarouselProps> {
             }
 
             this.flktyCarousel = new Flickity(this.carouselMainRef.current, {
-                imagesLoaded: true,
+                // imagesLoaded: true,
                 ...options,
             });
 
@@ -41,7 +41,7 @@ class Carousel extends React.Component<CarouselProps> {
                 this.flktyNavCarousel = new Flickity(
                     this.carouselNavRef.current,
                     {
-                        imagesLoaded: true,
+                        // imagesLoaded: true,
                         ...navOptions,
                         asNavFor: this.carouselMainRef.current,
                         contain: true,
