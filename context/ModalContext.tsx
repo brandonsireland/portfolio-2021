@@ -2,7 +2,7 @@ import React, { createContext, useState, ReactElement } from 'react';
 
 export interface ModalInterface {
     displayModal: boolean;
-    props: Record<string, unknown>;
+    props: any;
 }
 
 export interface ModalState {

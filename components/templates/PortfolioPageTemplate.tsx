@@ -8,7 +8,7 @@ import ComponentResolver from '../atoms/ComponentResolver';
 import Cursor from '../atoms/Cursor';
 import Navigation from '../organisms/Navigation';
 
-const Modal = dynamic(() => import('../atoms/TestModal'));
+const MasonryModal = dynamic(() => import('../molecules/MasonryModal'));
 const PreviousAndNextArticle = dynamic(
     () => import('../organisms/PreviousAndNextArticle'),
 );
@@ -42,7 +42,7 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
 }) => (
     <AnimateSharedLayout>
         <Meta {...meta} />
-        <Modal />
+        <MasonryModal />
         <Cursor />
         <Navigation {...navigation} isFixed />
         <LazyMotion features={domAnimation}>

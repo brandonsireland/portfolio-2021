@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 // Components
 import Icon from '../../atoms/Icon';
-import ResponsiveMedia from '../../molecules/ResponsiveMedia';
+import ResponsiveMedia from '../ResponsiveMedia';
 import BaseVideo from '../../atoms/BaseVideo';
 
 // Context
@@ -11,7 +11,6 @@ import { ModalConsumer } from '../../../context/ModalContext';
 
 // Types
 import { IconType } from '../../atoms/Icon/icon.enums';
-import { TestModalProps } from './test-modal.types';
 
 // Styles
 import css from './test-modal.module.scss';
@@ -52,7 +51,7 @@ const modalQuery = {
     },
 };
 
-const TestModal: React.FC<TestModalProps> = () => {
+const MasonryModal = () => {
     return (
         <ModalConsumer>
             {({ modal: { props, displayModal }, setModal }) => (
@@ -117,4 +116,4 @@ const TestModal: React.FC<TestModalProps> = () => {
     );
 };
 
-export default TestModal;
+export default MasonryModal;
