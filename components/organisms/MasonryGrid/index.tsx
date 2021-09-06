@@ -74,7 +74,6 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({
                                 asset={asset}
                                 onClick={() =>
                                     setModal({
-                                        component: 'MasonryModal',
                                         displayModal: true,
                                         props: { asset: asset },
                                     })

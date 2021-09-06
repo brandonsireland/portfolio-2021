@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import dynamic from 'next/dynamic';
-import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { LazyMotion, domAnimation, m, AnimateSharedLayout } from 'framer-motion';
 
 // Components
 import Meta from '../atoms/Meta';
@@ -8,7 +8,7 @@ import ComponentResolver from '../atoms/ComponentResolver';
 import Cursor from '../atoms/Cursor';
 import Navigation from '../organisms/Navigation';
 
-const Modal = dynamic(() => import('../atoms/Modal'));
+const Modal = dynamic(() => import('../atoms/TestModal'));
 const PreviousAndNextArticle = dynamic(
     () => import('../organisms/PreviousAndNextArticle'),
 );
@@ -40,7 +40,7 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
     currentArticleData,
     previousArticleData,
 }) => (
-    <Fragment>
+    <AnimateSharedLayout>
         <Meta {...meta} />
         <Modal />
         <Cursor />
@@ -64,7 +64,7 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
             </m.div>
         </LazyMotion>
         <Footer {...footer} />
-    </Fragment>
+    </AnimateSharedLayout>
 );
 
 export default PortfolioPageTemplate;

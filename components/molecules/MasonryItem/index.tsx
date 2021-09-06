@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 // Components
@@ -34,14 +34,24 @@ const MasonryItem: React.FC<MasonryItemProps> = ({ onClick, asset = {} }) => {
     });
 
     return (
-        <LazyMotion features={domAnimation}>
-            <m.div
+        <AnimatePresence exitBeforeEnter>
+            <motion.div
                 ref={ref}
+                layoutId={asset.id}
                 onClick={onClick}
                 initial={{ y: 100, opacity: 0 }}
-                animate={inView && { y: 0, opacity: 1 }}
-                transition={{ duration: 0.2 }}
-                whileHover={{ scale: 1.05, zIndex: 2 }}
+                animate={
+                    inView && {
+                        y: 0,
+                        opacity: 1,
+                        transition: { duration: 0.4 },
+                    }
+                }
+                whileHover={{
+                    scale: 1.05,
+                    zIndex: 2,
+                    transition: { duration: 0.2 },
+                }}
                 className={css.item}
             >
                 {asset.poster ? (
@@ -56,8 +66,8 @@ const MasonryItem: React.FC<MasonryItemProps> = ({ onClick, asset = {} }) => {
                 ) : (
                     <ResponsiveMedia srcset={asset} queries={masonryQuery} />
                 )}
-            </m.div>
-        </LazyMotion>
+            </motion.div>
+        </AnimatePresence>
     );
 };
 

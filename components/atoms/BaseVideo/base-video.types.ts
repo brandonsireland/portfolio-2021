@@ -1,4 +1,5 @@
 export interface BaseVideoProps {
+    id?: string;
     contentType?: string;
     url?: string;
     autoPlay?: boolean;

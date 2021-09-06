@@ -2,7 +2,6 @@ import React, { createContext, useState, ReactElement } from 'react';
 
 export interface ModalInterface {
     displayModal: boolean;
-    component: any;
     props: Record<string, unknown>;
 }
 
@@ -17,7 +16,6 @@ export interface ModalContextProviderProps {
 
 const defaultModal: ModalInterface = {
     displayModal: false,
-    component: null,
     props: {},
 };
 

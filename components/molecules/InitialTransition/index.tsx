@@ -69,12 +69,6 @@ const InitialTransition = () => {
                 initial='initial'
                 animate='animate'
                 variants={blackBox}
-                onAnimationStart={() =>
-                    document.body.classList.add('overflow-hidden')
-                }
-                onAnimationComplete={() =>
-                    document.body.classList.remove('overflow-hidden')
-                }
             >
                 <m.div variants={logoContainer} className={css.inner}>
                     <svg
