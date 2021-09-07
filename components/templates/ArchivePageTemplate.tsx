@@ -9,7 +9,7 @@ import Navigation from '../organisms/Navigation';
 
 const Footer = dynamic(() => import('../organisms/Footer'));
 
-import Grid from '../organisms/ArchiveGrid';
+import ArchiveGrid from '../organisms/ArchiveGrid';
 
 // Types
 import { MetaProps } from '../atoms/Meta/meta.types';
@@ -35,7 +35,7 @@ const ArchivePageTemplate: React.FC<ArchivePageTemplateProps> = ({
         <Navigation {...navigation} isFixed={false} />
         <LazyMotion features={domAnimation}>
             <m.div exit={{ opacity: 0 }}>
-                <Grid pages={pages} />
+                <ArchiveGrid portfolioItems={pages} />
             </m.div>
         </LazyMotion>
         <Footer {...footer} />
