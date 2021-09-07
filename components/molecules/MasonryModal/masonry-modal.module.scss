@@ -26,11 +26,17 @@
 }
 
 .close {
-    width: 30px;
+    width: 50px;
     position: absolute;
-    top: 30px;
-    right: -30px;
+    top: 10px;
+    right: 0px;
     border: none;
     background: transparent;
     cursor: pointer;
+
+    @include media('sm') {
+        width: 30px;
+        top: 30px;
+        right: -30px;
+    }
 }
