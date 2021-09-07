@@ -26,9 +26,8 @@ export interface PortfolioPageTemplateProps {
     navigation: NavigationProps;
     contentBlocks: ComponentResolverProps[];
     footer: FooterProps;
-    nextArticleData: Partial<PreviousAndNextArticleProps>;
-    currentArticleData: Partial<PreviousAndNextArticleProps>;
-    previousArticleData: Partial<PreviousAndNextArticleProps>;
+    currentArticleData: PreviousAndNextArticleProps;
+    currentArticlePublishDate: string;
 }
 
 const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
@@ -36,9 +35,8 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
     navigation = {},
     contentBlocks,
     footer = {},
-    nextArticleData,
     currentArticleData,
-    previousArticleData,
+    currentArticlePublishDate
 }) => (
     <AnimateSharedLayout>
         <Meta {...meta} />
@@ -56,11 +54,7 @@ const PortfolioPageTemplate: React.FC<PortfolioPageTemplateProps> = ({
                             data={data}
                         />
                     ))}
-                <PreviousAndNextArticle
-                    nextArticleData={nextArticleData}
-                    currentArticleData={currentArticleData}
-                    previousArticleData={previousArticleData}
-                />
+                <PreviousAndNextArticle currentArticleData={currentArticleData} currentArticlePublishDate={currentArticlePublishDate} />
             </m.div>
         </LazyMotion>
         <Footer {...footer} />

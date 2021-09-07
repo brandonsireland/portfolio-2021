@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import Link from 'next/link';
 import cc from 'classcat';
@@ -8,11 +8,17 @@ import Icon from '../../atoms/Icon';
 import Backdrop from '../../molecules/Backdrop';
 
 // Types
-import { PreviousAndNextArticleProps } from './previous-and-next-article.types';
+import {
+    PreviousAndNextArticleProps,
+    articleDataProps,
+} from './previous-and-next-article.types';
 import { IconType } from '../../atoms/Icon/icon.enums';
 
 // Context
 import { LocalizedStringsContext } from '../../../context/LocalizedStringContext';
+
+// Utils
+import { client, getContentData } from '../../../contentful';
 
 // Styles
 import css from './previous-and-next-article.module.scss';
@@ -56,40 +62,107 @@ const currentQuery = {
 const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
     id = '',
     currentArticleData = {},
-    nextArticleData: {
-        nextArticleBackgroundImage,
-        nextArticleSlug = '',
-        nextArticleTitle = '',
-    } = {},
-    previousArticleData: {
-        previousArticleBackgroundImage,
-        previousArticleSlug = '',
-        previousArticleTitle = '',
-    } = {},
+    currentArticlePublishDate = '',
 }) => {
     const { localizedStrings = [] } = useContext(LocalizedStringsContext);
+    const [articleData, setArticleData] = useState<articleDataProps>({
+        nextArticleSlug: '',
+        nextArticleTitle: '',
+        nextArticleBackgroundImage: {},
+        previousArticleSlug: '',
+        previousArticleTitle: '',
+        previousArticleBackgroundImage: {},
+    });
+
+    useEffect(() => {
+        const fetchArticleData = async () => {
+            const nextArticleData = await client
+                .getEntries({
+                    content_type: 'portfolioItem',
+                    limit: 1,
+                    include: 10,
+                    'fields.publishDate[gt]': currentArticlePublishDate,
+                })
+                .then(({ items: [data = {}] = [] }) => {
+                    const {
+                        slug: nextArticleSlug = '',
+                        title: nextArticleTitle = '',
+                        archiveMedia: nextArticleBackgroundImage = {},
+                    } = getContentData(data);
+
+                    return {
+                        nextArticleSlug,
+                        nextArticleTitle,
+                        nextArticleBackgroundImage,
+                    };
+                })
+                .then(
+                    async ({
+                        nextArticleSlug,
+                        nextArticleTitle,
+                        nextArticleBackgroundImage,
+                    }) => {
+
+                        return await client
+                            .getEntries({
+                                content_type: 'portfolioItem',
+                                limit: 1,
+                                include: 10,
+                                'fields.publishDate[lt]':
+                                    currentArticlePublishDate,
+                            })
+                            .then(({ items: [data = {}] = [] }) => {
+                                const {
+                                    slug: previousArticleSlug = '',
+                                    title: previousArticleTitle = '',
+                                    archiveMedia:
+                                        previousArticleBackgroundImage = {},
+                                } = getContentData(data);
+                                
+                                setArticleData({
+                                    ...articleData,
+                                    previousArticleSlug,
+                                    previousArticleTitle,
+                                    previousArticleBackgroundImage,
+                                    nextArticleSlug,
+                                    nextArticleTitle,
+                                    nextArticleBackgroundImage,
+                                });
+                            });
+                    },
+                )
+                .catch(err => console.error(err));
+
+            return nextArticleData;
+        };
+
+        fetchArticleData();
+    }, [currentArticleData]);
 
     return (
         <section id={id} className={css.container}>
             <LazyMotion features={domAnimation}>
-                {previousArticleSlug !== '' && (
+                {articleData.previousArticleSlug && articleData.previousArticleBackgroundImage && (
                     <m.div
                         whileHover={{ scale: 1.1 }}
                         className={css.articleContainer}
                     >
                         <Backdrop
                             fill
-                            backdrop={previousArticleBackgroundImage}
+                            backdrop={
+                                articleData.previousArticleBackgroundImage
+                            }
                             backdropClass={css.background}
                             alt='Previous Article Background Image'
                             type={
-                                previousArticleBackgroundImage.poster
+                                articleData.previousArticleBackgroundImage
+                                    ?.poster
                                     ? 'video'
                                     : 'image'
                             }
                             query={prevAndNextQuery}
                         >
-                            <Link href={previousArticleSlug}>
+                            <Link href={articleData.previousArticleSlug}>
                                 <a className={css.link}>
                                     <div className={css.label}>
                                         <Icon
@@ -101,7 +174,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                                             alt='Previous Item Button'
                                         />
                                         <span className={css.text}>
-                                            {previousArticleTitle}
+                                            {articleData.previousArticleTitle}
                                         </span>
                                     </div>
                                 </a>
@@ -135,28 +208,28 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                         </Link>
                     </Backdrop>
                 </m.div>
-                {nextArticleSlug !== '' && (
+                {articleData.nextArticleSlug && articleData.nextArticleBackgroundImage && (
                     <m.div
                         whileHover={{ scale: 1.1 }}
                         className={css.articleContainer}
                     >
                         <Backdrop
                             fill
-                            backdrop={nextArticleBackgroundImage}
+                            backdrop={articleData.nextArticleBackgroundImage}
                             backdropClass={css.background}
                             type={
-                                nextArticleBackgroundImage.poster
+                                articleData.nextArticleBackgroundImage?.poster
                                     ? 'video'
                                     : 'image'
                             }
                             alt='Next Article Background Image'
                             query={prevAndNextQuery}
                         >
-                            <Link href={nextArticleSlug}>
+                            <Link href={articleData.nextArticleSlug}>
                                 <a className={css.link}>
                                     <div className={css.label}>
                                         <span className={css.text}>
-                                            {nextArticleTitle}
+                                            {articleData.nextArticleTitle}
                                         </span>
                                         <m.div
                                             whileHover={{ scale: 1.1 }}

@@ -16,14 +16,11 @@ export interface ProjectPageProps {
         meta: MetaProps;
         archiveMedia: Partial<PreviousAndNextArticleProps>;
         contentBlocks: ComponentResolverProps[];
+        publishDate: string;
     };
     globalData: {
         navigation: NavigationProps;
         footer: FooterProps;
-    };
-    articleData: {
-        nextPortfolioData: Partial<PreviousAndNextArticleProps>;
-        previousPortfolioData: Partial<PreviousAndNextArticleProps>;
     };
 }
 
@@ -31,18 +28,16 @@ export interface ProjectPageProps {
 import { client, getContentData } from '../../contentful';
 
 const ProjectPage: React.FC<ProjectPageProps> = ({
-    pageData: { meta = {}, archiveMedia = {}, contentBlocks = [] } = {},
+    pageData: { meta = {}, archiveMedia = {}, contentBlocks = [], publishDate = '', } = {},
     globalData: { navigation = {}, footer = {} } = {},
-    articleData: { nextPortfolioData = {}, previousPortfolioData = {} } = {},
 }) => (
     <PortfolioPageTemplate
         meta={meta}
         navigation={navigation}
         contentBlocks={contentBlocks}
         footer={footer}
-        nextArticleData={nextPortfolioData}
         currentArticleData={archiveMedia}
-        previousArticleData={previousPortfolioData}
+        currentArticlePublishDate={publishDate}
     />
 );
 
@@ -109,58 +104,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         })
         .catch(err => console.error(err));
 
-    const nextPortfolioData: any = await client
-        .getEntries({
-            content_type: 'portfolioItem',
-            limit: 1,
-            include: 10,
-            'fields.publishDate[gt]': pageData?.publishDate,
-        })
-        .then(({ items: [data = {}] = [] }) => {
-            const {
-                slug: nextArticleSlug = '',
-                title: nextArticleTitle = '',
-                archiveMedia: nextArticleBackgroundImage = {},
-            } = getContentData(data);
-
-            return {
-                nextArticleSlug,
-                nextArticleTitle,
-                nextArticleBackgroundImage,
-            };
-        })
-        .catch(err => console.error(err));
-
-    const previousPortfolioData: any = await client
-        .getEntries({
-            content_type: 'portfolioItem',
-            limit: 1,
-            include: 10,
-            'fields.publishDate[lt]': pageData?.publishDate,
-        })
-        .then(({ items: [data = {}] = [] }) => {
-            const {
-                slug: previousArticleSlug = '',
-                title: previousArticleTitle = '',
-                archiveMedia: previousArticleBackgroundImage = {},
-            } = getContentData(data);
-
-            return {
-                previousArticleSlug,
-                previousArticleTitle,
-                previousArticleBackgroundImage,
-            };
-        })
-        .catch(err => console.error(err));
-
     return {
         props: {
             globalData: getContentData(globalSettings),
-            pageData: pageData,
-            articleData: {
-                previousPortfolioData,
-                nextPortfolioData,
-            },
+            pageData: pageData
         },
     };
 };
