@@ -27,9 +27,9 @@
 
 .close {
     width: 30px;
-    position: fixed;
+    position: absolute;
     top: 30px;
-    right: 30px;
+    right: -30px;
     border: none;
     background: transparent;
     cursor: pointer;

@@ -13,7 +13,7 @@ import { ModalConsumer } from '../../../context/ModalContext';
 import { IconType } from '../../atoms/Icon/icon.enums';
 
 // Styles
-import css from './test-modal.module.scss';
+import css from './masonry-modal.module.scss';
 
 const backdropVariants = {
     hidden: { opacity: 0, transition: { duration: 1 } },
