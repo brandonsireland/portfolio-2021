@@ -25,16 +25,13 @@ import { client, getContentData } from '../../contentful';
 const ProjectPage: React.FC<ProjectPageProps> = ({
     pageData: { meta = {}, contentBlocks = [] } = {},
     globalData: { navigation = {} } = {},
-}) => {
-    console.log(contentBlocks);
-    return  (
-        <DefaultPageTemplate
-            meta={meta}
-            navigation={navigation}
-            contentBlocks={contentBlocks}
-        />
-    )
-};
+}) => (
+    <DefaultPageTemplate
+        meta={meta}
+        navigation={navigation}
+        contentBlocks={contentBlocks}
+    />
+)
 
 export const getStaticProps: GetStaticProps = async () => {
     const globalSettings = await client
@@ -55,7 +52,6 @@ export const getStaticProps: GetStaticProps = async () => {
         .then(({ items = [] }: { items: Array<any> }) => items[0])
         .catch((err: string) => console.error(err));
     
-    console.log(getContentData(pageData));
     return {
         props: {
             globalData: getContentData(globalSettings),
