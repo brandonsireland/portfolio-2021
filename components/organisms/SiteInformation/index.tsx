@@ -156,14 +156,19 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                         ])}
                     >
                         <Markdown content={description} />
-                        <div className={css.content}>
-                            <p className={css.space}>
-                                {localizedStrings['site']}:{' '}
-                            </p>
-                            <BaseLink href={siteUrlHref} target={siteUrlTarget}>
-                                {siteUrlLabel}
-                            </BaseLink>
-                        </div>
+                        {siteUrlHref && (
+                            <div className={css.content}>
+                                <p className={css.space}>
+                                    {localizedStrings['site']}:{' '}
+                                </p>
+                                <BaseLink
+                                    href={siteUrlHref}
+                                    target={siteUrlTarget}
+                                >
+                                    {siteUrlLabel}
+                                </BaseLink>
+                            </div>
+                        )}
                         <div className={css.content}>
                             <p className={css.space}>
                                 {localizedStrings['year-created']}:
@@ -176,14 +181,17 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                             </p>
                             <p>{role}</p>
                         </div>
-                        <div className={css.content}>
-                            <p className={css.space}>
-                                {localizedStrings['agency-associated-with']}:{' '}
-                            </p>
-                            <BaseLink href={agencyAssociatedWithHref}>
-                                {agencyAssociatedWithValue}
-                            </BaseLink>
-                        </div>
+                        {agencyAssociatedWithHref && (
+                            <div className={css.content}>
+                                <p className={css.space}>
+                                    {localizedStrings['agency-associated-with']}
+                                    :{' '}
+                                </p>
+                                <BaseLink href={agencyAssociatedWithHref}>
+                                    {agencyAssociatedWithValue}
+                                </BaseLink>
+                            </div>
+                        )}
                         <div className={css.content}>
                             {categories.length > 0 && (
                                 <m.ul
