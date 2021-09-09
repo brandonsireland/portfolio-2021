@@ -24,3 +24,30 @@
         }
     }
 }
+
+.arrow {
+    width: 30px;
+    height: 30px;
+    border: none;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    cursor: pointer;
+    visibility: visible;
+
+    @include media('sm') {
+        visibility: hidden;
+    }
+}
+
+.left {
+    transform: scaleX(-1);
+}
+
+.arrowLeft {
+    left: 0;
+}
+
+.arrowRight {
+    right: 0;
+}
