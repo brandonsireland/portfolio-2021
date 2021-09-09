@@ -54,8 +54,8 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
     const { scrollY } = useViewportScroll();
     const y = useSpring(useTransform(scrollY, [0, 400], [0, -50]), {
-        damping: 5,
-        stiffness: 100,
+        damping: 10,
+        stiffness: 5,
     });
 
     const titleVariants = {
