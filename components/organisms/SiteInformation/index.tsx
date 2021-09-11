@@ -158,36 +158,37 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                         <Markdown content={description} />
                         {siteUrlHref && (
                             <div className={css.content}>
-                                <p className={css.space}>
+                                <p className={cc([css.space, css.text])}>
                                     {localizedStrings['site']}:{' '}
                                 </p>
                                 <BaseLink
                                     href={siteUrlHref}
                                     target={siteUrlTarget}
+                                    className={css.link}
                                 >
                                     {siteUrlLabel}
                                 </BaseLink>
                             </div>
                         )}
                         <div className={css.content}>
-                            <p className={css.space}>
+                            <p className={cc([css.space, css.text])}>
                                 {localizedStrings['year-created']}:
                             </p>
-                            <p>{newYear}</p>
+                            <p className={css.text}>{newYear}</p>
                         </div>
                         <div className={css.content}>
-                            <p className={css.space}>
+                            <p className={cc([css.space, css.text])}>
                                 {localizedStrings['role']}:
                             </p>
-                            <p>{role}</p>
+                            <p className={css.text}>{role}</p>
                         </div>
                         {agencyAssociatedWithHref && (
                             <div className={css.content}>
-                                <p className={css.space}>
+                                <p className={cc([css.space, css.text])}>
                                     {localizedStrings['agency-associated-with']}
                                     :{' '}
                                 </p>
-                                <BaseLink href={agencyAssociatedWithHref}>
+                                <BaseLink href={agencyAssociatedWithHref} className={css.link}>
                                     {agencyAssociatedWithValue}
                                 </BaseLink>
                             </div>
