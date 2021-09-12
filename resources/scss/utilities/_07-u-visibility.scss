@@ -17,3 +17,7 @@
 .u-sr-only {
     @include sr-only();
 }
+
+.u-overflow-hidden {
+    overflow: hidden;
+}

@@ -6,6 +6,7 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1000;
+    overflow: scroll;
 }
 
 .modal {
@@ -27,7 +28,7 @@
 
 .close {
     width: 50px;
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 0px;
     border: none;
@@ -37,6 +38,6 @@
     @include media('sm') {
         width: 30px;
         top: 30px;
-        right: -30px;
+        right: 10px;
     }
 }

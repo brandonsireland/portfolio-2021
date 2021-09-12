@@ -71,11 +71,22 @@ const MasonryModal = () => {
                             animate='visible'
                             exit='exit'
                             className={css.backdrop}
+                            onClick={() => {
+                                setModal({
+                                    props: { asset: props.asset },
+                                    displayModal: false,
+                                })
+                            }}
                         >
                             <motion.div
                                 layoutId={props?.asset?.id}
                                 variants={modalVariants}
                                 className={css.modal}
+                                onClick={(e) => {
+                                    e.persist(); 
+                                    e.nativeEvent.stopImmediatePropagation();
+                                    e.stopPropagation();
+                                }}
                             >
                                 <button
                                     className={css.close}

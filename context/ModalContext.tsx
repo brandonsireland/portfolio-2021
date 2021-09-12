@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactElement } from 'react';
+import React, { createContext, useState, ReactElement, useEffect } from 'react';
 
 export interface ModalInterface {
     displayModal: boolean;
@@ -30,6 +30,16 @@ const ModalContextProvider = ({
     children,
 }: ModalContextProviderProps): ReactElement => {
     const [modal, setModal] = useState<ModalInterface>(defaultModal);
+
+    useEffect(() => {
+        modal.displayModal
+            ? document
+                  ?.querySelector('body')
+                  ?.classList.add('u-overflow-hidden')
+            : document
+                  ?.querySelector('body')
+                  ?.classList.remove('u-overflow-hidden');
+    }, [modal]);
 
     return (
         <ModalContext.Provider value={{ modal, setModal }}>
