@@ -162,7 +162,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                             }
                             query={prevAndNextQuery}
                         >
-                            <Link href={articleData.previousArticleSlug}>
+                            <Link href={articleData.previousArticleSlug} scroll>
                                 <a className={css.link}>
                                     <div className={css.label}>
                                         <Icon
@@ -194,7 +194,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                         alt='Current Article Background Image'
                         query={currentQuery}
                     >
-                        <Link href='/projects'>
+                        <Link href='/projects' scroll>
                             <a className={cc([css.returnLink, css.link])}>
                                 <Icon
                                     className={css.menu}
@@ -225,7 +225,7 @@ const PreviousAndNextArticle: React.FC<PreviousAndNextArticleProps> = ({
                             alt='Next Article Background Image'
                             query={prevAndNextQuery}
                         >
-                            <Link href={articleData.nextArticleSlug}>
+                            <Link href={articleData.nextArticleSlug} scroll>
                                 <a className={css.link}>
                                     <div className={css.label}>
                                         <span className={css.text}>
