@@ -1,4 +1,5 @@
 import { BasePictureProps } from '../../atoms/BasePicture/base-picture.types';
+import { CategoryProps } from '../../molecules/Category/category.types';
 
 export interface ImageAndTextProps {
     id: string;
@@ -6,4 +7,5 @@ export interface ImageAndTextProps {
     backgroundImage?: BasePictureProps;
     imageLeft: boolean;
     content: string;
+    categories: CategoryProps[];
 }
