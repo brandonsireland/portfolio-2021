@@ -9,7 +9,6 @@ import {
 } from 'framer-motion';
 
 // Components
-import BasePicture from '../../atoms/BasePicture';
 import Backdrop from '../../molecules/Backdrop';
 
 // Types
@@ -50,7 +49,6 @@ const Header: React.FC<HeaderProps> = ({
     id = '',
     title = '',
     media = {},
-    thumbnailImage = {},
 }) => {
     const { scrollY } = useViewportScroll();
     const y = useSpring(useTransform(scrollY, [0, 400], [0, -50]), {
@@ -92,21 +90,6 @@ const Header: React.FC<HeaderProps> = ({
                             <h1 className={css.title}>{title}</h1>
                         </m.div>
                     </div>
-                    <m.div
-                        animate={{
-                            scale: [1.5, 1],
-                            x: [`-50%`, `-50%`],
-                            y: [`50%`, `50%`],
-                            opacity: [0, 1],
-                            transition: { delay: 1 },
-                        }}
-                        className={css.imageContainer}
-                    >
-                        <BasePicture
-                            image={thumbnailImage}
-                            query='?w=215&q=70&fit=fill'
-                        />
-                    </m.div>
                 </LazyMotion>
             </div>
         </header>

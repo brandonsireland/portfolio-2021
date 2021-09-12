@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import cc from 'classcat';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, SwiperOptions } from 'swiper';
-
+import SwiperCore, { SwiperOptions, Navigation } from 'swiper';
 // Components
 import HomePageSlide from '../../molecules/HomePageSlide';
 import Icon from '../../atoms/Icon';
@@ -17,23 +16,32 @@ import css from './home-page-carousel.module.scss';
 SwiperCore.use([Navigation]);
 
 const HomePageCarousel: React.FC<HomePageCarouselProps> = ({ slides = [] }) => {
-    const navigationPrevRef = useRef<HTMLDivElement>(null);
-    const navigationNextRef = useRef<HTMLDivElement>(null);
+    const prevRef = useRef<HTMLDivElement>(null);
+    const nextRef = useRef<HTMLDivElement>(null)
 
     const options: SwiperOptions = {
         slidesPerView: 'auto',
         loop: true,
         grabCursor: true,
         centeredSlides: true,
-        navigation: {
-            prevEl: navigationPrevRef.current!,
-            nextEl: navigationNextRef.current!,
-        },
     };
-
+    
     return (
         <section className={css.container}>
-            <Swiper {...options}>
+            <Swiper {...options}
+            navigation={{
+                prevEl: prevRef.current,
+                nextEl: nextRef.current,
+            }}
+                onInit={(swiper) => {
+                // @ts-ignore
+                swiper.params.navigation.prevEl = prevRef.current;
+                // @ts-ignore
+                swiper.params.navigation.nextEl = nextRef.current;
+                swiper.navigation.init(); // throws error here, navigation is undefined
+                swiper.navigation.update();
+            }}
+            >
                 {slides.length > 0 &&
                     slides.map(slide => (
                         <SwiperSlide key={slide.id} className={css.slide}>
@@ -41,7 +49,7 @@ const HomePageCarousel: React.FC<HomePageCarouselProps> = ({ slides = [] }) => {
                         </SwiperSlide>
                     ))}
                 <div
-                    ref={navigationPrevRef}
+                    ref={prevRef}
                     className={cc([css.arrow, css.arrowLeft])}
                 >
                     <Icon
@@ -51,8 +59,9 @@ const HomePageCarousel: React.FC<HomePageCarouselProps> = ({ slides = [] }) => {
                     />
                 </div>
                 <div
-                    ref={navigationNextRef}
+                    ref={nextRef}
                     className={cc([css.arrow, css.arrowRight])}
+                    onClick={() => console.log('clicked')}
                 >
                     <Icon
                         icon={IconType['Carot']}
