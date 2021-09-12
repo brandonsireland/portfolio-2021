@@ -74,17 +74,14 @@ const contentVariants = {
 const siteInfoQuery = {
     w1024up: {
         maxWidthQuery: '&w=720',
-        maxHeightQuery: '&h=570',
         fit: '&fit=thumb',
     },
     w1023: {
         maxWidthQuery: '&w=720',
-        maxHeightQuery: '&h=570',
         fit: '&fit=thumb',
     },
     w767: {
         maxWidthQuery: '&w=720',
-        maxHeightQuery: '&h=570',
         fit: '&fit=thumb',
     },
 };
@@ -135,8 +132,8 @@ const SiteInformation: React.FC<SiteInformationProps> = ({
                                 />
                             ) : (
                                 <Aspect
-                                    ratio={'720x570'}
-                                    visibleOverflow={false}
+                                        visibleOverflow={false}
+                                        ratio='1x1'
                                 >
                                     <ResponsiveMedia
                                         srcset={media}
